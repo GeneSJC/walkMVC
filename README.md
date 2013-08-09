@@ -9,8 +9,8 @@ Motivation
 I organized this structure because I got tired of always having to master all the ins & outs of some MVC framework every time a new project comes along.
 
 The aim of this structure is to allow the developer to quickly define the model data in PHP:
-a) DB tables with the ORM
-b) The HTML-form structure with jquery.dform
+* DB tables with the ORM
+* The HTML-form structure with jquery.dform
 
 Additionally, support for REST is incorporated with slim.  However, there are still some things to fix there - see todo.txt
 
@@ -44,7 +44,7 @@ In /_template:
 Example Project2: /webapps/slimRest_postMgr 
 --------------------------------
 
-The file structure is actually the same except instead of accessing post_ctrl.php directly, we have the slim_dispatcher.php at the top level of the app directory
+The file structure is actually the same as ../app1, except instead of accessing post_ctrl.php directly, we have the slim_dispatcher.php at the top level of the app directory
 
 
 
