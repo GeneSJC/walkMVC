@@ -20,15 +20,32 @@ Configuration
 One of the todo items is to fix hardcoded paths.  In the mean time, if you search for '/Library/WebServer/Documents/dev/', you should find all my hardcoded folders
 
 
-Example Projects
--------------------
+Examples Summary
+================================
 
-/webapps/app1 - the main work is needed in subdirectories: /post & /_template
+Here are two example /webapp projects that use the same database schema - a simple blog post (only 1 table)
+
+Example Project1: /webapps/app1 
+--------------------------------
+
+The main work is needed in subdirectories: /post & /_template
 
 In /post:
 * post_ctrl.php : add custom business logic
 * post_mapper.php : define your DB schema mappings
 * post_formcfg.php : define the form structure for the model
 * post_tbl.sql : just here for refence. Use post_mapper.php to generate schema
+
+In /_template:
+* Here we create our smarty templates
+* see ..\smarty_cfg.php for configuring your template directories
+
+
+Example Project2: /webapps/slimRest_postMgr 
+--------------------------------
+
+The file structure is actually the same except instead of accessing post_ctrl.php directly, we have the slim_dispatcher.php at the top level of the app directory
+
+
 
 
