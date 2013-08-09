@@ -6,7 +6,7 @@ MVC stack organized around phpDataMapper, Smarty, slimFramework, and jquery.dfor
 
 Motivation
 ----------
-I organized this structure because I got tired of always having to master all the ins & outs of some MVC framework every time a new project comes along.
+I organized this structure as an alternative to having to relearn all the ins & outs of some MVC framework every time a new project comes along.
 
 The aim of this structure is to allow the developer to quickly define the model data in PHP:
 * DB tables with the ORM
