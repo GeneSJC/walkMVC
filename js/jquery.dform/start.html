@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Get started with jQuery dForm</title>
+</head>
+<style type="text/css">
+    input, label {
+        display: block;
+        margin-bottom: 5px;
+    }
+</style>
+<body>
+<form id="demo-1-form"></form>
+<pre data-for="demo-1"></pre>
+
+<!-- Load jQuery and the minified plugin -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="dist/jquery.dform-1.1.0.min.js"></script>
+
+<script type="text/javascript">
+
+	// we use this to show the input data
+  function showInput()
+  {
+    $(function () {
+        $('script.demo').each(function () {
+            $('pre[data-for="demo-1"]').html($(this).html());
+        });
+    });
+   }
+   
+   // showInput();
+   
+</script>
+<script type="text/javascript" class="demo" id="demo-1">
+$(function () {
+    // Create a form from some JSON
+    $("#demo-1-form").dform({
+        "action":"index.html",
+        "method":"get",
+        "html":[
+            {
+                "type":"p",
+                "html":"You must login"
+            },
+            
+            	// From model data
+            {
+                "name":"username", // name for: db column, form field
+                "caption":"Username", // Label
+                
+                "id":"txt-username", // html tag id
+                "type":"text", // html form input type
+                "placeholder":"E.g. u...@example.com" // pre-populate text field
+            },
+            {
+                "name":"password",
+                "caption":"Password",
+                
+                "type":"password"
+            },
+            {
+                "type":"submit",
+                "value":"Login"
+            }
+        ]
+    });
+});
+</script>
+
+</body>
+</html>

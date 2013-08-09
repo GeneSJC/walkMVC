@@ -1,0 +1,16 @@
+
+1. Make the slimRest_webapp/ dir visible to your webserver (can copy into /<WEB_DOC_ROOT>
+
+2. Navigate to the path on your web server: 
+http://<HOST>/slimRest_postMgr/slim_dispatcher/hello/Fred
+
+Because stackoverflow.com helped me with some info, I added a post that describes how I was able to get it to work here:
+
+http://stackoverflow.com/a/18047279/2162226
+
+The main point is that the root of your url has to be the name of your file where the routes are defined.  So for the above example, the actual PHP file is ../slimRest_postMgr/slim_dispatcher.php
+
+Please contact Gene for questions
+
+
+

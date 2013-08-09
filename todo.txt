@@ -1,0 +1,5 @@
+
+
+1. Add global HOME_DIR constant
+
+2. Figure out to correctly redirect with Slim REST
