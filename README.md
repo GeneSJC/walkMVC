@@ -10,7 +10,7 @@ I organized this structure because I got tired of always having to master all th
 
 The aim of this structure is to allow the developer to quickly define the model data in PHP:
 a) DB tables with the ORM
-b) The form structure with jquery.dform
+b) The HTML-form structure with jquery.dform
 
 Additionally, support for REST is incorporated with slim.  However, there are still some things to fix there - see todo.txt
 
@@ -33,7 +33,7 @@ The main work is needed in subdirectories: /post & /_template
 In /post:
 * post_ctrl.php : add custom business logic
 * post_mapper.php : define your DB schema mappings
-* post_formcfg.php : define the form structure for the model
+* post_formcfg.php : define the HTML-form structure for the model
 * post_tbl.sql : just here for refence. Use post_mapper.php to generate schema
 
 In /_template:
