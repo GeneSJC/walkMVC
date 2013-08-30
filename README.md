@@ -25,7 +25,18 @@ Examples Summary
 
 Here are two example /webapp projects that use the same database schema - a simple blog post (only 1 table)
 
-Example Project1: /webapps/app1 
+
+
+Example Project1: /webapps/walk_auth 
+--------------------------------
+
+This project pulls in slimPHP, dform, and basic user login authentication using the patterns of walkMVC
+
+See the file access.php - it is the main access point for the app.
+
+
+
+Example Project2: /webapps/app1 
 --------------------------------
 
 The main work is needed in subdirectories: /post & /_template
@@ -41,7 +52,7 @@ In /_template:
 * see ..\smarty_cfg.php for configuring your template directories
 
 
-Example Project2: /webapps/slimRest_postMgr 
+Example Project3: /webapps/slimRest_postMgr 
 --------------------------------
 
 The file structure is actually the same as ../app1, except instead of accessing post_ctrl.php directly, we have the slim_dispatcher.php at the top level of the app directory
