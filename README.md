@@ -9,9 +9,7 @@ walkMVC is organized around phpDataMapper, Smarty, slimFramework, and jquery.dfo
 
 b. Build all components in a "model-centric" way
 
-The majority of the work in any app revolves around the model.  So in this framework, instead of grouping models and controllers separately - controllers are placed in the model folder they are most closely connected with.
-
-At the time of writing this, I haven't yet encountered JOINs and complex queries like that.  I think that should be manageable like anything else ... but for now, tbd.
+The majority of the work in any app revolves around the model.  So in this framework, instead of grouping models and controllers separately - controllers are placed in the model folder they are most closely connected with.  Granted this approach may not work for every application, but I think for many it should do the trick.
 
 
 
