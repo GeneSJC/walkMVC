@@ -30,7 +30,7 @@ One of the todo items is to fix hardcoded paths.  In the mean time, if you searc
 Examples Summary
 ================================
 
-Here are two example /webapp projects that use the same database schema - a simple blog post (only 1 table)
+Here are example /webapp projects that use the same database schema - a simple blog post (only 1 table)
 
 
 
