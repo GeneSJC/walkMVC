@@ -3,9 +3,7 @@ walkMVC
 
 This is a PHP MVC stack that is based on two core principles:
 
-a. Build the stack using proven open source frameworks to streamline heavy lifting (ORM, templating, more)
-
-walkMVC is organized around phpDataMapper, Smarty, slimFramework, and jquery.dform‎.
+a. Build the stack using proven open source frameworks to streamline heavy lifting.  walkMVC is organized around phpDataMapper, Smarty, slimFramework, and jquery.dform‎.  The big advantage here is that when you move to the next project that uses a different framework, there's a good chance you will get to use at least some of the components you worked with here. 
 
 b. Build all components in a "model-centric" way
 
