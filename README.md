@@ -1,4 +1,4 @@
-walkMVC
+walkMVC ... yes, yet another PHP framework 
 =======
 
 This is a PHP MVC stack that is based on two core principles:
