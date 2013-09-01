@@ -1,4 +1,4 @@
-walkMVC - A simple PHP framework
+walkMVC - Clean easy to read PHP MVC stack
 =======
 
 This is a PHP MVC stack that is based on two core principles:
