@@ -2,7 +2,7 @@
 
 
 <div>
-Status: {$statusMsg}
+{* Status: {$statusMsg} *}
 </div>
 
 <h1>Post Start</h1>
