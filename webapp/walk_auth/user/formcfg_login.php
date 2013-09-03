@@ -8,10 +8,18 @@ class LoginFormConfig extends FormConfigBase
 	{
 		return  array ( $this->headerConfig,
         								$this->login,
-        								$this->password
-        							);
+        								$this->password,
+        								$this->submitConfig 
+		);
 	}
-	
+
+	// Now define the fields
+	public $headerConfig = array
+	(
+			"type" => "h1",
+			"html" => "Login Home"
+	);
+		
 	// Now define the fields
 
 	public $login = array

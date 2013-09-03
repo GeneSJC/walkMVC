@@ -33,12 +33,16 @@ function viewLogin()
 	global $smarty;
 	
 	$smarty->assign("title", "Login");
-	$smarty->assign("dFormId", "login-form");
 	
 	$loginFormCfg = new LoginFormConfig();
 		
 	$jsonArr = $loginFormCfg->jsonArr; // getJsonArray();
-		
+
+	$smarty->assign("action",$jsonArr['action']);
+	$smarty->assign("dFormId", "login-form");
+	$smarty->assign("dFormJSON",$jsonArr);
+	
+	
 	$smarty->assign("dFormJSON",$jsonArr);	
 	
 	$smarty->display('user/login.tpl');
