@@ -2,8 +2,6 @@
 
 class PostController
 {
-	private $statusMsg = 'none';
-	
 	public function actionIndex()
 	{
 		global $smarty;
@@ -17,9 +15,11 @@ class PostController
  	public function actionSave()
  	{
  		$postMapper = PostMapper::getDbMapper();
- 			
+
+ 		$postFormConfig =  new PostFormConfig();
+ 		
  		# Set data and save it
- 		$postEntity = $this->getRequestPostMapperEntity($postMapper);
+ 		$postEntity = $postFormConfig->getRequestAsEntity($postMapper);
  	
  		$postMapper->save($postEntity);
  	
@@ -31,30 +31,6 @@ class PostController
  		return "SAVE_OK";
  	}
  	
- 	
-	private function getRequestPostMapperEntity($postMapper=null)
-	{
-		# New, empty post entity
-		$postEntity = $postMapper->get();
-		
-		# Set data and save it
-		$postEntity->title = $_POST['title'];
-		$postEntity->body = $_POST['body'];
-		$postEntity->status = $_POST['status'];
-
-		$updateId = $_POST['post_id'];
-		if ($updateId > 0)
-		{
-			// do update instead of save
-			$postEntity->id = $updateId;
-		}
-		
-		return $postEntity;
-	}
-		
 }
-
-// $postCtrl = new PostController();
-// $postCtrl->handleRequest();
 
 ?>

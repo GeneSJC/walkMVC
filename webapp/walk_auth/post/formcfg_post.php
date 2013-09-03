@@ -58,6 +58,31 @@ class PostFormConfig extends FormConfigBase
                 "caption" => "Status", // Label
                 // "value" => "xyz" // html form input type
 		);
+
+	/**
+	 * 
+	 * @param string $postMapper only controller should create/manage that object 
+	 * @return ORM Entity object
+	 */
+	public function getRequestAsEntity($postMapper=null)
+	{
+		# New, empty post entity
+		$postEntity = $postMapper->get();
+		
+		# Set data and save it
+		$postEntity->title = $_POST['title'];
+		$postEntity->body = $_POST['body'];
+		$postEntity->status = $_POST['status'];
+		
+		$updateId = $_POST['post_id'];
+		if ($updateId > 0)
+		{
+				// do update instead of save
+			$postEntity->id = $updateId;
+		}
+		
+		return $postEntity;
+	}
 	
 }
 

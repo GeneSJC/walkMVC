@@ -40,7 +40,66 @@ class LoginFormConfig extends FormConfigBase
                 "caption" => "Password" // Label
 		);
 
+	/**
+	 * Creates an array with the parameters mapped to the corresponding DB columns
+	 * @return 
+	 */
+	public function getLoginQueryArray()
+	{
+		if ( 
+			! isset($_POST['login']) 
+				|| 
+			! isset($_POST['password'])
+			)
+		{
+			return null;
+		}
+		
+		$login = $_POST['login'];
+		$password = md5($_POST['password']);
+		
+		$loginArr = array(
+						'login' => $login, 
+						'password' => $password
+						);
+		
+		return $loginArr;
+	}
+	
+	public function getRegisterQueryArray()
+	{
+		if ( 
+			! isset($_POST['login']) 
+			)
+		{
+			return null;
+		}
 
+		$login = trim($_POST['login']);
+		
+		$regArr = array(
+						'login' => $login 
+						);
+		
+		return $regArr;
+	}
+	
+	public function getRequestAsEntity($userMapper=null)
+	{
+		$login = trim($_POST['login']);
+		$email = trim($_POST['email']);
+		$password = trim($_POST['password']);
+		
+		# New, empty user entity
+		$userEntity = $userMapper->get();
+		
+		$userEntity->login = $login;
+		$userEntity->email = $email;
+		$userEntity->password = md5($password);
+		
+		return $userEntity;
+	}
+	
 	
 }
 
