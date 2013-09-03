@@ -1,4 +1,4 @@
-
+PENDING
 
 1. Add global HOME_DIR constant
 
@@ -7,3 +7,10 @@
 3. Make the relative include paths easy to configure (as opposed to hardcoded ../../../ .. etc)
 
 4. Make the rest path prefix configurable
+
+
+DONE
+
+Sep 3, 2013: 
+- /post model now uses dForm and supports INSERT, UPDATE, DELETE, & VIEW ALL
+- Path config is done for web client (via Smarty token)
