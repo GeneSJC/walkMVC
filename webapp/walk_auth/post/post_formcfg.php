@@ -37,7 +37,7 @@ class PostFormConfig extends FormConfigBase
                 "type" => "text", // html form input type
 		
                 "caption" => "Title", // Label
-                "placeholder" => "My Title Here" // pre-populate text field
+                // "placeholder" => "My Title Here" // pre-populate text field
 		);
 
 	public $body = array
@@ -56,7 +56,7 @@ class PostFormConfig extends FormConfigBase
                 "name" => "status", // name for: db column, form field
 
                 "caption" => "Status", // Label
-                "value" => "Sammy" // html form input type
+                // "value" => "xyz" // html form input type
 		);
 	
 }
