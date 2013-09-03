@@ -2,4 +2,4 @@
 
 1. Add global HOME_DIR constant
 
-2. Figure out to correctly redirect with Slim REST
+2. Thoroughly finish the /walk_auth demo for models: user, post
