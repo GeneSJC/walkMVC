@@ -1,16 +1,19 @@
 <?php
 
 
-$app->get('/access/post/new', postEdit );
-$app->get('/access/post/home', postIndex );
+$app->get('/access/post/home', viewPostIndex );
 
-$app->post('/access/post/save', postSave );
+$app->get('/access/post/edit', viewPostEdit );
+$app->get('/access/post/edit/:id', viewPostEdit );
+
+$app->post('/access/post/save', actionPostSave );
+
 
 /**
  * Because there is only a simple get ->all() invocation,
  * don't think we need controller overhead
  */
-function postIndex() 
+function viewPostIndex() 
 {
 	redirectIfNoSession();
 	
@@ -27,13 +30,20 @@ function postIndex()
  * This function loads an empty form
  * No need to use a controller for this render
  */
-function postEdit() 
+function viewPostEdit($id=null) 
 {
 	redirectIfNoSession();
 	
 	global $smarty;
 	
 	$postFormCfg = new PostFormConfig();
+
+	if ( $id )
+	{
+		$postFormCfg->title['value'] = 'zoinks';
+	}
+	
+	$postFormCfg->loadFormFieldArray();
 	
 	$jsonArr = $postFormCfg->jsonArr; // getJsonArray();
 	
@@ -43,7 +53,7 @@ function postEdit()
 	$smarty->display('post/post_edit.tpl');
 }
 
-function postSave() 
+function actionPostSave() 
 {
 	redirectIfNoSession();
 	
