@@ -51,6 +51,7 @@ function viewPostEdit($id=null)
 		
 		if ($post)
 		{
+			$postFormCfg->updateId['value'] = $post->id;
 			$postFormCfg->title['value'] = $post->title;
 			$postFormCfg->body['value'] = $post->body;
 			$postFormCfg->status['value'] = $post->status;

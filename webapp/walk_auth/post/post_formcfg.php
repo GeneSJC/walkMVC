@@ -1,12 +1,12 @@
 <?php
-
 class PostFormConfig extends FormConfigBase
 {
-	public $action = './save'; // REST path from current root
+	public $action = '/post/save'; // REST path from current root
 	
 	public function getFormFieldArray()
 	{
 		return  array ( $this->headerConfig,
+        								$this->updateId,
         								$this->title,
         								$this->body,
         								$this->status,
@@ -18,6 +18,15 @@ class PostFormConfig extends FormConfigBase
 		(
 			"type" => "h1",
 			"html" => "Add Post"
+		);
+	
+		// name it this way to explicitly indicate it's only for update use
+	public $updateId = array
+		(
+			"type" => "hidden",
+			"id" => "post_id",
+			"name" => "post_id",
+			"value" => "-1"
 		);
 	
 
