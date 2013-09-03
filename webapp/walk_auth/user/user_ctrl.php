@@ -24,12 +24,13 @@ class UserController
 			$userMapper = UserMapper::getDbMapper();
 			 
 			$user = $userMapper->first(
-														array(
-															'login' => $login, 
-															'password' => $password
-														)
-													);
-		
+					array(
+						'login' => $login, 
+						'password' => $password
+						)
+					);
+			
+				
 		    if ($user) 
 		    {
 		    		// echo "Got user<br/>";
