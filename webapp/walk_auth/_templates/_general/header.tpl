@@ -3,8 +3,6 @@
 {/if}
 
 
-{assign var="APP_ROOT" value="http://localhost/dev/walkMVC/" }
-
 <html>
     <head>
         <title>{$title}</title>
@@ -48,9 +46,9 @@
         		{/literal}
         		
 			<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-			<script type="text/javascript" src="{$APP_ROOT}/js/jquery.dform/dist/jquery.dform-1.1.0.min.js"></script>
-			<script type="text/javascript" src="{$APP_ROOT}/js/ajax_util.js"></script>
-			<script type="text/javascript" src="{$APP_ROOT}/js/misc_util.js"></script>
+			<script type="text/javascript" src="{$WALKMVC_ROOT}/js/jquery.dform/dist/jquery.dform-1.1.0.min.js"></script>
+			<script type="text/javascript" src="{$WALKMVC_ROOT}/js/ajax_util.js"></script>
+			<script type="text/javascript" src="{$WALKMVC_ROOT}/js/misc_util.js"></script>
 
     </head>
 
