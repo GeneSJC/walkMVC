@@ -40,11 +40,28 @@ function viewPostEdit($id=null)
 
 	if ( $id )
 	{
-		$postFormCfg->title['value'] = 'zoinks';
+		$postMapper = PostMapper::getDbMapper();
+		
+		$post = $postMapper->first(
+									array
+									(
+										'id' => $id
+									)
+								);
+		
+		if ($post)
+		{
+			$postFormCfg->title['value'] = $post->title;
+			$postFormCfg->body['value'] = $post->body;
+			$postFormCfg->status['value'] = $post->status;
+		}
+		else
+		{
+			$smarty->assign("error_msg","Error loading db");
+		}
 	}
 	
 	$postFormCfg->loadFormFieldArray();
-	
 	$jsonArr = $postFormCfg->jsonArr; // getJsonArray();
 	
 	$smarty->assign("action",$jsonArr['action']);
