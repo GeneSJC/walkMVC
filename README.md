@@ -1,12 +1,19 @@
-walkMVC
+walkMVC - Clean easy to read PHP MVC stack
 =======
 
-MVC stack organized around phpDataMapper, Smarty, slimFramework, and jquery.dform‎
+This is a PHP MVC stack that is based on two core principles:
+
+A) Build the stack using proven open source frameworks to streamline heavy lifting.  walkMVC is organized around phpDataMapper, Smarty, slimFramework, and jquery.dform‎.  The big advantage here is that when you move to the next project that uses a different framework, there's a good chance you will get to use at least some of the components you worked with here. 
+
+B) Build all components in a "model-centric" way
+
+The majority of the work in any app revolves around the model.  So in this framework, instead of grouping models and controllers separately - controllers are placed in the model folder they are most closely connected with.  Granted this approach may not work for every application, but I think for many it should do the trick.
+
 
 
 Motivation
 ----------
-I organized this structure as an alternative to having to relearn all the ins & outs of some MVC framework every time a new project comes along.
+I organized this structure as an alternative to having to relearn all the ins n outs of some MVC framework every time a new project comes along.  Furthermore, I was tired of being frusterated by what seemed like overly complicated ways to have to do things.
 
 The aim of this structure is to allow the developer to quickly define the model data in PHP:
 * DB tables with the ORM
@@ -23,7 +30,7 @@ One of the todo items is to fix hardcoded paths.  In the mean time, if you searc
 Examples Summary
 ================================
 
-Here are two example /webapp projects that use the same database schema - a simple blog post (only 1 table)
+Here are example /webapp projects that use the same database schema - a simple blog post (only 1 table)
 
 
 
