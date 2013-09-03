@@ -5,3 +5,5 @@
 2. Thoroughly finish the /walk_auth demo for models: user, post
 
 3. Make the relative include paths easy to configure (as opposed to hardcoded ../../../ .. etc)
+
+4. Make the rest path prefix configurable
