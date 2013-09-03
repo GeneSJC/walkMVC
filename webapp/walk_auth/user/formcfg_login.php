@@ -2,7 +2,7 @@
 
 class LoginFormConfig extends FormConfigBase
 {
-	public $action = '../user/login'; // REST path from current root
+	public $action = '/user/login'; // REST path from current root
 	
 	public function getFormFieldArray()
 	{

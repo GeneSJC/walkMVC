@@ -2,6 +2,8 @@
 
 abstract class FormConfigBase
 {
+	public $APP_ROOT = 'http://localhost/dev/walkMVC/webapp/walk_auth/access';
+	
 	public $jsonArr;
 	public $action;
 	public $method = 'post' ;
@@ -31,7 +33,8 @@ abstract class FormConfigBase
 
         $jqDformData = array
          		(
-         			"action"  =>  $this->action,
+         				// need to set this when we have an extra REST level for params
+         			"action"  =>  $this->APP_ROOT . $this->action,
 					"method"  =>  $this->method,
 					"html"  =>  $htmlFormDataArr
          		);
