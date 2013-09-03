@@ -48,6 +48,8 @@ Acion
 </td>
 <td>
 <a href='../post/edit/{$item->id}'>View</a>
+
+<a href='../post/delete/{$item->id}'>Delete</a>
 </td>
 </tr>
 {/foreach}

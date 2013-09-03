@@ -6,6 +6,9 @@ $app->get('/access/post/home', viewPostIndex );
 $app->get('/access/post/edit', viewPostEdit );
 $app->get('/access/post/edit/:id', viewPostEdit );
 
+$app->get('/access/post/delete/:id', viewConfirmPostDelete );
+$app->get('/access/post/deleteConfirm/:id', actionPostDelete );
+
 $app->post('/access/post/save', actionPostSave );
 
 
@@ -71,6 +74,37 @@ function viewPostEdit($id=null)
 	$smarty->display('post/post_edit.tpl');
 }
 
+function viewConfirmPostDelete($id=null) 
+{
+	global $smarty;
+	
+	$smarty->assign("postId",$id);
+	$smarty->display('post/post_delete.tpl');
+	
+}
+
+function actionPostDelete($id=null) 
+{
+	global $app;
+	
+	if ( $id )
+	{
+		$postMapper = PostMapper::getDbMapper();
+	
+		$postMapper->delete(
+				array
+				(
+						'id' => $id
+				)
+		);
+	}
+
+	$app->redirect('../../post/home');
+}
+
+/**
+ * Works for both create and update
+ */
 function actionPostSave() 
 {
 	redirectIfNoSession();

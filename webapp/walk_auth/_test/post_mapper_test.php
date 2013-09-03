@@ -14,6 +14,10 @@ foreach ($items as $item) {
 	echo $item->id , '  ', $item->title , ' is ', $item->status, " <br/>\n";
 }
  
-
+$postMapper->delete(
+		array(
+				'id' => 47,
+		)
+);
 
 ?>
