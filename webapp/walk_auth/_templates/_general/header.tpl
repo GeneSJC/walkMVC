@@ -48,10 +48,9 @@
     </head>
 
 {* if present, run JS specific to the current view *}
-{if isset($viewJs) }
+{if isset($dFormJSON) }
 	<body onload="go()"">
 {else}
-
     <body>
 {/if}
        
