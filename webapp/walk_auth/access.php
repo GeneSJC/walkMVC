@@ -29,8 +29,8 @@ require_once './user/formcfg_login.php';
 
 $app = new \Slim\Slim();
 
-require_once './rest_user.php';
-require_once './rest_post.php';
+require_once './user/user_rest.php';
+require_once './post/post_rest.php';
 
 
 $app->run();

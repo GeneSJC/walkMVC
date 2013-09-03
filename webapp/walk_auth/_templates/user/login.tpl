@@ -1,4 +1,4 @@
-{include file="header.tpl" title={$title}}
+{include file="../_general/header.tpl" title={$title}}
 
 <h2>Login Home</h2>
 
@@ -15,4 +15,4 @@
 <a onclick='alert("pending")' href='#' x='http://localhost/dev/walkMVC/webapp/walk_auth/access/public/recover' >Forgot password?</a>
    
 
-{include file="footer.tpl"}
+{include file="../_general/footer.tpl"}
