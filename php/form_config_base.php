@@ -22,21 +22,21 @@ abstract class FormConfigBase
      
 	public function __construct()
 	{
-		$this->jsonArr = $this->loadFormFieldArray();
+		// $this->loadFormFieldArray();
 	}
 
 	public function loadFormFieldArray()
 	{
 		$htmlFormDataArr = $this->getFormFieldArray();
 
-         $jqDformData = array
+        $jqDformData = array
          		(
          			"action"  =>  $this->action,
 					"method"  =>  $this->method,
 					"html"  =>  $htmlFormDataArr
          		);
          
-        	return json_encode($jqDformData);
+        $this->jsonArr = json_encode($jqDformData);
 	}
 	     
 }

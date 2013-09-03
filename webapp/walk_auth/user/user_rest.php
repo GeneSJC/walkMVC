@@ -35,7 +35,8 @@ function viewLogin()
 	$smarty->assign("title", "Login");
 	
 	$loginFormCfg = new LoginFormConfig();
-		
+	$loginFormCfg->loadFormFieldArray();
+	
 	$jsonArr = $loginFormCfg->jsonArr; // getJsonArray();
 
 	$smarty->assign("action",$jsonArr['action']);
