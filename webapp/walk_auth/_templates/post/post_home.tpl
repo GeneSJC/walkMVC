@@ -8,18 +8,50 @@
 <h1>Post Start</h1>
 
 
-<a href="./new">Add New Post</a>
+<a href="./edit">Add New Post</a>
+<br/>
+<br/>
+<br/>
 
-<br/>
-<br/>
 Table Contents:
+<table cellpadding='5' border='1' >
+<tr>
+<th>
+id
+</th>
+<th>
+title
+</th>
+<th>
+body
+</th>
+<th>
+status
+</th>
+<th>
+Acion
+</th>
+</tr>
 {foreach $items as $item}
-<br/>
+<tr>
+<td>
 {$item->id} 
+</td>
+<td>
 {$item->title} 
+</td>
+<td>
 {$item->body} 
+</td>
+<td>
 {$item->status} 
+</td>
+<td>
+<a href='../post/view/{$item->id}'>View</a>
+</td>
+</tr>
 {/foreach}
+</table>
 
 
 {include file="../_general/footer.tpl"}
