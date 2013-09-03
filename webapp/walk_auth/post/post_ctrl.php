@@ -21,14 +21,6 @@ class PostController
  		# Set data and save it
  		$postEntity = $this->getRequestPostMapperEntity($postMapper);
  	
- 			
- 		$updateId = $_POST['post_id'];
- 		if ($updateId > 0)
- 		{
- 			// do update instead of save	
- 			$postEntity->id = $updateId;
- 		}
- 		
  		$postMapper->save($postEntity);
  	
  		/*
@@ -49,6 +41,13 @@ class PostController
 		$postEntity->title = $_POST['title'];
 		$postEntity->body = $_POST['body'];
 		$postEntity->status = $_POST['status'];
+
+		$updateId = $_POST['post_id'];
+		if ($updateId > 0)
+		{
+			// do update instead of save
+			$postEntity->id = $updateId;
+		}
 		
 		return $postEntity;
 	}
