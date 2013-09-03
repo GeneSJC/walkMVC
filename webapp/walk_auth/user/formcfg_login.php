@@ -84,6 +84,12 @@ class LoginFormConfig extends FormConfigBase
 		return $regArr;
 	}
 	
+	/**
+	 * This is for doing register 
+	 * FIXME - should be in a different cfg object
+	 * @param string $userMapper
+	 * @return unknown
+	 */
 	public function getRequestAsEntity($userMapper=null)
 	{
 		$login = trim($_POST['login']);
