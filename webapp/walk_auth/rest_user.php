@@ -12,7 +12,7 @@ $app->get('/access/public/login',  viewLogin );
 $app->get('/access/public/register',  viewRegisteration );  
 $app->get('/access/public/recover',  viewPwdRecover );
   
-$app->post('/access/public/logout',  actionLogout );  
+$app->get('/access/public/logout',  actionLogout );  
 
 
 	// LEVEL: /access/user
