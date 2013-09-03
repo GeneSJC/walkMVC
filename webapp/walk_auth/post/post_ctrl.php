@@ -39,7 +39,8 @@ class PostController
 		// $smarty = SmartyCfg::getSmarty();
 		
 		$smarty->assign("action",$jsonArr['action']);
-		$smarty->assign("formJSON",$jsonArr);
+		$smarty->assign("dFormId",'new-post-form');
+		$smarty->assign("dFormJSON",$jsonArr);
 		$smarty->display('post/post_edit.tpl');
 	}
 

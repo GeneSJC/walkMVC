@@ -15,6 +15,12 @@ class PostFormConfig extends FormConfigBase
 	}
 	
 	// Now define the fields
+	public $headerConfig = array
+		(
+			"type" => "h1",
+			"html" => "Add Post"
+		);
+	
 	
 	public $reqAction = array
 		(

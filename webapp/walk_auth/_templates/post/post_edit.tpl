@@ -17,20 +17,19 @@ input,label {
 
 <body onload="go()"">
 
-formJSON: {$formJSON}
+formJSON: {$dFormJSON}
 <br/>
 <br/>
 
-<h2>Add Post</h2> 
-<form id="new-post-form"></form>
+<form id="{$dFormId}"></form>
 
 <script type="text/javascript" >
 function go() {
 	dbg ('enter go');
 	// jqueryAjax(null, 'http://localhost/dev/jq.dform_demo/app1/post/post_ctrl.php', submitNewPost);
-	var formId = 'new-post-form';
-	var formJson = {$formJSON};
-	set_dForm(formId, formJson);
+	var dFormId = '{$dFormId}';
+	var dFormJson = {$dFormJSON};
+	set_dForm(dFormId, dFormJson);
 }
 </script>
 
