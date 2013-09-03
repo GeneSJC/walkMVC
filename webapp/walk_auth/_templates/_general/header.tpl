@@ -1,6 +1,9 @@
 {if ! isset($title) }
 	{assign var="title" value="Our App" nocache}
 {/if}
+
+{assign var="APP_ROOT" value="http://localhost/dev/walkMVC/" }
+
 <html>
     <head>
         <title>{$title}</title>
@@ -40,13 +43,13 @@
 				}
                 
             </style>
-			<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-			<script type="text/javascript" src="../../../../js/jquery.dform/dist/jquery.dform-1.1.0.min.js"></script>
-			<script type="text/javascript" src="../../../../js/ajax_util.js"></script>
-			<script type="text/javascript" src="../../../../js/misc_util.js"></script>
-			
+            
         		{/literal}
-
+        		
+			<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+			<script type="text/javascript" src="{$APP_ROOT}/js/jquery.dform/dist/jquery.dform-1.1.0.min.js"></script>
+			<script type="text/javascript" src="{$APP_ROOT}/js/ajax_util.js"></script>
+			<script type="text/javascript" src="{$APP_ROOT}/js/misc_util.js"></script>
 
     </head>
 
