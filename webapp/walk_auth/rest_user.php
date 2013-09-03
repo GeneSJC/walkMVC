@@ -41,7 +41,7 @@ function viewLogin()
 		
 	$smarty->assign("dFormJSON",$jsonArr);	
 	
-	$smarty->display('login.tpl');
+	$smarty->display('user/login.tpl');
 }
 
 function viewRegisteration() 

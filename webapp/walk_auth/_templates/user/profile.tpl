@@ -1,4 +1,5 @@
-{include file="header.tpl" title={$title}}
+{include file="../_general/header.tpl" title={$title}}
+
 <h2>Profile Home</h2>
 {literal}
     <script>
@@ -12,4 +13,5 @@
 Welcome user: TBD
 <br/>
 <a href="../public/logout">Exit</a>
-{include file="footer.tpl"}
+
+{include file="../_general/footer.tpl"}

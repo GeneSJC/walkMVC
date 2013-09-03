@@ -2,56 +2,39 @@
 
 class PostFormConfig extends FormConfigBase
 {
-	public $action = './save'; // REST path from current root
+	public $action = '../public/register'; // REST path from current root
 	
 	public function getFormFieldArray()
 	{
 		return  array ( $this->headerConfig,
-									$this->reqAction,
-        								$this->title,
-        								$this->body,
-        								$this->status,
-        								$this->submitConfig );
+        								$this->login,
+        								$this->password
+        							);
 	}
 	
 	// Now define the fields
-	
-	public $reqAction = array
+
+	public $login = array
 		(
-                "id" => "txt-req", // html tag id
-                "name" => "req", // name for: db column, form field
-                "type" => "hidden", // html form input type
-				"value" => "save"
-		);
-	
-	public $title = array
-		(
-                "id" => "txt-title", // html tag id
-                "name" => "title", // name for: db column, form field
+                "id" => "login", // html tag id
+                "name" => "login", // name for: db column, form field
                 "type" => "text", // html form input type
 		
-                "caption" => "Title", // Label
-                "placeholder" => "My Title Here" // pre-populate text field
+                "caption" => "Username" // Label
 		);
 
-	public $body = array
+	public $password = array
 		(
-                "id" => "txt-body", // html tag id
-                "name" => "body", // name for: db column, form field
-                "type" => "text", // html form input type
+                "id" => "password", // html tag id
+                "name" => "password", // name for: db column, form field
+                "type" => "password", // html form input type
 
-                "caption" => "Body" // Label
+                "caption" => "Password" // Label
 		);
 
-	public $status = array
-		(
-                "id" => "txt-status", // html tag id
-                "type" => "text", // html form input type
-                "name" => "status", // name for: db column, form field
 
-                "caption" => "Status", // Label
-                "value" => "Sammy" // html form input type
-		);
+	
+	
 	
 }
 
