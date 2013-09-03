@@ -2,6 +2,7 @@
 	{assign var="title" value="Our App" nocache}
 {/if}
 
+
 {assign var="APP_ROOT" value="http://localhost/dev/walkMVC/" }
 
 <html>
@@ -63,6 +64,14 @@
 
     <div style='padding: 5px ; background-color: orange ' >
     Welcome to our template header
+    
+    {if isset($error_msg) }
+	<div style='border: red solid 2px'>
+	ERROR: {$error_msg}
+	</div>
+	{/if}
+    
+    
     </div>
     <hr/>
     <br/>
