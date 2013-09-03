@@ -1,3 +1,6 @@
+{if ! isset($title) }
+	{assign var="title" value="Our App" nocache}
+{/if}
 <html>
     <head>
         <title>{$title}</title>
@@ -49,7 +52,7 @@
 
 {* if present, run JS specific to the current view *}
 {if isset($dFormJSON) }
-	<body onload="go()"">
+	<body onload="viewOnLoad()"">
 {else}
     <body>
 {/if}
@@ -59,3 +62,4 @@
     Welcome to our template header
     </div>
     <hr/>
+    <br/>

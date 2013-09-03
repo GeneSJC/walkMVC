@@ -1,27 +1,5 @@
-<html>
-<head>
+{include file="../_general/header.tpl" }
 
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script type="text/javascript" src="../../../../js/jquery.dform/dist/jquery.dform-1.1.0.min.js"></script>
-<script type="text/javascript" src="../../../../js/ajax_dform.js"></script>
-
-<script type="text/javascript" >
-function go() {
-//	dbg ('enter go');
-}
-
-</script>
-
-</head>
-
-<style type="text/css">
-input,label {
-	display: block;
-	margin-bottom: 5px;
-}
-</style>
-
-<body onload="go()"">
 
 <div>
 Status: {$statusMsg}
@@ -44,7 +22,4 @@ Table Contents:
 {/foreach}
 
 
-
-
-</body>
-</html>
+{include file="../_general/footer.tpl"}
