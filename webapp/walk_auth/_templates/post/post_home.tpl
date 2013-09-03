@@ -47,7 +47,7 @@ Acion
 {$item->status} 
 </td>
 <td>
-<a href='../post/view/{$item->id}'>View</a>
+<a href='../post/edit/{$item->id}'>View</a>
 </td>
 </tr>
 {/foreach}
