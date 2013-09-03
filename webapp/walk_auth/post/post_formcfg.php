@@ -7,7 +7,6 @@ class PostFormConfig extends FormConfigBase
 	public function getFormFieldArray()
 	{
 		return  array ( $this->headerConfig,
-									$this->reqAction,
         								$this->title,
         								$this->body,
         								$this->status,
@@ -21,15 +20,7 @@ class PostFormConfig extends FormConfigBase
 			"html" => "Add Post"
 		);
 	
-	
-	public $reqAction = array
-		(
-                "id" => "txt-req", // html tag id
-                "name" => "req", // name for: db column, form field
-                "type" => "hidden", // html form input type
-				"value" => "save"
-		);
-	
+
 	public $title = array
 		(
                 "id" => "txt-title", // html tag id
