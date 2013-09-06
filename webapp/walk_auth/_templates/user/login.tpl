@@ -11,7 +11,7 @@
 
 
 <script type="text/javascript" >
-$('#login-form').on('submit', function(ev) {
+$('#{$dFormId}').on('submit', function(ev) {
 	// console.log('we can hash the data');
 });
 </script>
