@@ -8,6 +8,13 @@
 <br/> 
 <a href='http://localhost/dev/walkMVC/webapp/walk_auth/access/public/register'>Register</a><br />
 <a onclick='alert("pending")' href='#' x='http://localhost/dev/walkMVC/webapp/walk_auth/access/public/recover' >Forgot password?</a>
-   
+
+
+<script type="text/javascript" >
+$('#login-form').on('submit', function(ev) {
+	// console.log('we can hash the data');
+});
+</script>
+
 
 {include file="../_general/footer.tpl"}
