@@ -1,28 +1,18 @@
 <?php
 
-class PostFormConfig extends FormConfigBase
+class RecoverFormConfig extends FormConfigBase
 {
 	public $action = './save'; // REST path from current root
+	public $formId = 'recover-form';
 	
 	public function getFormFieldArray()
 	{
 		return  array ( $this->headerConfig,
-									$this->reqAction,
         								$this->title,
         								$this->body,
         								$this->status,
         								$this->submitConfig );
 	}
-	
-	// Now define the fields
-	
-	public $reqAction = array
-		(
-                "id" => "txt-req", // html tag id
-                "name" => "req", // name for: db column, form field
-                "type" => "hidden", // html form input type
-				"value" => "save"
-		);
 	
 	public $title = array
 		(

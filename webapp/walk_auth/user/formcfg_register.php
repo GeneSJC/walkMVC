@@ -2,7 +2,7 @@
 
 class RegisterFormConfig extends FormConfigBase
 {
-	public $action = '../public/register'; // REST path from current root
+	public $action = '/user/register'; // REST path from current root
 	public $formId = 'register-form';
 	
 	public function getFormFieldArray()
@@ -11,12 +11,21 @@ class RegisterFormConfig extends FormConfigBase
         								$this->login,
         								$this->email,
         								$this->password,
-        								$this->confirmPassword
+        								$this->confirmPassword,
+										$this->submitConfig
         							);
 	}
 	
 	// Now define the fields
 
+	// Now define the fields
+	public $headerConfig = array
+	(
+			"type" => "h1",
+			"html" => "Register Home"
+	);
+	
+	
 	public $login = array
 		(
                 "id" => "login", // html tag id
