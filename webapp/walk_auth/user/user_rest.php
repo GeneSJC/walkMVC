@@ -11,7 +11,6 @@ $app->get('/access/public/home',  viewLogin );
 $app->get('/access/public/login',  viewLogin );  
 $app->get('/access/public/login/:msgId',  viewLogin );  
 $app->get('/access/public/register',  viewRegistration );  
-$app->get('/access/public/recover',  viewPwdRecover );
   
 $app->get('/access/public/logout',  actionLogout );  
 
@@ -22,13 +21,9 @@ $app->get('/access/user/home',  viewUserHome ); // watch out to use 'get', & not
 
 $app->post('/access/user/login',  actionLogin );  
 $app->post('/access/user/register',  actionRegister );  
-$app->post('/access/user/recover',  actionSendRecoverEmail );  
 
 	// we can try to use the same path if get/post are different ?!
 	
-$app->get('/access/user/reset',  viewResetPassword ); // 
-$app->post('/access/user/reset',  actionResetPassword ); // 
-
 
 
 // ==================
@@ -94,23 +89,6 @@ function viewRegistration()
 	$smarty->display('user/register.tpl');
 }
 
-function viewPwdRecover() 
-{
-	global $smarty;
-	
-	$recoverFormCfg = new RecoverFormConfig();
-	$recoverFormCfg->loadFormFieldArray();
-	
-	$jsonArr = $recoverFormCfg->jsonArr; // getJsonArray();
-	
-	$smarty->assign("title", RecoverFormConfig::TITLE);
-	
-	$smarty->assign("action", $recoverFormCfg->action);
-	$smarty->assign("dFormId", $recoverFormCfg->formId);
-	$smarty->assign("dFormJSON",$jsonArr);	
-	
-	$smarty->display('user/forgot.tpl');
-}
 
 function actionLogout() 
 {
@@ -159,28 +137,6 @@ function actionRegister()
 	$app->redirect('../public/login/1');
 }
 
-
-function actionSendRecoverEmail() 
-{
-	global $app;
-	
-	echo 'actionSendRecoverEmail';
-	return;
-	
-	$userCtrl = new UserController();
-	$userCtrl->actionSendRecoverEmail();
-	
-	$app->redirect('../public/login'); // this view verifies the session
-}
-
-function viewResetPassword()
-{
-}
-
-function actionResetPassword()
-{
-	echo 'actionResetPassword';
-}
 
 	// FOR DEMO
 $app->get('/access/sayHello', sayHello ); 
