@@ -9,6 +9,7 @@
 	
 $app->get('/access/public/home',  viewLogin );  
 $app->get('/access/public/login',  viewLogin );  
+$app->get('/access/public/login/:msgId',  viewLogin );  
 $app->get('/access/public/register',  viewRegistration );  
 $app->get('/access/public/recover',  viewPwdRecover );
   
@@ -28,12 +29,17 @@ $app->post('/access/user/recover',  actionRecover );
 // ==================
 // PUBLIC VIEWS
 // --------------------
-function viewLogin() 
+function viewLogin($msgId=0) 
 {
 	global $smarty;
 	
-	$smarty->assign("title", "Login");
+	$message = handleLoginMessage($msgId);
+	if ($message)
+	{
+		$smarty->assign("message", $message);
+	}
 	
+	$smarty->assign("title", "Login");
 	$loginFormCfg = new LoginFormConfig();
 	$loginFormCfg->loadFormFieldArray();
 	
@@ -44,6 +50,25 @@ function viewLogin()
 	$smarty->assign("dFormJSON",$jsonArr);
 	
 	$smarty->display('user/login.tpl');
+}
+
+function handleLoginMessage($msgId=null)
+{
+	if (!$msgId)
+		return null;
+	
+	$message = null;
+	if($msgId == 1)
+	{
+		$message = "Successful Registeration";
+	}
+	
+	if($msgId == 2)
+	{
+		$message = "You don't have a session";
+	}
+	
+	return $message;
 }
 
 function viewRegistration() 
@@ -114,9 +139,7 @@ function actionRegister()
 	$userCtrl = new UserController();
 	$userCtrl->actionRegister();
 	
-	$smarty->assign("title", "Registration page");
-	$smarty->assign("result", $result);
-	$smarty->display('register_results.tpl');		
+	$app->redirect('../public/login/1');
 }
 
 

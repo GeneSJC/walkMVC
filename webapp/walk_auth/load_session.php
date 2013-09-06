@@ -8,7 +8,7 @@ function redirectIfNoSession()
 	
 	if ( ! array_key_exists('user_name', $_SESSION) )
 	{
-		$app->redirect('../public/login');
+		$app->redirect('../public/login/2');
 		// echo "NOP!";
 		return;
 	}

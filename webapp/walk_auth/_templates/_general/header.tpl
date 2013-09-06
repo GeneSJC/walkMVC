@@ -59,7 +59,11 @@
     <body>
 {/if}
        
-
+{if isset($message) }
+<div>
+message = {$message}
+</div>
+{/if}
     <div style='padding: 5px ; background-color: orange ' >
     Welcome to our template header
     
