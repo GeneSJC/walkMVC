@@ -164,6 +164,9 @@ function actionSendRecoverEmail()
 {
 	global $app;
 	
+	echo 'actionSendRecoverEmail';
+	return;
+	
 	$userCtrl = new UserController();
 	$userCtrl->actionSendRecoverEmail();
 	
@@ -176,8 +179,8 @@ function viewResetPassword()
 
 function actionResetPassword()
 {
+	echo 'actionResetPassword';
 }
-
 
 	// FOR DEMO
 $app->get('/access/sayHello', sayHello ); 
@@ -186,3 +189,5 @@ function sayHello ()
 
 
 ?>
+
+
