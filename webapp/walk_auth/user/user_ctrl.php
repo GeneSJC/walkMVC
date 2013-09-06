@@ -49,25 +49,40 @@ class UserController
 		
 		$userMapper = UserMapper::getDbMapper();
 		
+		var_dump($registerQueryArr);
+		
 		  // $q = mysql_query("SELECT COUNT(`id`) AS `c` FROM `users` WHERE `login`='$login' OR `email` = '$email' LIMIT 1");
-		$users = $userMapper->first($registerQueryArr) ;
-		$count = count($users);
+		$user = $userMapper->first($registerQueryArr) ;
 		
 		/* if (!preg_match("/[0-9a-z_]+@[0-9a-z_^\.]+\.[a-z]{2,3}/i", $email)) {
 		  echo "Email so bad!";
 		  } */
 		$result = 'User already exists'; // let $count say different
-		if ($count = 0) 
+		if ( ! $user ) 
 		{
 			$userEntity = $registerFormConfig->getRequestAsEntity($userMapper);
 			$userMapper->save($userEntity);
 			
 			$result = "success";
 		}
-		
+
+		return $result;
 	}
 	
-	public function actionRecoverPassword()
+	/**
+	 * 1. Get the email request param
+	 * 2. Check in the db - if not there, show error message on same page
+	 * 3. Send an email link 
+	 * 		- /user/resetpwd/:$randomNum
+	 * 		- link will have random #
+	 * 		- we will have a recover_tbl where we store:
+	 * 			> userid, date, random #
+	 * 
+	 * 4. /user/reset/:$randomNum goes to
+	 * 		- if $randomNum valid, show reset view
+	 * 		- reset_pwd.tpl
+	 */
+	public function actionSendRecoverEmail()
 	{
 		// TODO
 	}

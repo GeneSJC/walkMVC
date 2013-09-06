@@ -22,7 +22,12 @@ $app->get('/access/user/home',  viewUserHome ); // watch out to use 'get', & not
 
 $app->post('/access/user/login',  actionLogin );  
 $app->post('/access/user/register',  actionRegister );  
-$app->post('/access/user/recover',  actionRecover );  
+$app->post('/access/user/recover',  actionSendRecoverEmail );  
+
+	// we can try to use the same path if get/post are different ?!
+	
+$app->get('/access/user/reset',  viewResetPassword ); // 
+$app->post('/access/user/reset',  actionResetPassword ); // 
 
 
 
@@ -148,23 +153,30 @@ function actionRegister()
 	global $app, $smarty;
 	
 	$userCtrl = new UserController();
-	$userCtrl->actionRegister();
+	$result = $userCtrl->actionRegister();
 	
+	// echo $result;
 	$app->redirect('../public/login/1');
 }
 
 
-function actionRecover() 
+function actionSendRecoverEmail() 
 {
 	global $app;
 	
 	$userCtrl = new UserController();
-	$userCtrl->actionRecover();
+	$userCtrl->actionSendRecoverEmail();
 	
 	$app->redirect('../public/login'); // this view verifies the session
 }
 
+function viewResetPassword()
+{
+}
 
+function actionResetPassword()
+{
+}
 
 
 	// FOR DEMO
