@@ -1,4 +1,6 @@
-{include file="header.tpl" title={$title}}
+
+
+{include file="../_general/header.tpl" title={$title}}
 
 Register Form
 <form method="post" action="../user/register"> 
@@ -9,4 +11,11 @@ Register Form
         <div><input type="submit" name="submit" value="Go!"></div>
     </div>
 </form>
-{include file="footer.tpl"}
+
+<br/>
+
+{* no if isset($dFormJSON) required, since we know this view expects that token *}
+{include file="../_general/dForm_block.tpl" }
+
+
+{include file="../_general/footer.tpl"}
