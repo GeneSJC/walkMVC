@@ -2,6 +2,7 @@
 class PostFormConfig extends FormConfigBase
 {
 	public $action = '/post/save'; // REST path from current root
+	public $formId = 'new-post-form';
 	
 	public function getFormFieldArray()
 	{

@@ -39,12 +39,9 @@ function viewLogin()
 	
 	$jsonArr = $loginFormCfg->jsonArr; // getJsonArray();
 
-	$smarty->assign("action",$jsonArr['action']);
-	$smarty->assign("dFormId", "login-form");
+	$smarty->assign("action", $loginFormCfg->action);
+	$smarty->assign("dFormId", $loginFormCfg->formId);
 	$smarty->assign("dFormJSON",$jsonArr);
-	
-	
-	$smarty->assign("dFormJSON",$jsonArr);	
 	
 	$smarty->display('user/login.tpl');
 }
@@ -58,8 +55,8 @@ function viewRegistration()
 	
 	$jsonArr = $loginFormCfg->jsonArr; // getJsonArray();
 	
-	$smarty->assign("action",$jsonArr['action']);
-	$smarty->assign("dFormId", "login-form");
+	$smarty->assign("action", $loginFormCfg->action);
+	$smarty->assign("dFormId", $loginFormCfg->formId);
 	$smarty->assign("dFormJSON",$jsonArr);
 	
 	

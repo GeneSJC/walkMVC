@@ -68,9 +68,10 @@ function viewPostEdit($id=null)
 	$postFormCfg->loadFormFieldArray();
 	$jsonArr = $postFormCfg->jsonArr; // getJsonArray();
 	
-	$smarty->assign("action",$jsonArr['action']);
-	$smarty->assign("dFormId",'new-post-form');
+	$smarty->assign("action", $postFormCfg->action);
+	$smarty->assign("dFormId", $postFormCfg->formId);
 	$smarty->assign("dFormJSON",$jsonArr);
+	
 	$smarty->display('post/post_edit.tpl');
 }
 
