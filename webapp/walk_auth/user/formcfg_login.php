@@ -66,46 +66,6 @@ class LoginFormConfig extends FormConfigBase
 		return $loginArr;
 	}
 	
-	public function getRegisterQueryArray()
-	{
-		if ( 
-			! isset($_POST['login']) 
-			)
-		{
-			return null;
-		}
-
-		$login = trim($_POST['login']);
-		
-		$regArr = array(
-						'login' => $login 
-						);
-		
-		return $regArr;
-	}
-	
-	/**
-	 * This is for doing register 
-	 * FIXME - should be in a different cfg object
-	 * @param string $userMapper
-	 * @return unknown
-	 */
-	public function getRequestAsEntity($userMapper=null)
-	{
-		$login = trim($_POST['login']);
-		$email = trim($_POST['email']);
-		$password = trim($_POST['password']);
-		
-		# New, empty user entity
-		$userEntity = $userMapper->get();
-		
-		$userEntity->login = $login;
-		$userEntity->email = $email;
-		$userEntity->password = md5($password);
-		
-		return $userEntity;
-	}
-	
 	
 }
 

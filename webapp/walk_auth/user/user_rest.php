@@ -9,7 +9,7 @@
 	
 $app->get('/access/public/home',  viewLogin );  
 $app->get('/access/public/login',  viewLogin );  
-$app->get('/access/public/register',  viewRegisteration );  
+$app->get('/access/public/register',  viewRegistration );  
 $app->get('/access/public/recover',  viewPwdRecover );
   
 $app->get('/access/public/logout',  actionLogout );  
@@ -49,12 +49,24 @@ function viewLogin()
 	$smarty->display('user/login.tpl');
 }
 
-function viewRegisteration() 
+function viewRegistration() 
 {
 	global $smarty;
+
+	$loginFormCfg = new LoginFormConfig();
+	$loginFormCfg->loadFormFieldArray();
+	
+	$jsonArr = $loginFormCfg->jsonArr; // getJsonArray();
+	
+	$smarty->assign("action",$jsonArr['action']);
+	$smarty->assign("dFormId", "login-form");
+	$smarty->assign("dFormJSON",$jsonArr);
+	
+	
+	$smarty->assign("dFormJSON",$jsonArr);
 	
 	$smarty->assign("title", "Register");
-	$smarty->display('register_form.tpl');
+	$smarty->display('user/register.tpl');
 }
 
 function viewPwdRecover() 

@@ -43,9 +43,9 @@ class UserController
 	
 	public function actionRegister()
 	{
-		$loginFormConfig =  new LoginFormConfig();
+		$registerFormConfig =  new RegisterFormConfig();
 		
-		$registerQueryArr = $loginFormConfig->getRegisterQueryArray();
+		$registerQueryArr = $registerFormConfig->getRegisterQueryArray();
 		
 		$userMapper = UserMapper::getDbMapper();
 		
@@ -59,7 +59,7 @@ class UserController
 		$result = 'User already exists'; // let $count say different
 		if ($count = 0) 
 		{
-			$userEntity = $loginFormConfig->getRequestAsEntity($userMapper);
+			$userEntity = $registerFormConfig->getRequestAsEntity($userMapper);
 			$userMapper->save($userEntity);
 			
 			$result = "success";
