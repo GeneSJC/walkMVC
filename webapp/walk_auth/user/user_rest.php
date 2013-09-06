@@ -50,19 +50,16 @@ function viewRegistration()
 {
 	global $smarty;
 
-	$loginFormCfg = new LoginFormConfig();
-	$loginFormCfg->loadFormFieldArray();
+	$registerFormCfg = new RegisterFormConfig();
+	$registerFormCfg->loadFormFieldArray();
 	
-	$jsonArr = $loginFormCfg->jsonArr; // getJsonArray();
+	$jsonArr = $registerFormCfg->jsonArr; // getJsonArray();
 	
-	$smarty->assign("action", $loginFormCfg->action);
-	$smarty->assign("dFormId", $loginFormCfg->formId);
+	$smarty->assign("action", $registerFormCfg->action);
+	$smarty->assign("dFormId", $registerFormCfg->formId);
 	$smarty->assign("dFormJSON",$jsonArr);
-	
-	
-	$smarty->assign("dFormJSON",$jsonArr);
-	
 	$smarty->assign("title", "Register");
+
 	$smarty->display('user/register.tpl');
 }
 

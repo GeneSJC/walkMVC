@@ -33,6 +33,7 @@ require_once './post/formcfg_post.php';
 require_once './user/user_mapper.php';
 require_once './user/user_ctrl.php';
 require_once './user/formcfg_login.php';
+require_once './user/formcfg_register.php';
 
 	// END model includes
 

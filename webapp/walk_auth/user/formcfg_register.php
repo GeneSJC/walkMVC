@@ -3,12 +3,15 @@
 class RegisterFormConfig extends FormConfigBase
 {
 	public $action = '../public/register'; // REST path from current root
+	public $formId = 'register-form';
 	
 	public function getFormFieldArray()
 	{
 		return  array ( $this->headerConfig,
         								$this->login,
-        								$this->password
+        								$this->email,
+        								$this->password,
+        								$this->confirmPassword
         							);
 	}
 	
