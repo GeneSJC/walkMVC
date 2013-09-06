@@ -83,6 +83,7 @@ function viewRegistration()
 	$smarty->assign("action", $registerFormCfg->action);
 	$smarty->assign("dFormId", $registerFormCfg->formId);
 	$smarty->assign("dFormJSON",$jsonArr);
+	
 	$smarty->assign("title", "Register");
 
 	$smarty->display('user/register.tpl');
@@ -92,8 +93,18 @@ function viewPwdRecover()
 {
 	global $smarty;
 	
-	$smarty->assign("title", "Login");
-	$smarty->display('login.tpl');
+	$recoverFormCfg = new RecoverFormConfig();
+	$recoverFormCfg->loadFormFieldArray();
+	
+	$jsonArr = $recoverFormCfg->jsonArr; // getJsonArray();
+	
+	$smarty->assign("title", RecoverFormConfig::TITLE);
+	
+	$smarty->assign("action", $recoverFormCfg->action);
+	$smarty->assign("dFormId", $recoverFormCfg->formId);
+	$smarty->assign("dFormJSON",$jsonArr);	
+	
+	$smarty->display('user/forgot.tpl');
 }
 
 function actionLogout() 

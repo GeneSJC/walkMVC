@@ -9,6 +9,17 @@ PENDING
 4. Make the rest path prefix configurable
 
 
+AT THE MODEL LEVEL
+
+/user
+	- DONE: Login & Registeration are
+	- PENDING: Recover password (need to send email link to reset)
+
+
+=======================================================
+=======================================================
+
+
 DONE
 
 Sep 3, 2013: 

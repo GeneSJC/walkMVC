@@ -7,7 +7,7 @@
 
 <br/> 
 <a href='http://localhost/dev/walkMVC/webapp/walk_auth/access/public/register'>Register</a><br />
-<a onclick='alert("pending")' href='#' x='http://localhost/dev/walkMVC/webapp/walk_auth/access/public/recover' >Forgot password?</a>
+<a href='http://localhost/dev/walkMVC/webapp/walk_auth/access/public/recover' >Forgot password?</a>
 
 
 <script type="text/javascript" >

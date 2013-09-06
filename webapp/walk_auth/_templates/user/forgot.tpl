@@ -1,9 +1,7 @@
-{include file="header.tpl" title={$title}}
-<form method="post" action="forgot.php"> 
-    <div>
-        <span>Forgot password?</span>
-        <div>Email: <input type="text" name="email" id="email"></div>
-        <div><input type="submit" name="submit" value="Go!"></div>
-    </div>
-</form>
-{include file="footer.tpl"}
+{include file="../_general/header.tpl" title={$title}}
+
+{* no if isset($dFormJSON) required, since we know this view expects that token *}
+{include file="../_general/dForm_block.tpl" }
+
+
+{include file="../_general/footer.tpl"}
