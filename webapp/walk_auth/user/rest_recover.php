@@ -37,7 +37,7 @@ function actionSendRecoverEmail()
 	global $app;
 	
 	$userCtrl = new UserController();
-	$userCtrl->actionSendRecoverEmail();
+	$userCtrl->actionSendRecoverEmail(); // FIXME: check for errors
 	
 	// $app->redirect('../public/login'); // this view verifies the session
 }

@@ -100,13 +100,19 @@ class UserController
 		
 		if ($user)
 		{
-			echo "TODO: [GENERATE KEY & SEND EMAIL] Got user for recover email: " . $_POST['email'];
-			echo "<br/>";
-			echo "random string: " . randString(10);
+			$resetKey = randString(10);
+			
+			echo "TODO: [SAVE GENERATED KEY & SEND EMAIL] Got user for recover email: " . $_POST['email'];
+			echo "random string: " . $resetKey;
+
+			$recoverMapper = RecoverMapper::getDbMapper();
+			// need to save the info
+			
+			sendRecoverEmail($_POST['email'], $resetKey=null); // FIXME - add try/catch			
 		}
 		else
 		{
-			echo "TODO: [SHOW ERROR PAGE] NO user for recover email: " . $_POST['email'];
+			echo "TODO: [SHOW ERROR on RECOVER PAGE] NO user for recover email: " . $_POST['email'];
 		}
 		
 	}
