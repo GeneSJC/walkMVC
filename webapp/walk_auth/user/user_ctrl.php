@@ -84,7 +84,29 @@ class UserController
 	 */
 	public function actionSendRecoverEmail()
 	{
-		// TODO
+		$recoverFormConfig =  new RecoverFormConfig();
+		
+		$emailQueryArr = $recoverFormConfig->getEmailQueryArray();
+		
+		if ( $emailQueryArr == null )
+		{
+			echo "Missing fields";
+			return;
+		}
+		
+		$userMapper = UserMapper::getDbMapper();
+		
+		$user = $userMapper->first($emailQueryArr);
+		
+		if ($user)
+		{
+			echo "Got user for recover email: " . $_POST['email'];
+		}
+		else
+		{
+			echo "NO user for recover email: " . $_POST['email'];
+		}
+		
 	}
 }
 

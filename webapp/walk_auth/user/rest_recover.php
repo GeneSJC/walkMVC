@@ -36,13 +36,10 @@ function actionSendRecoverEmail()
 {
 	global $app;
 	
-	echo '.. actionSendRecoverEmail';
-	return;
-	
 	$userCtrl = new UserController();
 	$userCtrl->actionSendRecoverEmail();
 	
-	$app->redirect('../public/login'); // this view verifies the session
+	// $app->redirect('../public/login'); // this view verifies the session
 }
 
 function viewResetPassword()

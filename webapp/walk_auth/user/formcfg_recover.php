@@ -30,6 +30,25 @@ class RecoverFormConfig extends FormConfigBase
 	
 			"caption" => "Email" // Label
 	);	
+	
+
+	public function getEmailQueryArray()
+	{
+		if (
+		! isset($_POST['email'])
+		)
+		{
+			return null;
+		}
+	
+		$email = trim($_POST['email']);
+	
+		$emailArr = array(
+				'email' => $email
+		);
+	
+		return $emailArr;
+	}	
 }
 
 
