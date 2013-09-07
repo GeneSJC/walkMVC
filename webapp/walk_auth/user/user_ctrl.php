@@ -101,6 +101,8 @@ class UserController
 		if ($user)
 		{
 			echo "TODO: [GENERATE KEY & SEND EMAIL] Got user for recover email: " . $_POST['email'];
+			echo "<br/>";
+			echo "random string: " . randString(10);
 		}
 		else
 		{

@@ -13,6 +13,7 @@ require_once '../../php/phpDataMapper/Adapter/Mysql.php';
 	// walkMVC INCLUDES
 	
 require_once '../../php/form_config_base.php';
+require_once '../../php/misc_util.php';
 
 
 
