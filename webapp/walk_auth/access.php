@@ -3,7 +3,6 @@
 require_once './app_includes.php';	
 
 
-
 \Slim\Slim::registerAutoloader();
 
 $app = new \Slim\Slim();
