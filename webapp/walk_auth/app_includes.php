@@ -30,7 +30,7 @@ require_once './post/post_mapper.php';
 require_once './post/post_ctrl.php';
 require_once './post/formcfg_post.php';
 
-require_once './user/user_mapper.php';
+require_once './user/map_user.php';
 require_once './user/user_ctrl.php';
 require_once './user/formcfg_login.php';
 require_once './user/formcfg_register.php';

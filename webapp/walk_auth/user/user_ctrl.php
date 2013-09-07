@@ -100,11 +100,11 @@ class UserController
 		
 		if ($user)
 		{
-			echo "Got user for recover email: " . $_POST['email'];
+			echo "TODO: [GENERATE KEY & SEND EMAIL] Got user for recover email: " . $_POST['email'];
 		}
 		else
 		{
-			echo "NO user for recover email: " . $_POST['email'];
+			echo "TODO: [SHOW ERROR PAGE] NO user for recover email: " . $_POST['email'];
 		}
 		
 	}
