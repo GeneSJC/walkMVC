@@ -30,20 +30,9 @@ This structure uses the following patterns to help make navigating the code as e
 
 
 
-Configuration
----------------
-One of the todo items is to fix hardcoded paths.  In the mean time, if you search for '/Library/WebServer/Documents/dev/', you should find all my hardcoded folders
-
-
-Examples Summary
-================================
-
-Here are example /webapp projects that use the same database schema - a simple blog post (only 1 table)
-
-
 
 Example Project1: /webapps/walk_auth 
---------------------------------
+================================
 
 See the file access.php - it is the main access point for the app.
 
