@@ -23,9 +23,12 @@ This structure uses the following patterns to help make navigating the code as e
 * instead of dividing/grouping the code across M-V-C, we group controllers and models in the same model folder
 
 * in each model folder, we use the file name conventions (where Xyz is the model name): 
-  * formcfg_Xyz.php - HTML form definition
+  * formcfg_Xyz.php - HTML form definition for dForm. Also, use this file for mapping request params to DB model values
   * map_Xyz.php - DB model definition
-  * rest_Xyz.php - REST paths to use and the associated helper function
+  * rest_Xyz.php - REST paths to use and the associated helper function.  It handles selecting the view to render
+  * <Model controller> - for accessing the database
+
+
 
 Configuration
 ---------------
