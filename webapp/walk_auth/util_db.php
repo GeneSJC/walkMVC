@@ -3,7 +3,7 @@
 class MapperBase extends phpDataMapper_Base
 {
 	const SERVER = '127.0.0.1';
-	const DB_NAME = 'test';
+	const DB_NAME = 'walk_mvc';
 	const USER = 'gene';
 	const PWD = 'gene';
 	

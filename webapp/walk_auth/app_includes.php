@@ -12,7 +12,6 @@ require_once '../../php/phpDataMapper/Adapter/Mysql.php';
 
 	// walkMVC INCLUDES
 	
-require_once '../../php/mapper_base.php';
 require_once '../../php/form_config_base.php';
 require_once '../../php/misc_util.php';
 
@@ -20,16 +19,17 @@ require_once '../../php/misc_util.php';
 
 	// app-specific INCLUDES
 
+require_once './util_db.php';
+require_once './util_session.php';	
 require_once './load_smarty.php';
-require_once './load_session.php';	
 
 
 
 
 	// START model includes - after base includes
 	
-require_once './post/post_mapper.php';
-require_once './post/post_ctrl.php';
+require_once './post/map_post.php';
+require_once './post/ctrl_post.php';
 require_once './post/formcfg_post.php';
 
 require_once './user/map_user.php';

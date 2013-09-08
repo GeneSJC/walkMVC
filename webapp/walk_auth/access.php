@@ -11,7 +11,7 @@ $app = new \Slim\Slim();
 require_once './user/rest_session.php';
 require_once './user/rest_register.php';
 require_once './user/rest_recover.php';
-require_once './post/post_rest.php';
+require_once './post/rest_post.php';
 
 
 $app->run();

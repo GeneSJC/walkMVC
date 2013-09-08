@@ -3,7 +3,7 @@
 require_once '../../../php/phpDataMapper/Base.php';
 require_once '../../../php/phpDataMapper/Adapter/Mysql.php';
 
-require_once '../../../php/mapper_base.php';
+require_once '../util_db.php';
 
 require_once '../user/map_user.php';
 

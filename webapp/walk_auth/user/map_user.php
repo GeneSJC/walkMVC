@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * Forms for this model:
+ *  - login
+ * 	- register
+ */
 class UserMapper extends MapperBase
 {
 	// Specify the data source (table for SQL adapters)
