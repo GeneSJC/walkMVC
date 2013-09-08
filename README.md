@@ -11,16 +11,16 @@ The majority of the work in any app revolves around the model.  So in this frame
 
 
 
-Motivation
+Design Patterns
 ----------
-I organized this structure as an alternative to having to relearn all the ins n outs of some MVC framework every time a new project comes along.  Furthermore, I was tired of being frusterated by what seemed like overly complicated ways to have to do things.
-
-The aim of this structure is to allow the developer to quickly define the model data in PHP:
-* DB tables with the ORM
-* The HTML-form structure with jquery.dform
-
-Additionally, support for REST is incorporated with slim.  However, there are still some things to fix there - see todo.txt
-
+This structure uses the following patterns to help make navigating the code as easy as possible:
+* define the model data in PHP for both the database and HTML forms
+* use a centralized dispatcher with slimPHP
+* instead of dividing/grouping the code across M-V-C, we group controllers and models in the same model folder
+* in each model folder, we use the file name conventions (where Xyz is the model name): 
+  * formcfg_Xyz.php - HTML form definition
+  * map_Xyz.php - DB model definition
+  * rest_Xyz.php - REST paths to use and the associated helper function
 
 Configuration
 ---------------
@@ -37,32 +37,8 @@ Here are example /webapp projects that use the same database schema - a simple b
 Example Project1: /webapps/walk_auth 
 --------------------------------
 
-This project pulls in slimPHP, dform, and basic user login authentication using the patterns of walkMVC
-
 See the file access.php - it is the main access point for the app.
 
-
-
-Example Project2: /webapps/app1 
---------------------------------
-
-The main work is needed in subdirectories: /post & /_template
-
-In /post:
-* post_ctrl.php : add custom business logic
-* post_mapper.php : define your DB schema mappings
-* post_formcfg.php : define the HTML-form structure for the model
-* post_tbl.sql : just here for refence. Use post_mapper.php to generate schema
-
-In /_template:
-* Here we create our smarty templates
-* see ..\smarty_cfg.php for configuring your template directories
-
-
-Example Project3: /webapps/slimRest_postMgr 
---------------------------------
-
-The file structure is actually the same as ../app1, except instead of accessing post_ctrl.php directly, we have the slim_dispatcher.php at the top level of the app directory
 
 
 
