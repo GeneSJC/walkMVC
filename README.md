@@ -14,9 +14,14 @@ The majority of the work in any app revolves around the model.  So in this frame
 Design Patterns
 ----------
 This structure uses the following patterns to help make navigating the code as easy as possible:
+
 * define the model data in PHP for both the database and HTML forms
+
 * use a centralized dispatcher with slimPHP
+ * Here we have an .htaccess file that allows to take the file abc.php and make the root of the path /abc (without mention of PHP)
+
 * instead of dividing/grouping the code across M-V-C, we group controllers and models in the same model folder
+
 * in each model folder, we use the file name conventions (where Xyz is the model name): 
   * formcfg_Xyz.php - HTML form definition
   * map_Xyz.php - DB model definition
