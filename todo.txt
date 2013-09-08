@@ -1,27 +1,4 @@
-PENDING
+PENDING: 
 
-1. Add global HOME_DIR constant
-
-2. Thoroughly finish the /walk_auth demo for models: user, post
-
-3. Make the relative include paths easy to configure (as opposed to hardcoded ../../../ .. etc)
-
-4. Make the rest path prefix configurable
-
-
-AT THE MODEL LEVEL
-
-/user
-	- DONE: Login & Registeration are
-	- PENDING: Recover password (need to send email link to reset)
-
-
-=======================================================
-=======================================================
-
-
-DONE
-
-Sep 3, 2013: 
-- /post model now uses dForm and supports INSERT, UPDATE, DELETE, & VIEW ALL
-- Path config is done for web client (via Smarty token)
+65% done
+Recover password (need to send email link to reset)
