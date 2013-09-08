@@ -26,7 +26,7 @@ This structure uses the following patterns to help make navigating the code as e
   * formcfg_Xyz.php - HTML form definition for dForm. Also, use this file for mapping request params to DB model values
   * map_Xyz.php - DB model definition
   * rest_Xyz.php - REST paths to use and the associated helper function.  It handles selecting the view to render
-  * <Model controller> - for accessing the database
+  * [Model controller] - for accessing the database
 
 
 
