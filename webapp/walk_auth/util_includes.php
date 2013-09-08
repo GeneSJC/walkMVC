@@ -7,7 +7,7 @@ require_once '../../php/codeguy-Slim/Slim/Slim.php';
 require_once '../../php/phpDataMapper/Base.php';
 require_once '../../php/phpDataMapper/Adapter/Mysql.php';
 
-
+require_once('../../php/smarty/libs/Smarty.class.php');
 
 
 	// walkMVC INCLUDES
@@ -20,7 +20,7 @@ require_once '../../php/misc_util.php';
 	// app-specific INCLUDES
 
 require_once './util_db.php';
-require_once './util_session.php';	
+require_once './util_session.php';	// calls session_start();
 require_once './util_smarty.php';
 
 	// START model includes - after base includes

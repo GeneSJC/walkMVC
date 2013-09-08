@@ -4,9 +4,6 @@ function loadSmarty()
 {
 	global $smarty;
 	
-	define('SMARTY_DIR', '../../php/smarty/libs/');
-	require_once(SMARTY_DIR . 'Smarty.class.php');
-	
 	$smarty = new Smarty;
 	
 	$smarty->template_dir = './_templates/';
