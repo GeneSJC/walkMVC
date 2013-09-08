@@ -1,2 +1,0 @@
-
-1. In your project folder, update the App root in smarty_cfg.php
