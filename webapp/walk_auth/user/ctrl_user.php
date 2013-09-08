@@ -42,23 +42,21 @@ class UserController
 		}		
  	}
 	
+	/* if (!preg_match("/[0-9a-z_]+@[0-9a-z_^\.]+\.[a-z]{2,3}/i", $email)) {
+	  echo "Email so bad!";
+	  } */
 	public function actionRegister()
 	{
 		$registerFormConfig =  new RegisterFormConfig();
 		
 		$registerQueryArr = $registerFormConfig->getRegisterQueryArray();
+		// var_dump($registerQueryArr);
 		
 		$adapter = getDbAdapter();
 		$userMapper = new UserMapper($adapter);
 		
-		var_dump($registerQueryArr);
-		
-		  // $q = mysql_query("SELECT COUNT(`id`) AS `c` FROM `users` WHERE `login`='$login' OR `email` = '$email' LIMIT 1");
 		$user = $userMapper->first($registerQueryArr) ;
 		
-		/* if (!preg_match("/[0-9a-z_]+@[0-9a-z_^\.]+\.[a-z]{2,3}/i", $email)) {
-		  echo "Email so bad!";
-		  } */
 		$result = 'User already exists'; // let $count say different
 		if ( ! $user ) 
 		{
@@ -86,10 +84,9 @@ class UserController
 	 */
 	public function actionSendRecoverEmail()
 	{
+		// 1. Logic to get the email and see if it exists
 		$recoverFormConfig =  new RecoverFormConfig();
-		
 		$emailQueryArr = $recoverFormConfig->getEmailQueryArray();
-		
 		if ( $emailQueryArr == null )
 		{
 			echo "Missing fields";
@@ -98,26 +95,40 @@ class UserController
 		
 		$adapter = getDbAdapter();
 		$userMapper = new UserMapper($adapter);
-		
 		$user = $userMapper->first($emailQueryArr);
 		
-		if ($user)
+		if (! $user)
 		{
-			$resetKey = randString(10);
-			
-			echo "TODO: [SAVE GENERATED KEY & SEND EMAIL] Got user for recover email: " . $_POST['email'];
-			echo "random string: " . $resetKey;
+			echo "TODO: [SHOW ERROR on RECOVER PAGE] NO user for recover email: " . $emailQueryArr['email'];
+			return;
+		}
 
-			$recoverMapper = RecoverMapper::getDbMapper();
-			// need to save the info
-			
-			sendRecoverEmail($_POST['email'], $resetKey=null); // FIXME - add try/catch			
-		}
-		else
+		$resetKey = $this->saveResetKey();
+		if ($resetKey)
 		{
-			echo "TODO: [SHOW ERROR on RECOVER PAGE] NO user for recover email: " . $_POST['email'];
+			sendRecoverEmail($emailQueryArr['email'], $resetKey); // FIXME - add try/catch
 		}
+	}
+	
+	private function saveResetKey($email=null)
+	{
+		$resetKey = randString(10);
+			
+		echo "TODO: [SAVE GENERATED KEY & SEND EMAIL] Got user for recover email: " . $_POST['email'];
+		echo "random string: " . $resetKey;
 		
+		// need to save the info
+		$adapter = getDbAdapter();
+		$recoverMapper = new RecoverMapper($adapter);
+		
+		$recoverEntity = $recoverMapper->get();
+		
+		$recoverEntity->email = $email;
+		$recoverEntity->resetKey = $resetKey;
+		
+		$recoverMapper->save($recoverEntity);
+		
+		return $resetKey;
 	}
 }
 
