@@ -14,4 +14,6 @@ require_once './user/rest_register.php';
 require_once './user/rest_recover.php';
 require_once './post/rest_post.php';
 
+session_start();
+
 $app->run();

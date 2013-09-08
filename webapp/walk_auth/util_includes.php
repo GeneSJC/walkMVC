@@ -20,7 +20,7 @@ require_once '../../php/misc_util.php';
 	// app-specific INCLUDES
 
 require_once './util_db.php';
-require_once './util_session.php';	// calls session_start();
+require_once './util_session.php';	
 require_once './util_smarty.php';
 
 	// START model includes - after base includes
