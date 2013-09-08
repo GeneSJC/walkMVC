@@ -1,6 +1,6 @@
 <?php
 
-class RecoverMapper extends phpDataMapper_Base
+class RecoverMapper extends MapperBase
 {
 	// Specify the data source (table for SQL adapters)
 	protected $_datasource = "recover_tbl";
@@ -10,15 +10,6 @@ class RecoverMapper extends phpDataMapper_Base
 	public $email = array('type' => 'string', 'required' => true);
 	public $reset_key = array('type' => 'string', 'default' => 'draft');
 	public $created_on = array('type' => 'datetime');
-
-	public static function getDbMapper()
-	{
-		$adapter = new phpDataMapper_Adapter_Mysql('127.0.0.1', 'test', 'gene', 'gene');
-		
-		$postMapper = new UserMapper($adapter);
-		
-		return $postMapper;
-	}
 
 }
 

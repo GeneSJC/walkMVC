@@ -43,7 +43,8 @@ function viewPostEdit($id=null)
 
 	if ( $id )
 	{
-		$postMapper = PostMapper::getDbMapper();
+		$adapter = getDbAdapter();
+		$postMapper = new PostMapper($adapter);
 		
 		$post = $postMapper->first(
 									array
@@ -90,8 +91,9 @@ function actionPostDelete($id=null)
 	
 	if ( $id )
 	{
-		$postMapper = PostMapper::getDbMapper();
-	
+		$adapter = getDbAdapter();
+		$postMapper = new PostMapper($adapter);
+			
 		$postMapper->delete(
 				array
 				(

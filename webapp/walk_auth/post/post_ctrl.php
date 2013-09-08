@@ -6,7 +6,9 @@ class PostController
 	{
 		global $smarty;
 		
-		$postMapper = PostMapper::getDbMapper();
+		$adapter = getDbAdapter();
+		$postMapper = new PostMapper($adapter);
+		
 		$items = $postMapper->all();
 		
 		return $items;
@@ -14,8 +16,9 @@ class PostController
 	
  	public function actionSave()
  	{
- 		$postMapper = PostMapper::getDbMapper();
-
+		$adapter = getDbAdapter();
+		$postMapper = new PostMapper($adapter);
+ 		
  		$postFormConfig =  new PostFormConfig();
  		
  		# Set data and save it

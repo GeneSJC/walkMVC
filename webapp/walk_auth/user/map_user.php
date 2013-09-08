@@ -1,6 +1,6 @@
 <?php
 
-class UserMapper extends phpDataMapper_Base
+class UserMapper extends MapperBase
 {
 	// Specify the data source (table for SQL adapters)
 	protected $_datasource = "users";
@@ -11,15 +11,6 @@ class UserMapper extends phpDataMapper_Base
 	public $email = array('type' => 'string', 'required' => true);
 	public $password = array('type' => 'string', 'default' => 'draft');
 	public $created_on = array('type' => 'datetime');
-
-	public static function getDbMapper()
-	{
-		$adapter = new phpDataMapper_Adapter_Mysql('127.0.0.1', 'test', 'gene', 'gene');
-		
-		$postMapper = new UserMapper($adapter);
-		
-		return $postMapper;
-	}
 
 }
 

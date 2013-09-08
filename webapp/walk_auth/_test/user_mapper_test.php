@@ -3,11 +3,13 @@
 require_once '../../../php/phpDataMapper/Base.php';
 require_once '../../../php/phpDataMapper/Adapter/Mysql.php';
 
-require_once '../user/user_mapper.php';
+require_once '../../../php/mapper_base.php';
 
-$userMapper = UserMapper::getDbMapper();
+require_once '../user/map_user.php';
 
- 
+$adapter = getDbAdapter();
+$userMapper = new UserMapper($adapter);
+
 echo  " <h2>All Test</h2>\n";
 $users = $userMapper->all();
 echo "count = " + count($users);

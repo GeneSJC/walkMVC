@@ -23,7 +23,8 @@ class UserController
 			return;
 		}
 		
-		$userMapper = UserMapper::getDbMapper();
+		$adapter = getDbAdapter();
+		$userMapper = new UserMapper($adapter);
 		
 		$user = $userMapper->first($loginQueryArr);
 		
@@ -47,7 +48,8 @@ class UserController
 		
 		$registerQueryArr = $registerFormConfig->getRegisterQueryArray();
 		
-		$userMapper = UserMapper::getDbMapper();
+		$adapter = getDbAdapter();
+		$userMapper = new UserMapper($adapter);
 		
 		var_dump($registerQueryArr);
 		
@@ -94,7 +96,8 @@ class UserController
 			return;
 		}
 		
-		$userMapper = UserMapper::getDbMapper();
+		$adapter = getDbAdapter();
+		$userMapper = new UserMapper($adapter);
 		
 		$user = $userMapper->first($emailQueryArr);
 		

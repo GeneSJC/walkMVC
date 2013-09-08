@@ -1,6 +1,6 @@
 <?php
 
-class PostMapper extends phpDataMapper_Base
+class PostMapper extends MapperBase
 {
 	// Specify the data source (table for SQL adapters)
 	protected $_datasource = "blog_posts";
@@ -11,15 +11,6 @@ class PostMapper extends phpDataMapper_Base
 	public $body = array('type' => 'text', 'required' => true);
 	public $status = array('type' => 'string', 'default' => 'draft');
 	public $date_created = array('type' => 'datetime');
-
-	public static function getDbMapper()
-	{
-		$adapter = new phpDataMapper_Adapter_Mysql('127.0.0.1', 'test', 'gene', 'gene');
-		
-		$postMapper = new PostMapper($adapter);
-		
-		return $postMapper;
-	}
 
 }
 

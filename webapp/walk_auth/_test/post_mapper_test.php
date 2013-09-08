@@ -3,9 +3,13 @@
 require_once '../../../php/phpDataMapper/Base.php';
 require_once '../../../php/phpDataMapper/Adapter/Mysql.php';
 
+require_once '../../../php/mapper_base.php';
+
 require_once '../post/post_mapper.php';
 
-$postMapper = PostMapper::getDbMapper();
+$adapter = getDbAdapter();
+$postMapper = new PostMapper($adapter);
+
 
  
 # Get Things ---------------
