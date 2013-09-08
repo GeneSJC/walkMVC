@@ -44,6 +44,20 @@ function actionSendRecoverEmail()
 
 function viewResetPassword()
 {
+	global $smarty;
+	
+	$pwdFormCfg = new PasswordFormConfig();
+	$pwdFormCfg->loadFormFieldArray();
+	
+	$jsonArr = $pwdFormCfg->jsonArr; // getJsonArray();
+	
+	$smarty->assign("title", RecoverFormConfig::TITLE);
+	
+	$smarty->assign("action", $pwdFormCfg->action);
+	$smarty->assign("dFormId", $pwdFormCfg->formId);
+	$smarty->assign("dFormJSON",$jsonArr);	
+	
+	$smarty->display('user/reset_pwd.tpl');
 }
 
 function actionResetPassword()

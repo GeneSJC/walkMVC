@@ -34,6 +34,7 @@ require_once './user/ctrl_user.php';
 require_once './user/formcfg_login.php';
 require_once './user/formcfg_register.php';
 require_once './user/formcfg_recover.php';
+require_once './user/formcfg_password.php';
 
 	// END model includes
 
