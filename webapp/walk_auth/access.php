@@ -2,6 +2,7 @@
 
 require_once './app_includes.php';	
 
+loadSmarty();
 
 \Slim\Slim::registerAutoloader();
 
@@ -12,6 +13,5 @@ require_once './user/rest_session.php';
 require_once './user/rest_register.php';
 require_once './user/rest_recover.php';
 require_once './post/rest_post.php';
-
 
 $app->run();

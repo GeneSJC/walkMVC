@@ -21,10 +21,7 @@ require_once '../../php/misc_util.php';
 
 require_once './util_db.php';
 require_once './util_session.php';	
-require_once './load_smarty.php';
-
-
-
+require_once './util_smarty.php';
 
 	// START model includes - after base includes
 	
