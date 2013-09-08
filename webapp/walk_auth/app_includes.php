@@ -33,7 +33,7 @@ require_once './post/ctrl_post.php';
 require_once './post/formcfg_post.php';
 
 require_once './user/map_user.php';
-require_once './user/user_ctrl.php';
+require_once './user/ctrl_user.php';
 require_once './user/formcfg_login.php';
 require_once './user/formcfg_register.php';
 require_once './user/formcfg_recover.php';
