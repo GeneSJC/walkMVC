@@ -43,6 +43,8 @@ class RecoverFormConfig extends FormConfigBase
 	
 		$email = trim($_POST['email']);
 	
+		xlog ("getEmailQueryArray email = " . $email );
+		
 		$emailArr = array(
 				'email' => $email
 		);

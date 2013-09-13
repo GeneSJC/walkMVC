@@ -1,6 +1,6 @@
 <?php
 
-class RecoverMapper extends MapperBase
+class RecoverMapper extends phpDataMapper_Base
 {
 	// Specify the data source (table for SQL adapters)
 	protected $_datasource = "recover_tbl";
@@ -8,7 +8,7 @@ class RecoverMapper extends MapperBase
 	// Define your fields as public class properties
 	public $id = array('type' => 'int', 'primary' => true, 'serial' => true);
 	public $email = array('type' => 'string', 'required' => true);
-	public $reset_key = array('type' => 'string', 'default' => 'draft');
+	public $reset_key = array('type' => 'string', 'required' => true);
 	public $created_on = array('type' => 'datetime');
 
 }

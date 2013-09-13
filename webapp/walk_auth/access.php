@@ -1,6 +1,6 @@
 <?php
 
-require_once './util_includes.php';	
+require_once './app_includes.php';	
 
 loadSmarty();
 
