@@ -1,28 +1,32 @@
 <?php
 
-class AppCfg
+$LOGFILEPATH = "/Users/gene/tools/walk.log";
+function xlog ($msg) 
 {
-	const LOGFILEPATH = "/Users/gene/tools/walk.log";
-	const WEB_ROOT = 'http://localhost/dev/walkMVC/webapp/walk_auth/access';
-
-	const DB_SERVER = '127.0.0.1';
-	const DB_NAME = 'walk_mvc';
-	const DB_USER = 'gene';
-	const DB_PWD = 'gene';
-}
-
-
-function xlog ($msg)
-{
+	global $LOGFILEPATH;
+	
 	$now = date("D M j G:i:s Y");
-	writeFile ( "$now : $msg \n", AppCfg::LOGFILEPATH);
+	writeFile ( "$now : $msg \n", $LOGFILEPATH);
 }
+
+
+class MapperBase extends phpDataMapper_Base
+{
+	const SERVER = '127.0.0.1';
+	const DB_NAME = 'walk_mvc';
+	const USER = 'gene';
+	const PWD = 'gene';
+
+}
+
+
 
 function sendRecoverEmail($recoverEmail, $resetKey=null)
 {
-	$recoverUrl = AppCfg::WEB_ROOT . "/user/reset/$resetKey";
-	$recoverLink = "<a href='$recoverUrl '>$recoverUrl </a>";
-	$recoverLink = $recoverUrl;
+	$appRoot = "http://localhost/";
+	
+	$recoverUrl = "$appRoot/access/user/reset/$resetKey";
+	$recoverLink = "<a href='$recoverUrl'>$recoverUrl</a>";
 
 	$subject = "Recover email";
 	$message = "Hello, this is a recover email message.";
@@ -38,10 +42,10 @@ function sendRecoverEmail($recoverEmail, $resetKey=null)
 function getDbAdapter()
 {
 	$adapter = new phpDataMapper_Adapter_Mysql(
-			AppCfg::DB_SERVER,
-			AppCfg::DB_NAME,
-			AppCfg::DB_USER,
-			AppCfg::DB_PWD
+			MapperBase::SERVER,
+			MapperBase::DB_NAME,
+			MapperBase::USER,
+			MapperBase::PWD
 	);
 
 	return $adapter;

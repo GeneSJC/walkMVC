@@ -4,7 +4,7 @@
  *  - login
  * 	- register
  */
-class UserMapper extends phpDataMapper_Base
+class UserMapper extends MapperBase
 {
 	// Specify the data source (table for SQL adapters)
 	protected $_datasource = "users";

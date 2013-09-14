@@ -1,6 +1,6 @@
 <?php
 
-class RecoverMapper extends phpDataMapper_Base
+class RecoverMapper extends MapperBase
 {
 	// Specify the data source (table for SQL adapters)
 	protected $_datasource = "recover_tbl";

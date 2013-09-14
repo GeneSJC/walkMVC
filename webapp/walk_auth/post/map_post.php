@@ -1,6 +1,6 @@
 <?php
 
-class PostMapper extends phpDataMapper_Base
+class PostMapper extends MapperBase
 {
 	// Specify the data source (table for SQL adapters)
 	protected $_datasource = "blog_posts";
