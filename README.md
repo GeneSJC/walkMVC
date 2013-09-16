@@ -1,3 +1,10 @@
+UNDER CONSTRUCTION: I made a mistake with a git command and now I'm paying for it.  
+I switched to SVN for the time being until my code gets stable - so I don't run into the same mistake again.
+Then will update this repo when the SVN is stable.
+At the moment this code is broken.  I'll update it ASAP
+
+
+
 walkMVC - Clean easy to read PHP MVC stack
 =======
 
