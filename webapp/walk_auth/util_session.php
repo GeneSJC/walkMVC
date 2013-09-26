@@ -6,7 +6,7 @@ function redirectIfNoSession()
 	
 	if ( ! array_key_exists('user_name', $_SESSION) )
 	{
-		$app->redirect('../public/login/2');
+		$app->redirect('../public/login/' . Msg::NO_SESSION);
 		// echo "NOP!";
 		return;
 	}

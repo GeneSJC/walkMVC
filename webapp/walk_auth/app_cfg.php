@@ -1,32 +1,29 @@
 <?php
 
-$LOGFILEPATH = "/Users/gene/tools/walk.log";
-function xlog ($msg) 
+class AppCfg
 {
-	global $LOGFILEPATH;
+	const LOGFILEPATH = "/Users/gene/tools/walk.log";
+	const WEB_ROOT = 'http://localhost/dev/walkMVC/webapp/walk_auth/access';
 	
-	$now = date("D M j G:i:s Y");
-	writeFile ( "$now : $msg \n", $LOGFILEPATH);
-}
-
-
-class MapperBase extends phpDataMapper_Base
-{
 	const SERVER = '127.0.0.1';
 	const DB_NAME = 'walk_mvc';
 	const USER = 'gene';
 	const PWD = 'gene';
-
 }
 
-
+function xlog ($msg)
+{
+	$now = date("D M j G:i:s Y");
+	writeFile ( "$now : $msg \n", AppCfg::LOGFILEPATH);
+}
 
 function sendRecoverEmail($recoverEmail, $resetKey=null)
 {
-	$appRoot = "http://localhost/";
+	$appRoot = AppCfg::WEB_ROOT;
 	
-	$recoverUrl = "$appRoot/access/user/reset/$resetKey";
+	$recoverUrl = $appRoot . "/user/reset/$resetKey";
 	$recoverLink = "<a href='$recoverUrl'>$recoverUrl</a>";
+	$recoverLink = $recoverUrl;
 
 	$subject = "Recover email";
 	$message = "Hello, this is a recover email message.";
@@ -42,10 +39,10 @@ function sendRecoverEmail($recoverEmail, $resetKey=null)
 function getDbAdapter()
 {
 	$adapter = new phpDataMapper_Adapter_Mysql(
-			MapperBase::SERVER,
-			MapperBase::DB_NAME,
-			MapperBase::USER,
-			MapperBase::PWD
+			AppCfg::SERVER,
+			AppCfg::DB_NAME,
+			AppCfg::USER,
+			AppCfg::PWD
 	);
 
 	return $adapter;
