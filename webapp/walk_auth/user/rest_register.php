@@ -30,11 +30,11 @@ function actionRegister()
 {
 	global $app, $smarty;
 	
-	$userCtrl = new UserController();
-	$result = $userCtrl->actionRegister();
+	$userLogic = new UserLogic();
+	$result = $userLogic->actionRegister();
 	
 	// echo $result;
-	$app->redirect('../public/login/1');
+	$app->redirect('../public/login/' . Msg::SUCCESS_REGISTER);
 }
 
 

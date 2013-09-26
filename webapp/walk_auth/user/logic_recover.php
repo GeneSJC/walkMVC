@@ -1,6 +1,6 @@
 <?php
 
-class RecoverController
+class RecoverLogic
 {
 	
 	/**
@@ -39,7 +39,7 @@ class RecoverController
 		
 		if (! $user)
 		{
-			return -3;
+			return Msg::NO_SESSION;
 		}
 
 		$resetKey = $this->saveResetKey( $emailQueryArr['email'] );
@@ -47,12 +47,12 @@ class RecoverController
 		{
 			xlog ("sending Recover email");
 			sendRecoverEmail($emailQueryArr['email'], $resetKey); // FIXME - add try/catch
-			return 1;
+			return Msg::SUCCESS;
 		}
 		
 		xlog ("send failed");
 		
-		return -4; // unexpected error FIXME create constants
+		return Msg::SEND_EMAIL_FAILED; // unexpected error FIXME create constants
 	}
 	
 	private function saveResetKey($email=null)
