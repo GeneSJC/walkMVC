@@ -1,4 +1,4 @@
-walkMVC - Clean easy to read PHP MVC stack
+walkMVC: Model-Centric PHP MVC Stack
 =======
 
 
@@ -16,6 +16,7 @@ Each of the top-level folders (excluding folders that start with '_') in the web
 * form_ : Configuration file to render HTML form of model, using jquery dform
 * logic_ : Application logic specific to the model
 * rest_ : The controller logic that maps urls to logic.  This is really where everything begins in terms of client/server communication.  See index.html to determine the default REST path when calling the web app root
+
 
 *Client-Side MVC Structure (aka, The View Layer)*
 
@@ -46,18 +47,23 @@ This structure uses the following patterns to help make navigating the code as e
 * instead of dividing/grouping the code across M-V-C, we group controllers and models in the same model folder
 
 * in each model folder, we use the file name conventions (where Xyz is the model name): 
-  * formcfg_Xyz.php - HTML form definition for dForm. Also, use this file for mapping request params to DB model values
+  * form_Xyz.php - HTML form definition for dForm. Also, use this file for mapping request params to DB model values
   * map_Xyz.php - DB model definition
   * rest_Xyz.php - REST paths to use and the associated helper function.  It handles selecting the view to render
-  * [Model controller] - for accessing the database
+  * logic_Xyz.php - for accessing the database
 
 
 
+The difference here from the popular frameworks out there, is that:
+* Instead of grouping all controller files/classes in the same folder and do the same for models in a separate /model folder, here we group each "controller" with the model
+* Controllers often seem to mix business logic with dispatcher logic.  In walkMVC, the rest_ files reperesent true controller functionality - that is : for path x, do action y
+* Actual logic beyond mapping urls to views or actions, should be placed in logic_ files
 
-Example Project1: /webapps/walk_auth 
+
+Example Project2: /webapps/walk_auth 
 ================================
 
-See the file access.php - it is the main access point for the app.
+Provides user login, register, &amp; password recover
 
 
 
