@@ -2,21 +2,24 @@ walkMVC - Clean easy to read PHP MVC stack
 =======
 
 
-Quick Start
+Quick Start: 
 ----------
 1. Look at the app project under : walkMVC/tree/master/webapp/simpleDemo
 2. In that folder, the main file is : access.php
 3. From there, you can follow the trail of PHP file-include calls (aka "require_once")
 
 
-MVC Structure
-----------
+*Server-Side MVC Structure*
+
 Each of the top-level folders (excluding folders that start with '_') in the web app project folder - simpleDemo in this case, represent the elements of a model.  Specifically, this entails the following file naming conventions:
-* rest_ : The controller logic that maps urls to logic
 * map_ : Uses the phpDataMapper ORM to define table fields
 * form_ : Configuration file to render HTML form of model, using jquery dform
 * logic_ : Application logic specific to the model
+* rest_ : The controller logic that maps urls to logic.  This is really where everything begins in terms of client/server communication.  See index.html to determine the default REST path when calling the web app root
 
+*Client-Side MVC Structure (aka, The View Layer)*
+
+From the app root folder, notice there is a folder /_templates .  That is where the Smarty .tpl template files are placed.
 
 Introduction
 ----------
