@@ -1,12 +1,25 @@
-UNDER CONSTRUCTION: I made a mistake with a git command and now I'm paying for it.  
-I switched to SVN for the time being until my code gets stable - so I don't run into the same mistake again.
-Then will update this repo when the SVN is stable.
-At the moment this code is broken.  I'll update it ASAP
-
-
-
 walkMVC - Clean easy to read PHP MVC stack
 =======
+
+
+Quick Start
+----------
+1. Look at the app project under : walkMVC/tree/master/webapp/simpleDemo
+2. In that folder, the main file is : access.php
+3. From there, you can follow the trail of PHP file-include calls (aka "require_once")
+
+
+MVC Structure
+----------
+Each of the top-level folders (excluding folders that start with '_') in the web app project folder - simpleDemo in this case, represent the elements of a model.  Specifically, this entails the following file naming conventions:
+* rest_ : The controller logic that maps urls to logic
+* map_ : Uses the phpDataMapper ORM to define table fields
+* form_ : Configuration file to render HTML form of model, using jquery dform
+* logic_ : Application logic specific to the model
+
+
+Introduction
+----------
 
 This is a PHP MVC stack that is based on two core principles:
 
