@@ -12,7 +12,7 @@ class MapperBase extends phpDataMapper_Base{}
 
 
 require_once('../../php/smarty/libs/Smarty.class.php');
-
+require_once './util_smarty.php';
 
 	// walkMVC INCLUDES
 	
@@ -27,7 +27,7 @@ require_once './app_message.php';
 
 require_once './util_formcfg.php';
 require_once './util_session.php';	
-require_once './util_smarty.php';
+
 
 	// START model includes - after base includes
 	
@@ -35,6 +35,8 @@ require_once './post/logic_post.php';
 require_once './post/form_post.php';
 require_once './post/map_post.php';
 
+/*
+*/
 	// END model includes
 
 function getRestConfig()

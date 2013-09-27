@@ -1,15 +1,15 @@
 <?php
 
 
-$app->get('/access/post/home', viewPostIndex );
+$app->get('/access/post/home', 'viewPostIndex' );
 
-$app->get('/access/post/edit', viewPostEdit );
-$app->get('/access/post/edit/:id', viewPostEdit );
+$app->get('/access/post/edit', 'viewPostEdit' );
+$app->get('/access/post/edit/:id', 'viewPostEdit' );
 
-$app->get('/access/post/delete/:id', viewConfirmPostDelete );
-$app->get('/access/post/deleteConfirm/:id', actionPostDelete );
+$app->get('/access/post/delete/:id', 'viewConfirmPostDelete' );
+$app->get('/access/post/deleteConfirm/:id', 'actionPostDelete' );
 
-$app->post('/access/post/save', actionPostSave );
+$app->post('/access/post/save', 'actionPostSave' );
 
 
 /**
@@ -19,6 +19,8 @@ $app->post('/access/post/save', actionPostSave );
 function viewPostIndex() 
 {
 	redirectIfNoSession();
+	
+	echo REST_ROOT;
 	
 	global $smarty;
 	

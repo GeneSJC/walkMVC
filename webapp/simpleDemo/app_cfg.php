@@ -1,20 +1,28 @@
 <?php
 
+define("REST_ROOT", '/access');
+define("REST_ACCESS_FILE", 'access.php');
+
+echo REST_ROOT;
+
 class AppCfg
 {
-	const LOGFILEPATH = "/Users/gene/tools/walk.log";
-	const WEB_ROOT = 'http://localhost/dev/walkMVC/webapp/simpleDemo/access';
+	const FILE_PATH = 'C:\xampp\htdocs\dev\walkMVC\webapp\simpleDemo';
+	const RELATIVE_LOGPATH = '\_resources\walk.log';
+	
+	const WEB_ROOT = 'http://localhost/dev/walkMVC/webapp/simpleDemo/access.php/access';
 	
 	const SERVER = '127.0.0.1';
 	const DB_NAME = 'walk_mvc';
-	const USER = 'gene';
-	const PWD = 'gene';
+	const USER = 'root';
+	const PWD = '';
 }
 
 function xlog ($msg)
 {
+	$logPath = AppCfg::FILE_PATH . AppCfg::RELATIVE_LOGPATH;
 	$now = date("D M j G:i:s Y");
-	writeFile ( "$now : $msg \n", AppCfg::LOGFILEPATH);
+	writeFile ( "$now : $msg \n", $logPath);
 }
 
 function sendRecoverEmail($recoverEmail, $resetKey=null)
