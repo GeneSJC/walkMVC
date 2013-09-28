@@ -24,6 +24,7 @@ require_once '../../php/misc_util.php';
 
 require_once './app_cfg.php';
 require_once './app_message.php';
+require_once './app_util.php';
 
 require_once './util_formcfg.php';
 require_once './util_session.php';	
