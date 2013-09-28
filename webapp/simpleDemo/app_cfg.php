@@ -1,59 +1,45 @@
 <?php
 
-define("REST_ROOT", '/access');
-define("REST_ACCESS_FILE", 'access.php');
+	// the top level path for any REST call
+define("APP_REST_ROOT", '/access');
 
-echo REST_ROOT;
+	//  main .php file that will serve as centralized REST dispatcher
+define("APP_REST_ACCESS_FILE", 'access.php');  
+
+define("APP_WEB_ROOT", 'http://localhost/dev/walkMVC/webapp/simpleDemo/access.php/access');  
+
+	// You must update the path
+	
+$appPath = null;
+// $appPath = 'C:\xampp\htdocs\dev\walkMVC\webapp\simpleDemo';
+// $appPath = '/Library/WebServer/Documents/dev/walkMVC/webapp/simpleDemo/';
+if ( !  $appPath )
+{
+	die ('You must set the $appPath in app_cfg.php.  Make sure it is set *for your filesystem*');
+}
+
+define("APP_FILE_PATH", $appPath);  
+
+$logPath = null;
+// $logPath = '/_resources/walk.log'; // unix, mac
+// $logPath = '\_resources\walk.log'; // windows
+if ( !  $logPath )
+{
+	die ('You must set the $logPath in app_cfg.php.  Make sure it is set *for your filesystem*');
+}
+
+
+	// create file if it doesn't exist
+	// echo ' ' >   walk.log
+define("APP_LOG_PATH", APP_FILE_PATH . $logPath); 
 
 class AppCfg
 {
-	const FILE_PATH = 'C:\xampp\htdocs\dev\walkMVC\webapp\simpleDemo';
-	const RELATIVE_LOGPATH = '\_resources\walk.log';
-	
-	const WEB_ROOT = 'http://localhost/dev/walkMVC/webapp/simpleDemo/access.php/access';
-	
-	const SERVER = '127.0.0.1';
+	const DB_SERVER = '127.0.0.1';
 	const DB_NAME = 'walk_mvc';
-	const USER = 'root';
-	const PWD = '';
+	const DB_USER = 'root';
+	const DB_PWD = '';
 }
 
-function xlog ($msg)
-{
-	$logPath = AppCfg::FILE_PATH . AppCfg::RELATIVE_LOGPATH;
-	$now = date("D M j G:i:s Y");
-	writeFile ( "$now : $msg \n", $logPath);
-}
-
-function sendRecoverEmail($recoverEmail, $resetKey=null)
-{
-	$appRoot = AppCfg::WEB_ROOT;
-	
-	$recoverUrl = $appRoot . "/user/reset/$resetKey";
-	$recoverLink = "<a href='$recoverUrl'>$recoverUrl</a>";
-	$recoverLink = $recoverUrl;
-
-	$subject = "Recover email";
-	$message = "Hello, this is a recover email message.";
-	$message .= "\n\n  ";
-	$message .= "Please click this link to reset your password  ";
-	$message .= $recoverLink;
-
-	$from = "admin@localhost.com";
-
-	sendEmail($from, $recoverEmail, $subject,$message);
-}
-
-function getDbAdapter()
-{
-	$adapter = new phpDataMapper_Adapter_Mysql(
-			AppCfg::SERVER,
-			AppCfg::DB_NAME,
-			AppCfg::USER,
-			AppCfg::PWD
-	);
-
-	return $adapter;
-}
 
 ?>

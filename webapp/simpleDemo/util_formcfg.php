@@ -38,7 +38,7 @@ abstract class FormConfigBase
         $jqDformData = array
          		(
          				// need to set this when we have an extra REST level for params
-         			"action"  =>  AppCfg::WEB_ROOT . $this->action,
+         			"action"  =>  APP_WEB_ROOT . $this->action,
 					"method"  =>  $this->method,
 					"html"  =>  $htmlFormDataArr
          		);

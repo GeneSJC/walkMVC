@@ -20,8 +20,6 @@ function viewPostIndex()
 {
 	redirectIfNoSession();
 	
-	echo REST_ROOT;
-	
 	global $smarty;
 	
 	$postCtrl = new PostController();
