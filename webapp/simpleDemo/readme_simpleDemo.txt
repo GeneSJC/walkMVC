@@ -9,4 +9,14 @@ Here are the steps to set this up:
 
 
 
- 
+Things to watch out for:
+
+URL REWRITES
+
+On the Unix-based Mac OS, we're able to successfully configure the .htaccess file for an app so that the access.php file is not in the url.
+It just goes <app_root>/<rest_root> .  
+
+However, in Windows (with XAMPP and EasyPHP so far), the .htaccess doesn't work.  
+In that case, you need to include the "access point" php file
+
+	eg: <app_root>/access.php/<rest_root>
