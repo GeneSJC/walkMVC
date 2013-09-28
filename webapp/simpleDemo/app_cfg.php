@@ -12,7 +12,7 @@ define("APP_WEB_ROOT", 'http://localhost/dev/walkMVC/webapp/simpleDemo/access.ph
 	
 $appPath = null;
 // $appPath = 'C:\xampp\htdocs\dev\walkMVC\webapp\simpleDemo';
-// $appPath = '/Library/WebServer/Documents/dev/walkMVC/webapp/simpleDemo/';
+$appPath = '/Library/WebServer/Documents/dev/walkMVC/webapp/simpleDemo';
 if ( !  $appPath )
 {
 	die ('You must set the $appPath in app_cfg.php.  Make sure it is set *for your filesystem*');
@@ -21,7 +21,7 @@ if ( !  $appPath )
 define("APP_FILE_PATH", $appPath);  
 
 $logPath = null;
-// $logPath = '/_resources/walk.log'; // unix, mac
+$logPath = '/_resources/walk.log'; // unix, mac
 // $logPath = '\_resources\walk.log'; // windows
 if ( !  $logPath )
 {
