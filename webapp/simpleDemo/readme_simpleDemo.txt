@@ -1,7 +1,10 @@
 
 These instructions assume you have some kind of LAMP stack (EasyPHP, XAMPP, etc)
 
-Here are the steps to set this up:
+===================================
+1) SETUP STEPS
+------------------------------
+
 
 1. Set your environment constants (db info, url info, etc) in app_cfg.php
 
@@ -9,7 +12,10 @@ Here are the steps to set this up:
 
 
 
-Things to watch out for:
+
+===================================
+2) GOTCHYA'S : Things to watch out for
+------------------------------
 
 URL REWRITES
 
