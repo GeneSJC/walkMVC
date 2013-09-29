@@ -1,5 +1,8 @@
 <?php
 
+// place holder used by map_*.php class definitions
+class MapperBase extends phpDataMapper_Base{}
+
 
 function xlog ($msg)
 {

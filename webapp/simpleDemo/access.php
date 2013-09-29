@@ -1,12 +1,14 @@
 <?php
 
-require_once './app_includes.php';	
+require_once './_util/app_includes.php';	
+
+frameworkLevelIncludes('../..');
+appLevelIncludes('.');
 
 $smartyPathPrefix = '.';
 loadSmarty($smartyPathPrefix);
 
-	// IMPORTANT: These includes must come after the $app declaration above & before the ->run() call below
-$app = getRestConfig();
+$app = getRestConfig('.');
 
 	// FOR DEMO
 $app->get('/sayHello', 'sayHello' ); 
