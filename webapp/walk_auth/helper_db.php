@@ -1,6 +1,10 @@
 <?php
 
 require_once './_util/app_includes.php';
+frameworkLevelIncludes('../..');
+appLevelIncludes('.');
+$app = getRestConfig('.');
+
 
 function create($flag=null)
 {
@@ -15,10 +19,13 @@ function create($flag=null)
 		echo "starting process";
 				
 		$adapter = getDbAdapter();
+		$userMapper = new UserMapper($adapter);
+		$recoverMapper = new RecoverMapper($adapter);
 		$postMapper = new PostMapper($adapter);
-
-		echo  " Got all objects <br/>\n";
+		echo  " <br/>\n";
 		
+		$userMapper->migrate(); 
+		$recoverMapper->migrate(); 
 		$postMapper->migrate(); 
 		
 		echo "Script finished without any known error";
@@ -61,7 +68,44 @@ function testPostMap()
 	
 }
 
-testPostMap();
+function testUserMap()
+{
+	$adapter = getDbAdapter();
+	$userMapper = new UserMapper($adapter);
+	
+	echo  " <h2>All Test</h2>\n";
+	$users = $userMapper->all();
+	echo "count = " + count($users);
+	echo  " <br/>\n";
+	foreach ($users as $user) {
+		echo $user->id , '  ', $user->login, '  ', $user->email, '  ', $user->password, " <br/>\n";
+	}
+	
+	
+	echo  " <h2>First Test</h2>\n";
+	$user = $userMapper->first();
+	echo $user->id , '  ', $user->login, '  ', $user->email, '  ', $user->password, " <br/>\n";
+	
+	
+	echo  " <h2>First User Login Test</h2>\n";
+	$login = 'admin';
+	$password = '21232f297a57a5a743894a0e4a801fc3';
+	
+	$user = $userMapper->first(
+			array(
+					'login' => $login,
+					'password' => $password
+			)
+	);
+	
+	$user = $userMapper->first();
+	echo $user->id , '  ', $user->login, '  ', $user->email, '  ', $user->password, " <br/>\n";
+		
+}
+
+testUserMap();
+
+// testPostMap();
 // create(1);
 
 ?>
