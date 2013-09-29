@@ -75,12 +75,6 @@ function actionLogin()
 }
 
 
-	// FOR DEMO
-$app->get('/access/sayHello', sayHello ); 
-function sayHello () 
-				{ echo "hello2"; }
-
-
 ?>
 
 
