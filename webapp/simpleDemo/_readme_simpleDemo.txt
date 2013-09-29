@@ -26,3 +26,12 @@ However, in Windows (with XAMPP and EasyPHP so far), the .htaccess doesn't work.
 In that case, you need to include the "access point" php file
 
 	eg: <app_root>/access.php/<rest_root>
+
+	
+WRITE PERMISSION ON /_resources
+
+/_resources needs full write permission. 
+
+UNIX command: chmod -R 777 ./_resources
+In Windows: right-click folder and turn off Read-Only, and then select for all sub-folders
+
