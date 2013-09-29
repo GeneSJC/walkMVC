@@ -16,9 +16,13 @@ define("APP_REST_ROOT", '/access');
 	//  main .php file that will serve as centralized REST dispatcher
 define("APP_REST_ACCESS_FILE", 'access.php');  
 
-$webRoot = 'http://localhost/dev/walkMVC/webapp/simpleDemo/';
+$walkMvcRoot = 'http://localhost/dev/walkMVC';
+define("APP_FRAMEWORK_ROOT", $walkMvcRoot);  
 
+	// eg, "http://localhost/dev/walkMVC/webapp/walk_auth/access"
+$webRoot = $walkMvcRoot . '/webapp/simpleDemo/';
 define("APP_WEB_ROOT", $webRoot . APP_REST_ACCESS_FILE . APP_REST_ROOT);  
+
 
 
 

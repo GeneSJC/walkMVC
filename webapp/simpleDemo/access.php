@@ -2,7 +2,8 @@
 
 require_once './app_includes.php';	
 
-loadSmarty();
+$smartyPathPrefix = '.';
+loadSmarty($smartyPathPrefix);
 
 	// IMPORTANT: These includes must come after the $app declaration above & before the ->run() call below
 $app = getRestConfig();

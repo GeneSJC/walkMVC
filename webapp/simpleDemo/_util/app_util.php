@@ -41,4 +41,5 @@ function getDbAdapter()
 	return $adapter;
 }
 
+
 ?>
