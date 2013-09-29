@@ -1,6 +1,6 @@
 <?php
 
-class PostController
+class PostLogic
 {
 	public function actionIndex()
 	{

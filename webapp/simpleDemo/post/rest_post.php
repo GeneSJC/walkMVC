@@ -22,7 +22,7 @@ function viewPostIndex()
 	
 	global $smarty;
 	
-	$postCtrl = new PostController();
+	$postCtrl = new PostLogic();
 	$items = $postCtrl->actionIndex();	
 
 	$smarty->assign("items",$items);		
@@ -114,7 +114,7 @@ function actionPostSave()
 	
 	global $app;
 	
-	$postCtrl = new PostController();
+	$postCtrl = new PostLogic();
 	$postCtrl->actionSave();
 	$app->redirect('./home');
 }
