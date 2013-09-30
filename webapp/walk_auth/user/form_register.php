@@ -16,6 +16,20 @@ class RegisterFormConfig extends FormConfigBase
 		);
 	}
 
+
+	public $submitConfig = array
+	(
+			"type" => "submit",
+			"value" => "Go",
+	
+			"css" => array(
+					"clear" => "both",
+					"width" => "100px",
+					"margin" => "10px"
+			),
+	
+	);
+	
 	// Now define the fields
 
 	// Now define the fields

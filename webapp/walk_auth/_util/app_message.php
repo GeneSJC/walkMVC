@@ -14,6 +14,7 @@ class Msg
 		
 	const SUCCESS = 0;
 	const SUCCESS_REGISTER = 1;
+	const SEND_EMAIL_SUCCEEDED = 2;
 	
 	
 		// ERROR MESSAGES
@@ -54,6 +55,10 @@ class Msg
 		
 			case Msg::SUCCESS_REGISTER:
 				$message = "Successful Registeration";
+				break;
+		
+			case Msg::SEND_EMAIL_SUCCEEDED:
+				$message = "Password reset email sent successfully";
 				break;
 		
 			case Msg::SUCCESS:

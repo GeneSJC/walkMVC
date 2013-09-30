@@ -47,7 +47,7 @@ class RecoverLogic
 		{
 			xlog ("sending Recover email");
 			sendRecoverEmail($emailQueryArr['email'], $resetKey); // FIXME - add try/catch
-			return Msg::SUCCESS;
+			return Msg::SEND_EMAIL_SUCCEEDED;
 		}
 		
 		xlog ("send failed");

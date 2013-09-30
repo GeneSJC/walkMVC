@@ -33,7 +33,7 @@
 				label {
 				 clear: both;
 				 float: left;
-				 width: 20%;
+				 width: 30%;
 				}
 				
 				input {
