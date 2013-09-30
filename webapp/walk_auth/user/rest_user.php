@@ -3,14 +3,14 @@
 	// viewXYZ should reference a Smarty template (.tpl)
 	// actionXYZ should reference some controller logic
 
-$app->get('/access/public/home',  viewLogin );  
-$app->get('/access/public/login',  viewLogin );  
-$app->get('/access/public/login/:msgId',  viewLogin );  
+$app->get('/access/public/home',  'viewLogin' );  
+$app->get('/access/public/login',  'viewLogin' );  
+$app->get('/access/public/login/:msgId',  'viewLogin' );  
   
-$app->get('/access/public/logout',  actionLogout );  
-$app->post('/access/user/login',  actionLogin );  
+$app->get('/access/public/logout',  'actionLogout' );  
+$app->post('/access/user/login',  'actionLogin' );  
 
-$app->get('/access/user/home',  viewUserHome ); // watch out to use 'get', & not post for redirects
+$app->get('/access/user/home',  'viewUserHome' ); // watch out to use 'get', & not post for redirects
 
 
 // ==================

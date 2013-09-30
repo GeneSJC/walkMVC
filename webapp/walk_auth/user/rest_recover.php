@@ -5,15 +5,15 @@
 
 	// For each level of REST hierarchy - group by VIEWS, then ACTIONS
 	
-$app->get('/access/public/recover',  viewPwdRecover );
-$app->get('/access/public/recover/:msgId',  viewPwdRecover );
+$app->get('/access/public/recover',  'viewPwdRecover' );
+$app->get('/access/public/recover/:msgId',  'viewPwdRecover' );
 
-$app->post('/access/user/recover',  actionSendRecoverEmail );  
+$app->post('/access/user/recover',  'actionSendRecoverEmail' );  
 
 	// we can try to use the same path if get/post are different ?!
 	
-$app->get('/access/user/reset/:resetKey',  viewResetPassword ); // 
-$app->post('/access/user/reset',  actionResetPassword ); // 
+$app->get('/access/user/reset/:resetKey',  'viewResetPassword' ); // 
+$app->post('/access/user/reset',  'actionResetPassword' ); // 
 
 function viewPwdRecover($msgId=0) 
 {

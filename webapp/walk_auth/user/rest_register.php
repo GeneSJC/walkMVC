@@ -4,8 +4,8 @@
 	// actionXYZ should reference some controller logic
 
 	// we can try to use the same path if get/post are different ?!
-$app->get('/access/public/register',  viewRegistration );  
-$app->post('/access/user/register',  actionRegister );  
+$app->get('/access/public/register',  'viewRegistration' );  
+$app->post('/access/user/register',  'actionRegister' );  
 
 
 function viewRegistration() 
