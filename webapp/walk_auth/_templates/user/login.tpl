@@ -6,8 +6,8 @@
 
 
 <br/> 
-<a href='http://localhost/dev/walkMVC/webapp/walk_auth/access/public/register'>Register</a><br />
-<a href='http://localhost/dev/walkMVC/webapp/walk_auth/access/public/recover' >Forgot password?</a>
+<a href='{$APP_ROOT}/public/register'>Register</a><br />
+<a href='{$APP_ROOT}/public/recover' >Forgot password?</a>
 
 
 <script type="text/javascript" >
