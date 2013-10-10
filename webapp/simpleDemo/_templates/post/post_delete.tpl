@@ -2,9 +2,9 @@
 
 Are you sure you want to delete the post at id: {$postId} ?
 
-<a href='{$APP_ROOT}/post/deleteConfirm/{$postId}'>Yes, Delete It</a>
+<a href='{$APP_WEB_ROOT}/post/deleteConfirm/{$postId}'>Yes, Delete It</a>
 <br/>
-<a href='{$APP_ROOT}/post/home'>Cancel</a>
+<a href='{$APP_WEB_ROOT}/post/home'>Cancel</a>
 
 {include file="../_general/footer.tpl"}
 

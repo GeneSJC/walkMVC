@@ -17,7 +17,7 @@ function loadSmarty($smartyPathPrefix='.')
 	$smarty->config_dir = 	$smartyPathPrefix . '/_resources/configs/';
 	
 	$smarty->assign("WALKMVC_ROOT", APP_FRAMEWORK_ROOT );
-	$smarty->assign("APP_ROOT", APP_WEB_ROOT );
+	$smarty->assign("APP_WEB_ROOT", APP_WEB_ROOT );
 	
 	//$smarty->force_compile = true;
 	//$smarty->debugging = true;
