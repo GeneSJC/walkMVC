@@ -16,7 +16,7 @@ function loadSmarty($smartyPathPrefix='.')
 	$smarty->compile_dir = 	$smartyPathPrefix . '/_resources/templates_c/';
 	$smarty->config_dir = 	$smartyPathPrefix . '/_resources/configs/';
 	
-	$smarty->assign("WALKMVC_ROOT", APP_FRAMEWORK_ROOT );
+	$smarty->assign("APP_FRAMEWORK_ROOT", APP_FRAMEWORK_ROOT );
 	$smarty->assign("APP_WEB_ROOT", APP_WEB_ROOT );
 	
 	//$smarty->force_compile = true;
