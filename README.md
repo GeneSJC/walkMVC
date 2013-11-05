@@ -4,14 +4,14 @@ walkMVC: Model-Centric PHP MVC Stack
 
 Quick Start Checklist: 
 ------------------------------
-1. Set the correct path information under webapps/<your_app>/_util/app_cfg.php - all configuration is centralized here; you shouldn't have to change any other files to get the example going.
-2. Make sure the  webapps/<your_app>/_resources/ folder is writable (chmod -R 777 * is ok for development)
+1. Set the correct path information under app_<your_app>/_util/app_cfg.php - all configuration is centralized here; you shouldn't have to change any other files to get the example going.
+2. Make sure the  app_<your_app>/_resources/ folder is writable (chmod -R 777 * is ok for development)
 
 
 
 Quick Start: 
 ----------
-1. Look at the app project under : walkMVC/tree/master/webapp/simpleDemo
+1. Look at the app project under : walkMVC/tree/master/app_simpleDemo
 2. In that folder, the main file is : access.php
 3. From there, you can follow the trail of PHP file-include calls (aka "require_once")
 
@@ -72,7 +72,7 @@ The difference here from the popular frameworks out there, is that:
 * Actual logic beyond mapping urls to views or actions, should be placed in logic_ files
 
 
-Example Project2: /webapps/walk_auth 
+Example Project2: /app_authDemo 
 ================================
 
 Provides user login, register, &amp; password recover
