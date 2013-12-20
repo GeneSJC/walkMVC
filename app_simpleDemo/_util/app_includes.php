@@ -1,7 +1,12 @@
 <?php
 
-function frameworkLevelIncludes($pathPrefix='../..')
+function frameworkLevelIncludes($pathPrefix=null)
 {
+	if ( !  $pathPrefix )
+	{
+		die ('You must provide the $pathPrefix to frameworkLevelIncludes() ' );
+	}
+	
 		// 3rd-PARTY INCLUDES
 		
 	require_once $pathPrefix . '/php/codeguy-Slim/Slim/Slim.php';
@@ -17,8 +22,13 @@ function frameworkLevelIncludes($pathPrefix='../..')
 }
 
 
-function appLevelIncludes($pathPrefix='.')
+function appLevelIncludes($pathPrefix=null)
 {
+	if ( !  $pathPrefix )
+	{
+		die ('You must provide the $pathPrefix to appLevelIncludes() ');
+	}
+		
 	// app-specific INCLUDES
 	
 	require_once $pathPrefix . '/_util/util_smarty.php';
