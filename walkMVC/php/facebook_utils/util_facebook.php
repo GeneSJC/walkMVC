@@ -68,7 +68,7 @@ class FacebookApiUtil
 		self::$SECRET = $secret;
 	}
 	
-	static function verifyInit()
+	private static function verifyInit()
 	{
 		if ( self::$APP_ID == null )
 		{
@@ -214,13 +214,12 @@ class FacebookApiUtil
     /**
      * Call this HTML content if FB $user is NOT logged in with approval
      */
-    public static function authJs () 
+    public static function authJs ($loginUrl=null) 
     { 
     	    $facebook_api = self::getFacebookApi();
     	       
-    	       $loginUrl = Yii::app()->baseUrl . '/index.php/site/login2';
-//        We don't have a user so showing Login Button
-//  v with Facebook
+       // We don't have a user so showing Login Button with Facebook
+       
            ob_start(); 
 ?>
 &nbsp;
@@ -270,23 +269,23 @@ class FacebookApiUtil
      */
     private static function getFacebookApi()
     {
-    	verifyInit();
-    	 
-    	global $facebook_api;
-    
-    	if ( $facebook_api != null)
-    	{
-    		return $facebook_api;
-    	}
-    
-    	$facebook_api = new Facebook(
-    			array(
-    					'appId'  => self::$APP_ID,
-    					'secret' => self::$SECRET,
-    			)
-    	);
-    
-    	return $facebook_api;
+	    	self::verifyInit();
+	    	 
+	    	global $facebook_api;
+	    
+	    	if ( $facebook_api != null)
+	    	{
+	    		return $facebook_api;
+	    	}
+	    
+	    	$facebook_api = new Facebook(
+	    			array(
+	    					'appId'  => self::$APP_ID,
+	    					'secret' => self::$SECRET,
+	    			)
+	    	);
+	    
+	    	return $facebook_api;
     }    
 }
 
