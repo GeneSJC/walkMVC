@@ -71,7 +71,7 @@ define('APP_LOG_PATH', 					APP_FILE_PATH . '/_resources/walk.log');
 class AppCfg
 {
 	const DB_SERVER = '127.0.0.1';
-	const DB_NAME = 'walk_rsnpg';
+	const DB_NAME = 'walk_mvc';
 	const DB_USER = 'root';
 	const DB_PWD = '';
 }
