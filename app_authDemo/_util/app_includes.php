@@ -11,9 +11,14 @@ function frameworkLevelIncludes($pathPrefix='../..')
 	
 	require_once($pathPrefix . '/php/smarty/libs/Smarty.class.php');
 	
+	require_once($pathPrefix . '/php/facebook_utils/facebook/facebook.php'); // the api
+	require_once($pathPrefix . '/php/facebook_utils/util_facebook.php');
+	
 		// walkMVC INCLUDES
 		
-	require_once $pathPrefix . '/php/misc_util.php';
+	require_once $pathPrefix . '/php/util_string.php';
+	require_once $pathPrefix . '/php/util_file.php';
+	require_once $pathPrefix . '/php/util_misc.php';
 }
 
 
