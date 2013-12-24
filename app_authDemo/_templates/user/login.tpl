@@ -16,5 +16,8 @@ $('#{$dFormId}').on('submit', function(ev) {
 });
 </script>
 
+{if isset($fbAppId) }
+	{include file="../_general/facebook_login_button.tpl"}
+{/if}
 
 {include file="../_general/footer.tpl"}
