@@ -7,14 +7,14 @@
  *  
  *  Integration points:
  *  
- *  1. Render the html/javascript for FB login button : FacebookUtil::authJs ()
+ *  1. Render the html/javascript for FB login button : FacebookApiUtil::authJs ()
  *  
  *  2. Handle FB login success: 
  *  
  *  	a) Define a REST path for handling this
  *  
  *  	b) The function that handles that request will 
- *  			- call: FacebookUtil::setFacebookUserLogin();
+ *  			- call: FacebookApiUtil::setFacebookUserLogin();
  *              - gets the FB UserId and retrieves the user:
  *  				> If user exists in local db - log them in
  *  				> If new user - register their info , then go back to a)
@@ -53,12 +53,12 @@ class FacebookApiUtil
 	{
 		if ( self::$APP_ID == null )
 		{
-			die("FacebookUtil::APP_ID must be set with FacebookUtil::init(appId, secret) ");
+			die("FacebookApiUtil::APP_ID must be set with FacebookApiUtil::init(appId, secret) ");
 		}
 		
 		if ( self::$SECRET == null )
 		{
-			die("FacebookUtil::SECRET must be set with FacebookUtil::init(appId, secret) ");
+			die("FacebookApiUtil::SECRET must be set with FacebookApiUtil::init(appId, secret) ");
 		}
 	}
 	
@@ -68,7 +68,7 @@ class FacebookApiUtil
 
 	public static function getFbUserId()
 	{
-		if ( $fb_user_profile = FacebookUtil::getFacebookUserProfile() )
+		if ( $fb_user_profile = FacebookApiUtil::getFacebookUserProfile() )
 		{
 			return  $fb_user_profile['id'];
 		}
