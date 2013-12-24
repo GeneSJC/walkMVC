@@ -11,7 +11,7 @@ frameworkLevelIncludes('../walkMVC');
 appLevelIncludes(APP_FILE_PATH);
 
 $smartyPathPrefix = '.';
-loadSmarty($smartyPathPrefix);
+SmartyUtil::loadSmarty($smartyPathPrefix);
 
 \Slim\Slim::registerAutoloader();
 $app = new \Slim\Slim();
@@ -20,8 +20,7 @@ getRestConfig('.', $app);
 
 $fbAppId = FacebookCfg::APP_ID;
 $fbSecret = FacebookCfg::SECRET;
-
-// FacebookUtil::init($fbAppId, $fbSecret);
+FacebookApiUtil::init($fbAppId, $fbSecret);
 
 	// FOR DEMO
 $app->get('/access/sayHello', 'sayHello' ); 
