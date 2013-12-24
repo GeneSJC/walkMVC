@@ -2,62 +2,72 @@
 
 /**
  * Go through all steps here to set up your deployment environment (local or live)
- * 1. Url Info
- * 2. Filesystem paths
- * 3. DB Info
- * 
- */
-	// 1) SET URL INFO
-	// ========================
+* 1. Url Info
+* 2. Filesystem paths
+* 3. DB Info
+*
+*/
 
-	// the top level path for any REST call
-define("APP_REST_ROOT", '/access');
+// 0) "BASELINE" CONFIG PARAMETERS
+// ========================
 
-	//  main .php file that will serve as centralized REST dispatcher
-define("APP_REST_ACCESS_FILE", 'access.php');  
+// WEB PATHS
 
-$walkMvcRoot = 'http://localhost/dev/walkMVC/walkMVC';
-define("APP_FRAMEWORK_ROOT", $walkMvcRoot);  
+define('DOMAIN', 							'http://localhost/dev');
+define('APP_SUBDOMAIN', 				'/walkMVC/app_simpleDemo');
+define('WALKMVC_SUBDOMAIN', 		'/walkMVC/walkMVC');
 
-	// eg, "http://localhost/dev/walkMVC/webapp/walk_auth/access"
-$webRoot = 'http://localhost/dev/walkMVC/app_simpleDemo/';
-define("APP_WEB_ROOT", $webRoot . APP_REST_ACCESS_FILE . APP_REST_ROOT);  
+// FILESYS PATHS
+
+define('WEB_ROOT_FILE_PATH', 		'/Library/WebServer/Documents/dev');
 
 
+// REST PATHS
+
+// main .php file that will serve as centralized REST dispatcher
+// necessary in url when the .htaccess rewrite isn't working
+define('APP_REST_ACCESS_FILE', '/access.php');
+
+// eg, 'http://localhost/dev/walkMVC/myApp/access'
+define('APP_REST_ROOT_PATH', '/access');
 
 
+// ================================================
+// ========================
+// ... the remaining paths are relative and should all fall in place
+
+// 1) SET URL INFO
+// ========================
+
+define('APP_WEB_ROOT', 				DOMAIN . APP_SUBDOMAIN);
+define('APP_FRAMEWORK_ROOT', 	DOMAIN . WALKMVC_SUBDOMAIN);
 
 
-	// 2) YOU MUST UPDATE THE FILE SYSTEM PATH
-	// ==================================================
+// the top level path for any REST call
+// define('APP_REST_ROOT', APP_WEB_ROOT . APP_REST_ROOT_PATH);
 
-$appPath = null;
-// $appPath = 'C:\xampp\htdocs\dev\walkMVC\webapp\simpleDemo';
-$appPath = '/Library/WebServer/Documents/dev/walkMVC/app_simpleDemo';
-if ( !  $appPath )
-{
-	die ('You must set the $appPath in app_cfg.php.  Make sure it is set *for your filesystem*');
-}
+// with .php in the path
+define('APP_REST_ROOT', APP_WEB_ROOT . APP_REST_ACCESS_FILE . APP_REST_ROOT_PATH);
 
-define("APP_FILE_PATH", $appPath);  
+// WEB PAGE RESOURCES
 
-$logPath = null;
-$logPath = '/_resources/walk.log'; // unix, mac
-// $logPath = '\_resources\walk.log'; // windows
-if ( !  $logPath )
-{
-	die ('You must set the $logPath in app_cfg.php.  Make sure it is set *for your filesystem*');
-}
-	// create file if it doesn't exist
-	// echo ' ' >   walk.log
-define("APP_LOG_PATH", APP_FILE_PATH . $logPath); 
+define('RESOURCES_ROOT', 	APP_WEB_ROOT . '/_resources');
+define('BASE_IMG_ROOT', 		RESOURCES_ROOT . '/img');
+define('BASE_CSS_ROOT', 		RESOURCES_ROOT . '/css');
+define('TEMPLATE_ROOT', 		BASE_CSS_ROOT . '/DesignShackTemplate');
 
 
+// 2) SET FILE SYSTEM PATH INFO
+// ==================================================
+
+define('APP_WALKMVC_FILE_PATH', 	WEB_ROOT_FILE_PATH . WALKMVC_SUBDOMAIN);
+define('APP_FILE_PATH', 					WEB_ROOT_FILE_PATH . APP_SUBDOMAIN);
+define('APP_LOG_PATH', 					APP_FILE_PATH . '/_resources/walk.log');
 
 
-	// 3) DB SETTINGS
-	// ========================
-	
+// 3) DB SETTINGS
+// ========================
+
 class AppCfg
 {
 	const DB_SERVER = '127.0.0.1';
@@ -68,3 +78,4 @@ class AppCfg
 
 
 ?>
+
