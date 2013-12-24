@@ -162,12 +162,12 @@ class FacebookApiUtil
 
 
     // ===================================
-    // ====  PRIVATE API REFERENCE - encapsulation  =====
+    // ====  API REFERENCE  =====
 
     /**
      * Loads the FB $facebook_user if logged in and has approved this app
      */
-    private static function getFacebookApi()
+    public static function getFacebookApi()
     {
 	    	self::verifyInit();
 	    	 
