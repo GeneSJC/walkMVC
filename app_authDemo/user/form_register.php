@@ -155,28 +155,37 @@ class RegisterFormConfig extends FormConfigBase
 	 */
 	public function getRequestAsEntity($userMapper=null)
 	{
-		$login = trim($_POST['login']);
-		$email = trim($_POST['email']);
-		$password = trim($_POST['password']);
-		$confirmPassword = trim($_POST['confirm_password']);
+		$login 					= trim($_POST['login']);
+		$email 					= trim($_POST['email']);
+		$password 			= trim($_POST['password']);
+		$confirmPassword 	= trim($_POST['confirm_password']);
 
-		# New, empty user entity
+		// New, empty user entity
 		$userEntity = $userMapper->get();
 
 		$userEntity->login = $login;
 		$userEntity->email = $email;
 		$userEntity->password = md5($password);
 
+			// check for fb_userid 
+		$fb_userid = trim($_POST['fb_userid']);
+		if ($fb_userid)
+		{
+			$userEntity->fb_userid = $fb_userid;
+		}
+		
 		return $userEntity;
 	}
 
-	public static function setRegisterPostData($new_username=null)
+	public static function setRegisterPostData($new_username=null, $fb_userid=null)
 	{
 		$_POST['login'] = $new_username;
 		$_POST['email'] = $new_username . UPDATE_EMAIL_DOMAIN;
 		
 		$_POST['password'] 				= FB_PASSWORD;
 		$_POST['confirm_password'] 	= FB_PASSWORD;
+		
+		$_POST['fb_userid'] 	= $fb_userid;
 	}
 
 }

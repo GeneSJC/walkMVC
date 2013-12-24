@@ -54,6 +54,12 @@ define("APP_LOG_PATH", APP_FILE_PATH . $logPath);
 
 
 
+class FacebookCfg
+{
+	const APP_ID = 'a';
+	const SECRET = 'b';
+}
+
 
 	// 3) DB SETTINGS
 	// ========================

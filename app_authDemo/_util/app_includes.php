@@ -11,7 +11,7 @@ function frameworkLevelIncludes($pathPrefix='../..')
 	
 	require_once($pathPrefix . '/php/smarty/libs/Smarty.class.php');
 	
-	require_once($pathPrefix . '/php/facebook_utils/facebook/facebook.php'); // the api
+	require_once($pathPrefix . '/php/facebook_utils/facebook_api/facebook.php'); // the api
 	require_once($pathPrefix . '/php/facebook_utils/util_facebook.php');
 	
 		// walkMVC INCLUDES
@@ -57,16 +57,20 @@ function appLevelIncludes($pathPrefix='.')
 */
 	// END model includes
 
-function getRestConfig($pathPrefix='.')
+function getRestConfig($pathPrefix=null, $app=null)
 {
-	\Slim\Slim::registerAutoloader();
-	$app = new \Slim\Slim();
-			
+	if ( ! $pathPrefix || ! $app )
+	{
+		die ('You must provide the $pathPrefix to getRestConfig(), and initialized the slim $app var');
+	}
+
 	require_once $pathPrefix . '/post/rest_post.php';	
 
 	require_once $pathPrefix . '/user/rest_user.php';
 	require_once $pathPrefix . '/user/rest_recover.php';
 	require_once $pathPrefix . '/user/rest_register.php';
+	
+	require_once $pathPrefix . '/_util/rest_facebook.php';
 	
 	return $app;
 }
