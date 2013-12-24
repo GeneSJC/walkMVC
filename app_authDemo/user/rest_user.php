@@ -37,7 +37,19 @@ function viewLogin($msgId=0)
 	$smarty->assign("dFormId", $loginFormCfg->formId);
 	$smarty->assign("dFormJSON",$jsonArr);
 	
+	setFacebookLoginButtonData();
+	
 	$smarty->display('user/login.tpl');
+}
+
+function setFacebookLoginButtonData() 
+{
+	global $smarty;
+	
+	$facebook_api = FacebookApiUtil::getFacebookApi();
+	
+	$smarty->assign("loginUrl", APP_WEB_ROOT . '/public/fbLogin');
+	$smarty->assign("fbAppId", $facebook_api->getAppID());
 }
 
 function actionLogout() 
@@ -79,7 +91,7 @@ function actionLogin()
 	$userLogic = new UserLogic();
 	$userLogic->actionLogin();
 	
-	$app->redirect(APP_WEB_ROOT . '/user/home'); // this view verifies the session
+	$app->redirect(APP_REST_ROOT . '/user/home'); // this view verifies the session
 }
 
 
