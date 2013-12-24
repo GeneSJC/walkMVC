@@ -1,7 +1,7 @@
 <?php
 
-require './facebook.php';
-require '../util_facebook.php';
+require './facebook/facebook.php';
+require './util_facebook.php';
 
  // global $user, $facebook, $user_profile, $permissions;
  
