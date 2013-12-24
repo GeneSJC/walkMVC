@@ -120,6 +120,3 @@ function actionResetPassword()
 	echo $result;
 }
 
-?>
-
-

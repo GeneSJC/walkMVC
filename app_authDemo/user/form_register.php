@@ -189,6 +189,3 @@ class RegisterFormConfig extends FormConfigBase
 	}
 
 }
-
-
-?>

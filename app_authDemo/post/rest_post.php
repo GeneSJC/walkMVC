@@ -119,4 +119,3 @@ function actionPostSave()
 	$app->redirect('./home');
 }
 
-?>

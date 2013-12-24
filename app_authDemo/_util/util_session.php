@@ -22,5 +22,3 @@ function isSessionActive()
 	
 	return true;
 }
-
-?>

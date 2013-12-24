@@ -52,6 +52,3 @@ class RecoverFormConfig extends FormConfigBase
 		return $emailArr;
 	}	
 }
-
-
-?>

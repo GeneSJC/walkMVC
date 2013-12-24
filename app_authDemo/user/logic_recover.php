@@ -82,6 +82,3 @@ class RecoverLogic
 		return $resetKey;
 	}
 }
-
-
-?>

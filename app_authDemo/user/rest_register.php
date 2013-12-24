@@ -49,6 +49,3 @@ function actionRegisterFacebookLogin ($new_username=null)
 	actionRegister(); // from rest_user.php
 }
 
-?>
-
-

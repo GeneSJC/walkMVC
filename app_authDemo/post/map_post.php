@@ -16,4 +16,3 @@ class PostMapper extends MapperBase
 
 
 
-?>

@@ -75,5 +75,3 @@ class LoginFormConfig extends FormConfigBase
 	
 }
 
-
-?>
