@@ -20,28 +20,33 @@ function actionFacebookLogin()
 		return; 
 	}
 	
-		// We will register the user if there is no $user entry in local db
-		
 	$userProfile = UserFacebookLogic::getExistingUserProfile($fbUserId);
-	if ( $userProfile == null )
+	if ( $userProfile != null )
 	{
-		$resultCode = FacebookApiUtil::setFacebookUserRegistration();
-		
-		if ($resultCode != Msg::SUCCESS)
-		{
-			handleNoSuccess($resultCode);
-			return;
-		}
-		
-		$app->redirect(APP_WEB_ROOT . '/access/user/register');
+		// set the flag for a known fb_user
+		LoginFormConfig::setLoginPostData ($userProfile);
+		$app->redirect(APP_WEB_ROOT . '/doFacebookLogin');
 		return;
 	}
 		
-		// At this point we have a $user entry, so let's log them in
-		
-			// set the flag for a known fb_user
-	FbSession::setSystemUsernameForCurrentFacebookUser ($userProfile->login);
-	$this->redirect(array('user/login')); // post
+	// We will register the user if there is no $user entry in local db		
+
+	handleFacebookUserRegister();
+}
+
+function handleFacebookUserRegister()
+{
+	$fb_user_profile = FacebookUtil::getFacebookUserProfile();
+	if ( ! $fb_user_profile )
+	{
+		handleNoSuccess(Msg::FACEBOOK_USER_IS_NULL);
+		return; 
+	}
+	
+	$new_username = UserLogic::getUniqueUsername($fb_user_profile['first_name']);
+	
+	RegisterFormConfig::setRegisterPostData ($new_username);
+	$app->redirect(APP_WEB_ROOT . '/doFacebookRegister');	
 }
 
 function handleNoSuccess($resultCode=null)

@@ -170,6 +170,14 @@ class RegisterFormConfig extends FormConfigBase
 		return $userEntity;
 	}
 
+	public static function setRegisterPostData($new_username=null)
+	{
+		$_POST['login'] = $new_username;
+		$_POST['email'] = $new_username . UPDATE_EMAIL_DOMAIN;
+		
+		$_POST['password'] 				= FB_PASSWORD;
+		$_POST['confirm_password'] 	= FB_PASSWORD;
+	}
 
 }
 

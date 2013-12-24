@@ -12,7 +12,7 @@ $app->get('/access/public/logout',  'actionLogout' );
 $app->get('/access/user/home',  'viewUserHome' ); // watch out to use 'get', & not post for redirects
 
 $app->post('/access/user/login',  'actionLogin' );  
-$app->get('/access/doFacebookLogin', 'actionSubmitFacebookLogin' );
+$app->get('/access/doAutoLogin', 'actionAutoLogin' );
 
 // ==================
 // PUBLIC VIEWS
@@ -50,16 +50,13 @@ function actionLogout()
 	$app->redirect('../public/login');
 }
 
-function actionSubmitFacebookLogin ()
+/**
+ * Expectation: $_POST is already populated with login credentials
+ */
+function actionAutoLogin ()
 {
-	global $app;
-
-	$_POST['login'] = 'aa';
-	$_POST['password'] = 'aa';
-
 	actionLogin(); // from rest_user.php
 }
-
 
 
 // ==================
