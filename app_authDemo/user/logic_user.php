@@ -124,6 +124,33 @@ class UserLogic
 		return $result;
 	}
 	
+	public static function getUniqueUsername($firstName=null)
+	{
+		$random = time() . '';
+		$new_username = substr($firstName, 0, 12); // . '_' . substr($random, 5);
+		$new_username = strtolower($new_username);
+		$base_username = $new_username;
+		
+		xlog ("Generated newusername = $new_username; will check to see if it exists.");
+		$unique_end = 0;
+		 
+		$adapter = getDbAdapter();
+		$userMapper = new UserMapper($adapter);
+		
+		$queryArr = array ('login'=>$new_username);
+		
+		// while a user is retrieved successfully with the criteria, let's generate another one; FIXME try as do/while
+		while ($user = $userMapper->first($queryArr))
+		{
+			xlog ("Found a match for username = $new_username , so we will try to generate another.");
+			 
+			$unique_end++;
+			 
+			$new_username = $base_username . '_' . $unique_end;
+		}
+		
+		return $new_username;
+	}
 }
 
 
