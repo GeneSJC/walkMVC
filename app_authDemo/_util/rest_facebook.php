@@ -43,7 +43,7 @@ function handleFacebookUserRegister()
 {
 	global $app;
 	
-	$fb_user_profile = FacebookUtil::getFacebookUserProfile();
+	$fb_user_profile = FacebookApiUtil::getFacebookUserProfile();
 	if ( ! $fb_user_profile )
 	{
 		handleNoSuccess(Msg::FACEBOOK_USER_IS_NULL);
