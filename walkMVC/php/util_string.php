@@ -51,11 +51,6 @@ function randString($length, $charset='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmno
 	return $str;
 }
 
-function singleQuote ($val) {
-	return "'$val'";
-}
-
-
 /**
  * Basic encryption of values for communicating with 3rd parties
  */
