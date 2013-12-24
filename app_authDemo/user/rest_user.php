@@ -48,7 +48,7 @@ function setFacebookLoginButtonData()
 	
 	$facebook_api = FacebookApiUtil::getFacebookApi();
 	
-	$smarty->assign("loginUrl", APP_WEB_ROOT . '/public/fbLogin');
+	$smarty->assign("loginUrl", APP_REST_ROOT . '/public/fbLogin');
 	$smarty->assign("fbAppId", $facebook_api->getAppID());
 }
 
