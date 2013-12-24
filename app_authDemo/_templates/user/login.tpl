@@ -1,5 +1,9 @@
 {include file="../_general/header.tpl" title={$title}}
 
+{if isset($fbAppId) }
+	{include file="../_general/facebook_login_button.tpl"}
+{/if}
+<br/>
 
 {* no if isset($dFormJSON) required, since we know this view expects that token *}
 {include file="../_general/dForm_block.tpl" }
@@ -16,8 +20,5 @@ $('#{$dFormId}').on('submit', function(ev) {
 });
 </script>
 
-{if isset($fbAppId) }
-	{include file="../_general/facebook_login_button.tpl"}
-{/if}
 
 {include file="../_general/footer.tpl"}
