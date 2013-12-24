@@ -1,13 +1,8 @@
 <?php
 
-require './facebook/facebook.php';
-require './util_facebook.php';
-
- // global $user, $facebook, $user_profile, $permissions;
- 
-$fbAppId = 'a';
-$fbSecret = 'b';
-FacebookApiUtil::init($fbAppId, $fbSecret);
+require '../facebook_api/facebook.php';
+require '../util_facebook.php';
+require './cfg_facebook.php';
 
 $fb_user_profile = FacebookApiUtil::getFacebookUserProfile(); // see function for global params accessible after this call
 
@@ -38,7 +33,7 @@ $fb_user_profile = FacebookApiUtil::getFacebookUserProfile(); // see function fo
     }
     else
     {
-    		$loginUrl = '../public/fbLogin';
+    		$loginUrl = './login_success.php';
     		 
         	echo FacebookApiUtil::authJs($loginUrl);
     }
