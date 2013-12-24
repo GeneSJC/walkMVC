@@ -13,10 +13,14 @@ appLevelIncludes(APP_FILE_PATH);
 $smartyPathPrefix = '.';
 loadSmarty($smartyPathPrefix);
 
-$app = getRestConfig('.');
+\Slim\Slim::registerAutoloader();
+$app = new \Slim\Slim();
 
-$fbAppId = '';
-$fbSecret = '';
+getRestConfig('.', $app);
+
+$fbAppId = FacebookCfg::APP_ID;
+$fbSecret = FacebookCfg::SECRET;
+
 // FacebookUtil::init($fbAppId, $fbSecret);
 
 	// FOR DEMO
