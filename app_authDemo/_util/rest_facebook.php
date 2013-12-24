@@ -30,7 +30,7 @@ function actionFacebookLogin()
 	{
 		// set the flag for a known fb_user
 		LoginFormConfig::setLoginPostData ($userProfile);
-		$app->redirect(APP_WEB_ROOT . '/doFacebookLogin');
+		$app->redirect(APP_REST_ROOT . '/doFacebookLogin');
 		return;
 	}
 		
@@ -43,7 +43,7 @@ function handleFacebookUserRegister()
 {
 	global $app;
 	
-	$fb_user_profile = FacebookUtil::getFacebookUserProfile();
+	$fb_user_profile = FacebookApiUtil::getFacebookUserProfile();
 	if ( ! $fb_user_profile )
 	{
 		handleNoSuccess(Msg::FACEBOOK_USER_IS_NULL);
@@ -53,7 +53,7 @@ function handleFacebookUserRegister()
 	$new_username = UserLogic::getUniqueUsername($fb_user_profile['first_name']);
 	
 	RegisterFormConfig::setRegisterPostData ($new_username);
-	$app->redirect(APP_WEB_ROOT . '/doFacebookRegister');	
+	$app->redirect(APP_REST_ROOT . '/doFacebookRegister');	
 }
 
 function handleNoSuccess($resultCode=null)

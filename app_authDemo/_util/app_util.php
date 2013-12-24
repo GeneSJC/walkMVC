@@ -15,7 +15,7 @@ function xlog ($msg)
 
 function sendRecoverEmail($recoverEmail, $resetKey=null)
 {
-	$appRoot = APP_WEB_ROOT;
+	$appRoot = APP_REST_ROOT;
 
 	$recoverUrl = $appRoot . "/user/reset/$resetKey";
 	$recoverLink = "<a href='$recoverUrl'>$recoverUrl</a>";
