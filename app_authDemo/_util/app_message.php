@@ -29,6 +29,8 @@ class Msg
 	const CONFIRM_PWD_DIFFERENT = -7;	
 	const USERID_EXISTS = -8;	
 	const NO_USER_FOR_EMAIL = -9;
+	const FACEBOOK_USER_IS_NULL = -10;
+	const UNEXPECTED_FACEBOOK_ERROR = -11;
 	
 	public static function get($msgCode)
 	{
@@ -102,6 +104,14 @@ class Msg
 				
 			case Msg::USERID_EXISTS:
 				$message = "User already exists";
+				break;
+				
+			case Msg::FACEBOOK_USER_IS_NULL:
+				$message = "Facebook user is null";
+				break;
+				
+			case Msg::UNEXPECTED_FACEBOOK_ERROR:
+				$message = "Unexpected Facebook login error. Please inform admin";
 				break;
 				
 			case Msg::UNEXPECTED_ERROR:

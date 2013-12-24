@@ -8,10 +8,11 @@ $app->get('/access/public/login',  'viewLogin' );
 $app->get('/access/public/login/:msgId',  'viewLogin' );  
   
 $app->get('/access/public/logout',  'actionLogout' );  
-$app->post('/access/user/login',  'actionLogin' );  
 
 $app->get('/access/user/home',  'viewUserHome' ); // watch out to use 'get', & not post for redirects
 
+$app->post('/access/user/login',  'actionLogin' );  
+$app->get('/access/doFacebookLogin', 'actionSubmitFacebookLogin' );
 
 // ==================
 // PUBLIC VIEWS
@@ -49,6 +50,16 @@ function actionLogout()
 	$app->redirect('../public/login');
 }
 
+function actionSubmitFacebookLogin ()
+{
+	global $app;
+
+	$_POST['login'] = 'aa';
+	$_POST['password'] = 'aa';
+
+	actionLogin(); // from rest_user.php
+}
+
 
 
 // ==================
@@ -71,7 +82,7 @@ function actionLogin()
 	$userLogic = new UserLogic();
 	$userLogic->actionLogin();
 	
-	$app->redirect('../user/home'); // this view verifies the session
+	$app->redirect(APP_WEB_ROOT . '/user/home'); // this view verifies the session
 }
 
 

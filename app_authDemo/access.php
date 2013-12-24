@@ -15,10 +15,13 @@ loadSmarty($smartyPathPrefix);
 
 $app = getRestConfig('.');
 
+$fbAppId = '';
+$fbSecret = '';
+// FacebookUtil::init($fbAppId, $fbSecret);
+
 	// FOR DEMO
 $app->get('/access/sayHello', 'sayHello' ); 
 function sayHello () 
 				{ echo "hello2"; }
-
 
 $app->run();

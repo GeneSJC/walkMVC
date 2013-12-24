@@ -16,6 +16,7 @@ class UserMapper extends MapperBase
 	public $password = array('type' => 'string', 'default' => 'draft');
 	public $created_on = array('type' => 'datetime');
 
+	public $fb_userid = array('type' => 'string');
 }
 
 
