@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Defined in <root>/utils so that:
  * a) This module is decoupled as much as possible
@@ -26,32 +27,13 @@
  *  
  *  
  *  4. Add a field to the user table for fb_userid
-*/
-
-
- /* 
- * 
- * 
- *   // ====== *   // ====== *   // ====== *   // ======
- *   // ====== *   // ====== *   // ====== *   // ======
- *   // ====== *   // ====== *   // ====== *   // ======
- *   // ====== *   // ====== *   // ====== *   // ======
- 
-      * Is there any way logic can reach this action if fb_user is not set?...or in an incorrect way
-     *  YES!! : If user is on the site, not logged in, and clicks Register
-     *                  > It automatically adds them to the system, even if they are already in it
-     *                  > SOLUTION?! : Set a flag from login2
-     * Let's say there's the profile, but no permission - then we wouldnt get here, FB login button would show
-     * I don't think this would happen; which means we can use process of elimination
-     * That is, if profile not set, this is just  normal registration request
-     * 
-*   
- *   // ====== *   // ====== *   // ====== *   // ======
-   public static function setFacebookUserRegistration() 
-    {
-
-
-     */
+ *  
+ *  // =========================
+ *  // =========================
+ *  
+ *  Related files to this: under ./app/, rest_facebook.php
+ *  
+ */
 
 class FacebookApiUtil
 {
@@ -60,7 +42,6 @@ class FacebookApiUtil
 	
 	// =========================
 	// ====  INIT HANDLERS =====
-	// =========================
 	
 	public static function init($appId, $secret)
 	{
@@ -84,8 +65,17 @@ class FacebookApiUtil
 
 	// =========================
 	// ====  GET FB API DATA  =====
-	// =========================
-	
+
+	public static function getFbUserId()
+	{
+		if ( $fb_user_profile = FacebookUtil::getFacebookUserProfile() )
+		{
+			return  $fb_user_profile['id'];
+		}
+		 
+		return null;
+	}
+		
     /**
      * Loads the FB $facebook_user if logged in and has approved this app
      */
@@ -118,98 +108,9 @@ class FacebookApiUtil
     
     }
 
-    public static function getFbUserId()
-    {
-	    	if ( $fb_user_profile = FacebookUtil::getFacebookUserProfile() )
-	    	{
-	    		return  $fb_user_profile['id'];
-	    	}
-	      
-	    	return null;
-    }
-
-    /**
-     * Calculates all data from FB user and generates a filled out Registration form
-     * Then we redirect to the ->post(..) register and it will register the user as if they entered the data manually
-     * 
-     * Does the following:
-     * 1. Sets a place holder for registration action to process registration
-     * 2. Generates username 
-     * 3. Populates the $_POST param for registration
-     */
-   public static function setFacebookUserRegistration() 
-    {
-        xlog ("enter actionFacebookRegistration");
-
-        // (DEPRECATE THIS -> )see function for global params accessible after this call
-        // this is an array data structure from facebook, so index value should be stable
-        $fb_user_profile = FacebookUtil::getFacebookUserProfile(); 
-        if ( ! $fb_user_profile )
-        {
-           return Msg::FACEBOOK_USER_IS_NULL;   
-        }
-        
-        // use the profile data to fill out the fields 
-
-        $new_username = UserLogic::getUniqueUsername($fb_user_profile['first_name']);
-
-        // xlog ("lower case name = $new_username");
-        
-      //  $new_username = substr($new_username, 0, 10);
-        $new_useremail = "$new_username@PleaseUpdateEmail_myCompany.com";
-        $new_useremail = ( isset($fb_user_profile['email'])  ) ? $fb_user_profile['email'] : $new_useremail;
-        
-        $_POST['RegistrationForm']['username'] = $new_username; ;
-        $_POST['RegistrationForm']['password'] = src::getConfig('fb_login_pwd');
-        $_POST['RegistrationForm']['verifyPassword'] = src::getConfig('fb_login_pwd');
-        $_POST['RegistrationForm']['email'] = $new_useremail;   
-        xlog (" fb_user_profile['id'] = " .  $fb_user_profile['id']);
-        
-        $_POST['Profile']['firstname'] = $fb_user_profile['first_name'];
-        $_POST['Profile']['fb_userid'] = $fb_user_profile['id'];
-        
-        xlog ("Have set the fb registration data");
-        
-        return Msg::SUCCESS;
-    }
-    
-    public static function updateProfileForFacebook($profile=null) 
-    {
-    		verifyInit();
-    		
-        if (isset($_POST['Profile']['fb_userid']))
-        {
-            $profile->fb_userid=$_POST['Profile']['fb_userid'];
-        }
-    }
-
-    /**
-     * If the facebook user flag was set, we will set that data in the $_POST
-     */
-   public static  function setFacebookUserLogin()
-    {
-    		verifyInit();
-    	
-        xlog ("enter setFacebookUserLogin");
-        if ($usernameViaFacebook = Yii::app()->user->getState('sys_username_of_cur_fb_user'))
-        {
-          Yii::app()->user->getState('sys_username_of_cur_fb_user', null); // remove it so it's not picked up another time
-          
-            xlog ("fbUsername = $usernameViaFacebook");
-            
-            $_POST['UserLogin']['username'] = $usernameViaFacebook;
-            $_POST['UserLogin']['password'] =  src::getConfig('fb_login_pwd');
-            
-            if (Yii::app()->user->isGuest) {
-                xlog ("TRUE:         if (Yii::app()->user->isGuest)  ");
-            }
-        }
-    }
-
     
     // ==============================
     // ====  GENERATE LOGIN CONTENT  =====
-    // ==============================
     
     /**
      * Call this HTML content if FB $user is NOT logged in with approval
@@ -262,7 +163,6 @@ class FacebookApiUtil
 
     // ===================================
     // ====  PRIVATE API REFERENCE - encapsulation  =====
-    // ===================================
 
     /**
      * Loads the FB $facebook_user if logged in and has approved this app

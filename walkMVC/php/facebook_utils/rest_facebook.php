@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * This handler expects the the walkMVC /user model (login, auth, etc) is in play 
+ * 
+ */
+
+/**
  * This is invoked upon successful login from the FB-login button
  */
 $app->get('/access/public/fbLogin',  'actionFacebookLogin' );
@@ -36,6 +41,8 @@ function actionFacebookLogin()
 
 function handleFacebookUserRegister()
 {
+	global $app;
+	
 	$fb_user_profile = FacebookUtil::getFacebookUserProfile();
 	if ( ! $fb_user_profile )
 	{
@@ -51,6 +58,8 @@ function handleFacebookUserRegister()
 
 function handleNoSuccess($resultCode=null)
 {
+	global $smarty;
+	
 	$msg = Msg::get($resultCode);
 	$smarty->assign("error_msg", $msg);
 	$smarty->display('user/login.tpl');
@@ -58,12 +67,12 @@ function handleNoSuccess($resultCode=null)
 
 function handleMissingFbUserId()
 {
+	global $smarty;
+	
 	$msg = Msg::get(Msg::UNEXPECTED_FACEBOOK_ERROR);
 	$smarty->assign("error_msg", $msg);
 	$smarty->display('user/login.tpl');	
 }
-
-
 
 
 ?>
