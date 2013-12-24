@@ -81,5 +81,3 @@ class FacebookCfg
 	const APP_ID = 'a';
 	const SECRET = 'b';
 }
-
-?>

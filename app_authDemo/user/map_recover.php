@@ -14,5 +14,3 @@ class RecoverMapper extends MapperBase
 }
 
 
-
-?>

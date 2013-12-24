@@ -49,5 +49,3 @@ abstract class FormConfigBase
 }
 
 
-
-?>

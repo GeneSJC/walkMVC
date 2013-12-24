@@ -25,5 +25,3 @@ function writeFile ($stringData, $myFile = null) {
 }
 
 
-
-?>

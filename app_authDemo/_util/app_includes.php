@@ -74,5 +74,3 @@ function getRestConfig($pathPrefix=null, $app=null)
 	
 	return $app;
 }
-
-?>

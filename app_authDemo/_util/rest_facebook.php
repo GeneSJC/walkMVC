@@ -74,7 +74,3 @@ function handleMissingFbUserId()
 	$smarty->display('user/login.tpl');	
 }
 
-
-?>
-
-

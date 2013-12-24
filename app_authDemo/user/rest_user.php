@@ -36,8 +36,12 @@ function viewLogin($msgId=0)
 	$smarty->assign("action", $loginFormCfg->action);
 	$smarty->assign("dFormId", $loginFormCfg->formId);
 	$smarty->assign("dFormJSON",$jsonArr);
-	
-	setFacebookLoginButtonData();
+
+	// don't try to show the button on localhost
+	if ( ! startsWith(DOMAIN, 'http://localhost') )
+	{
+		setFacebookLoginButtonData();
+	}
 	
 	$smarty->display('user/login.tpl');
 }
@@ -93,8 +97,3 @@ function actionLogin()
 	
 	$app->redirect(APP_REST_ROOT . '/user/home'); // this view verifies the session
 }
-
-
-?>
-
-

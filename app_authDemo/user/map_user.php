@@ -20,5 +20,3 @@ class UserMapper extends MapperBase
 }
 
 
-
-?>

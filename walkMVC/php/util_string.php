@@ -116,4 +116,3 @@ function hexToStr($hex)
 	return $str;
 }
 
-?>
