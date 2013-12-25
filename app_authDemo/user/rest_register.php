@@ -34,6 +34,8 @@ function actionRegister()
 {
 	global $app, $smarty;
 	
+	var_dump($_POST);
+	
 	$userLogic = new UserLogic();
 	$result = $userLogic->actionRegister();
 	
@@ -44,8 +46,22 @@ function actionRegister()
 /**
  * Expectation: $_POST is already populated with register form data
  */
-function actionRegisterFacebookLogin ($new_username=null)
+function actionRegisterFacebookLogin ()
 {
+	if ( isFacebookUserRegister() )
+	{
+		$fb_user_profile = FacebookApiUtil::getFacebookUserProfile();
+		if ( ! $fb_user_profile )
+		{
+			handleNoSuccess(Msg::FACEBOOK_USER_IS_NULL);
+			return;
+		}
+		
+		$new_username = UserLogic::getUniqueUsername($fb_user_profile['first_name']);
+		
+		RegisterFormConfig::setRegisterPostData ($new_username);	
+	}
+	
 	actionRegister(); // from rest_user.php
 }
 

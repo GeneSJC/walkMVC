@@ -43,16 +43,8 @@ function handleFacebookUserRegister()
 {
 	global $app;
 	
-	$fb_user_profile = FacebookApiUtil::getFacebookUserProfile();
-	if ( ! $fb_user_profile )
-	{
-		handleNoSuccess(Msg::FACEBOOK_USER_IS_NULL);
-		return; 
-	}
+	setFacebookUserRegister();
 	
-	$new_username = UserLogic::getUniqueUsername($fb_user_profile['first_name']);
-	
-	RegisterFormConfig::setRegisterPostData ($new_username);
 	$app->redirect(APP_REST_ROOT . '/doFacebookRegister');	
 }
 
