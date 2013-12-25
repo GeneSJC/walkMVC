@@ -35,12 +35,13 @@ function actionRegister()
 	global $app, $smarty;
 	
 	var_dump($_POST);
+	die('h3');
 	
 	$userLogic = new UserLogic();
 	$result = $userLogic->actionRegister();
 	
 	// echo $result;
-	$app->redirect('../public/login/' . Msg::SUCCESS_REGISTER);
+	$app->redirect('../access/public/login/' . Msg::SUCCESS_REGISTER);
 }
 
 /**
