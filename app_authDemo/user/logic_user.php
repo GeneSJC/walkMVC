@@ -55,19 +55,18 @@ class UserLogic
 		
 		$user = $userMapper->first($registerQueryArr) ;
 		
-		$result = Msg::USERID_EXISTS; // let $count say different
-		if ( ! $user ) 
+		if ( $user ) 
 		{
-			$userEntity = $registerFormConfig->getRequestAsEntity($userMapper);
-			$userMapper->save($userEntity);
-			
-				// this will automatically login the user
-			App::createSession($userEntity->id, $userEntity->login);
-			
-			$result = Msg::SUCCESS;
+			return Msg::USERID_EXISTS;
 		}
-
-		return $result;
+		
+		$userEntity = $registerFormConfig->getRequestAsEntity($userMapper);
+		$userMapper->save($userEntity);
+		
+			// this will automatically login the user
+		App::createSession($userEntity->id, $userEntity->login);
+		
+		return  Msg::SUCCESS_REGISTER;
 	}
 	
 	/**

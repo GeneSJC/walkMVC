@@ -12,7 +12,8 @@ $app->get('/access/public/logout',  'actionLogout' );
 $app->get('/access/user/home',  'viewUserHome' ); // watch out to use 'get', & not post for redirects
 
 $app->post('/access/user/login',  'actionLogin' );  
-$app->get('/access/doAutoLogin', 'actionAutoLogin' );
+
+$app->get('/access/doFacebookLogin', 'actionFacebookLogin' );
 
 // ==================
 // PUBLIC VIEWS
@@ -67,10 +68,21 @@ function actionLogout()
 }
 
 /**
- * Expectation: $_POST is already populated with login credentials
+ * 
  */
-function actionAutoLogin ()
+function actionFacebookLogin ()
 {
+	$fbUserId = FacebookApiUtil::getFbUserId();
+	if ( ! $fbUserId )
+	{
+		SmartyUtil::renderLoginForError(Msg::FACEBOOK_USER_IS_NULL);
+		return;
+	}
+	
+	$user = UserFacebookLogic::getFacebookNativeUser($fbUserId);
+	
+	LoginFormConfig::setLoginPostData ($user);
+	
 	actionLogin(); // from rest_user.php
 }
 
