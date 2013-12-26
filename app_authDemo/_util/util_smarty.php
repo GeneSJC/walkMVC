@@ -1,6 +1,9 @@
 <?php
 
-
+/**
+ * Util for setting up core Smarty elements 
+ *
+ */
 class SmartyUtil
 {
 	/**
@@ -23,6 +26,8 @@ class SmartyUtil
 		$smarty->assign("APP_WEB_ROOT", 				APP_WEB_ROOT );
 		$smarty->assign("APP_REST_ROOT", 				APP_REST_ROOT );			
 		
+		self::setMessageValues();
+		
 		//$smarty->force_compile = true;
 		//$smarty->debugging = true;
 		
@@ -30,6 +35,19 @@ class SmartyUtil
 		// $smarty->cache_lifetime = 120;
 	}
 
+	public static function setMessageValues()
+	{
+		global $smarty;
+		
+		xlog ("checking for successMsg");
+		
+		$successMsg = App::getSuccessMessage();
+		if ($successMsg)
+		{
+			$smarty->assign('message', $successMsg);
+		}
+	}
+	
 	/**
 	 * Sets a single function to be loaded into the <body onload=".."> call
 	 * 
@@ -57,5 +75,30 @@ class SmartyUtil
 		$smarty->assign("dFormId", $formCfg->formId);
 		$smarty->assign("dFormJSON",$jsonArr);
 	}
-	
+
+	/**
+	 * Sets error and calls to render login page
+	 * 
+	 * @param string $errorCode
+	 * @param string $view optional alternative to login view
+	 */
+	public static function renderLoginForError ($errorCode=null, $view=null)
+	{
+		global $smarty;
+
+		$msg = Msg::get($errorCode);
+		$smarty->assign("error_msg", $msg);
+		
+		if ($view)
+		{
+			$smarty->display($view);
+		}
+		else
+		{
+			$smarty->display('user/login.tpl');
+		}
+	}
+
+
+
 }
