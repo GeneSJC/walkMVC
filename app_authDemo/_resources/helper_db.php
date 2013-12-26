@@ -1,8 +1,8 @@
 <?php
 
-require_once './_util/app_includes.php';
-frameworkLevelIncludes('../..');
-appLevelIncludes('.');
+require_once '../_util/app_includes.php';
+frameworkLevelIncludes('../../walkMVC');
+appLevelIncludes('../');
 
 function create($flag=null)
 {
@@ -66,7 +66,8 @@ function testPostMap()
 	
 }
 
-function testUserMap()
+
+function testUserMap2()
 {
 	$adapter = getDbAdapter();
 	$userMapper = new UserMapper($adapter);
@@ -101,9 +102,47 @@ function testUserMap()
 		
 }
 
-testUserMap();
+
+function testUserMap()
+{
+	$adapter = getDbAdapter();
+	$userMapper = new UserMapper($adapter);
+
+	$login = 'admin';
+	// $login = 'aa';
+	
+	$login = 'aa';
+
+	$user = $userMapper->first(
+			array(
+					'login' => $login
+			)
+	);
+
+	// var_dump($user);
+	
+	if ( ! $user )
+		echo 'no user';
+	else
+		echo 'yes user';
+	
+	$i = 0;
+	
+	do 
+	{
+		echo 'hi';
+		$i++;
+			
+	} while ($i < 3);
+	
+	// echo $user->id , '  ', $user->login, '  ', $user->email, '  ', $user->password, " <br/>\n";
+}
+
+// testUserMap();
 
 // testPostMap();
 // create(1);
 
+	$name = UserLogic::getUniqueUsername('abc');
+	echo $name;
 ?>
