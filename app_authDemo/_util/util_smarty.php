@@ -84,7 +84,7 @@ class SmartyUtil
 	 */
 	public static function renderLoginForError ($errorCode=null, $view=null)
 	{
-		global $smarty;
+		global $smarty, $app;
 
 		$msg = Msg::get($errorCode);
 		$smarty->assign("error_msg", $msg);
@@ -95,10 +95,20 @@ class SmartyUtil
 		}
 		else
 		{
-			$smarty->display('user/login.tpl');
+			$app->redirect(APP_REST_ROOT . '/public/login/' . $errorCode);
 		}
 	}
 
-
-
+	public static function renderSuccessOrLoginForError ($resultCode=null, $successRestPath=null)
+	{
+		global $app;
+	
+		if ( $resultCode !=  Msg::SUCCESS )
+		{
+			SmartyUtil::renderLoginForError($resultCode);
+			return;
+		}
+		
+		$app->redirect($successRestPath); // this view verifies the session
+	}
 }
