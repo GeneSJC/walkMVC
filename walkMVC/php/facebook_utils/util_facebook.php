@@ -189,32 +189,3 @@ class FacebookApiUtil
     }    
 }
 
-/**
- * Helper class for tracking FB session data
- * 
- * session_start() - should have been set "upstream"; nec. in order to use $_SESSION
- * 
- */
-class FbSession
-{
-	function getSystemUsernameForCurrentFacebookUser()
-	{
-		return $_SESSION['sys_username_of_cur_fb_user'];
-	}
-	
-	function setSystemUsernameForCurrentFacebookUser($sysUsername=null)
-	{
-		$_SESSION['sys_username_of_cur_fb_user'] = $sysUsername;
-	}	
-	
-	function isDoFacebookRegisteration()
-	{
-		return $_SESSION['do_fb_reg'];
-	}
-	
-	function setDoFacebookRegisteration($flag=true)
-	{
-		$_SESSION['do_fb_reg'] = $flag;
-	}	
-	
-}
