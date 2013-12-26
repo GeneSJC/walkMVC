@@ -8,61 +8,30 @@
 /**
  * This is invoked upon successful login from the FB-login button
  */
-$app->get('/access/public/fbLogin',  'actionFacebookLogin' );
+$app->get('/access/public/initFacebookLogin',  'actionInitFacebookLogin' );
 
 /**
  * 1. Confirm we can get $fbUserId
- * 2. If $user doesn't exist - prime $_POST data & redirect to actionRegister
+ * 2. If $user doesn't exist redirect to registration
  */
-function actionFacebookLogin()
+function actionInitFacebookLogin()
 {
 	global $app;
 	
 	$fbUserId = FacebookApiUtil::getFbUserId(); // see function for global params accessible after this call
 	if ( ! $fbUserId )
 	{
-		handleMissingFbUserId();
+		SmartyUtil::renderLoginForError(Msg::FACEBOOK_USER_IS_NULL);
 		return; 
 	}
 	
-	$userProfile = UserFacebookLogic::getExistingUserProfile($fbUserId);
-	if ( $userProfile != null )
+	$user = UserFacebookLogic::getFacebookNativeUser($fbUserId);
+	if ( $user != null )
 	{
-		// set the flag for a known fb_user
-		LoginFormConfig::setLoginPostData ($userProfile);
 		$app->redirect(APP_REST_ROOT . '/doFacebookLogin');
 		return;
 	}
 		
 	// We will register the user if there is no $user entry in local db		
-
-	handleFacebookUserRegister();
-}
-
-function handleFacebookUserRegister()
-{
-	global $app;
-	
-	setFacebookUserRegister();
-	
 	$app->redirect(APP_REST_ROOT . '/doFacebookRegister');	
 }
-
-function handleNoSuccess($resultCode=null)
-{
-	global $smarty;
-	
-	$msg = Msg::get($resultCode);
-	$smarty->assign("error_msg", $msg);
-	$smarty->display('user/login.tpl');
-}
-
-function handleMissingFbUserId()
-{
-	global $smarty;
-	
-	$msg = Msg::get(Msg::UNEXPECTED_FACEBOOK_ERROR);
-	$smarty->assign("error_msg", $msg);
-	$smarty->display('user/login.tpl');	
-}
-
