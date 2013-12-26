@@ -56,7 +56,7 @@ class Msg
 		switch ($msgCode) {
 		
 			case Msg::SUCCESS_REGISTER:
-				$message = "Successful Registeration";
+				$message = "Successful Registration";
 				break;
 		
 			case Msg::SEND_EMAIL_SUCCEEDED:
