@@ -50,6 +50,8 @@ function actionRegister()
  */
 function actionRegisterFacebookLogin ()
 {
+	global $app;
+	
 	$fb_user_profile = FacebookApiUtil::getFacebookUserProfile();
 	if ( ! $fb_user_profile )
 	{
