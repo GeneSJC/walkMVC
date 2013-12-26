@@ -47,15 +47,6 @@ function viewLogin($msgId=0)
 	$smarty->display('user/login.tpl');
 }
 
-function setFacebookLoginButtonData() 
-{
-	global $smarty;
-	
-	$facebook_api = FacebookApiUtil::getFacebookApi();
-	
-	$smarty->assign("loginUrl", APP_REST_ROOT . '/public/initFacebookLogin');
-	$smarty->assign("fbAppId", $facebook_api->getAppID());
-}
 
 function actionLogout() 
 {
@@ -67,29 +58,11 @@ function actionLogout()
 	$app->redirect('../public/login');
 }
 
-/**
- * 
- */
-function actionFacebookLogin ()
-{
-	$fbUserId = FacebookApiUtil::getFbUserId();
-	if ( ! $fbUserId )
-	{
-		SmartyUtil::renderLoginForError(Msg::FACEBOOK_USER_IS_NULL);
-		return;
-	}
-	
-	$user = UserFacebookLogic::getFacebookNativeUser($fbUserId);
-	
-	LoginFormConfig::setLoginPostData ($user->login, FB_PASSWORD);
-
-	actionLogin(); // from rest_user.php
-}
-
 
 // ==================
-// MEMBER-ONLY VIEWS
+// MEMBER-ONLY HANDLERS
 // --------------------
+
 function viewUserHome() 
 {
 	redirectIfNoSession(); // FIXME - set some variable to indicate no session
@@ -100,13 +73,57 @@ function viewUserHome()
 	$smarty->display('user/profile.tpl');
 }
 
-
 function actionLogin() 
 {
 	global $app;
+	$successPath = APP_REST_ROOT . '/user/home';
 	
 	$userLogic = new UserLogic();
-	$userLogic->actionLogin();
+	$resultCode = $userLogic->actionLogin();
 	
-	$app->redirect(APP_REST_ROOT . '/user/home'); // this view verifies the session
+	SmartyUtil::renderSuccessOrLoginForError ($resultCode, $successPath);
+	
+// 	if ( $resultCode !=  Msg::SUCCESS )
+// 	{
+// 		SmartyUtil::renderLoginForError(Msg::FACEBOOK_USER_IS_NULL);
+// 		return;
+// 	}
+	
+// 	$app->redirect(APP_REST_ROOT . '/user/home'); // this view verifies the session
+}
+
+
+// ==================
+// FACEBOOK HANDLERS
+// --------------------
+
+
+function setFacebookLoginButtonData()
+{
+	global $smarty;
+
+	$facebook_api = FacebookApiUtil::getFacebookApi();
+
+	$smarty->assign("loginUrl", APP_REST_ROOT . '/public/initFacebookLogin');
+	$smarty->assign("fbAppId", $facebook_api->getAppID());
+}
+
+
+/**
+ *
+ */
+function actionFacebookLogin ()
+{
+	$fbUserId = FacebookApiUtil::getFbUserId();
+	if ( ! $fbUserId )
+	{
+		SmartyUtil::renderLoginForError(Msg::FACEBOOK_USER_IS_NULL);
+		return;
+	}
+
+	$user = UserFacebookLogic::getFacebookNativeUser($fbUserId);
+
+	LoginFormConfig::setLoginPostData ($user->login, FB_PASSWORD);
+
+	actionLogin(); // from rest_user.php
 }

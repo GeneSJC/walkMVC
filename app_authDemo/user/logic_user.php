@@ -19,8 +19,9 @@ class UserLogic
 		
 		if ( $loginQueryArr == null )
 		{
-			xlog("Missing fields");
-			return;
+			xlog("SYS ERROR: Missing necessary fields for actionLogin() ");
+			
+			return Msg::UNEXPECTED_ERROR;
 		}
 		
 		$adapter = getDbAdapter();
@@ -33,11 +34,9 @@ class UserLogic
 			App::createSession($user->id, $user->login);
 			return Msg::SUCCESS;
 		}
-		else
-		{
-			xlog("NO user - BAD LOGIN ");
-			return Msg::UNKNOWN_USER;
-		}		
+		
+		xlog("NO user - BAD LOGIN ");
+		return Msg::UNKNOWN_USER;
  	}
 	
 	/* if (!preg_match("/[0-9a-z_]+@[0-9a-z_^\.]+\.[a-z]{2,3}/i", $email)) {
