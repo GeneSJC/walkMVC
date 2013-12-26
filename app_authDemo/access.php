@@ -7,7 +7,7 @@ session_start();
 require_once './_util/app_cfg.php';
 require_once './_util/app_includes.php';	
 
-frameworkLevelIncludes('../walkMVC');
+frameworkLevelIncludes('../platform');
 appLevelIncludes(APP_FILE_PATH);
 
 $smartyPathPrefix = '.';

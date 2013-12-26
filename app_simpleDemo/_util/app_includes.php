@@ -18,7 +18,9 @@ function frameworkLevelIncludes($pathPrefix=null)
 	
 		// walkMVC INCLUDES
 		
-	require_once $pathPrefix . '/php/misc_util.php';
+	require_once $pathPrefix . '/php/util_string.php';
+	require_once $pathPrefix . '/php/util_file.php';
+	require_once $pathPrefix . '/php/util_misc.php';
 }
 
 

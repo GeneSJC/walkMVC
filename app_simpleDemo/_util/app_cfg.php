@@ -15,7 +15,7 @@
 
 define('DOMAIN', 							'http://localhost/dev');
 define('APP_SUBDOMAIN', 				'/walkMVC/app_simpleDemo');
-define('WALKMVC_SUBDOMAIN', 		'/walkMVC/walkMVC');
+define('WALKMVC_SUBDOMAIN', 		'/walkMVC/platform');
 
 // FILESYS PATHS
 
