@@ -218,38 +218,3 @@ class FbSession
 	}	
 	
 }
-
-/**
- * Helper class based on model in map_user.php that support fb elements  
- *
- */
-class UserFacebookLogic
-{
-	public static function getExistingUserProfile($fbUserId=null)
-	{
-		$adapter = getDbAdapter();
-		$userMapper = new UserMapper($adapter);
-
-		$userProfile = $userMapper->first(
-				array(
-						'fb_userid' => $fbUserId
-				)
-		);
-
-		return $userProfile;
-	}
-
-	public static function handleFbUser($userProfile=null)
-	{
-
-	
-		xlog ("Setting user name with " . $user->username);
-
-		// set the flag for a known fb_user
-		FbSession::setSystemUsernameForCurrentFacebookUser ($userProfile->login);
-		$this->redirect(array('user/login'));
-	
-		return Msg::UNEXPECTED_FACEBOOK_ERROR;
-	}
-	
-}
