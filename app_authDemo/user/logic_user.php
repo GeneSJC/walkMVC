@@ -30,12 +30,7 @@ class UserLogic
 		
 		if ($user)
 		{
-			// echo "Got user<br/>";
-		
-			// session_start(); // should have been set "upstream"; nec. in order to use $_SESSION
-			$_SESSION['user_id'] = $user->id;
-			$_SESSION['user_name'] = $user->login;
-			
+			App::createSession($user->id, $user->login);
 			return Msg::SUCCESS;
 		}
 		else
@@ -65,6 +60,9 @@ class UserLogic
 		{
 			$userEntity = $registerFormConfig->getRequestAsEntity($userMapper);
 			$userMapper->save($userEntity);
+			
+				// this will automatically login the user
+			App::createSession($userEntity->id, $userEntity->login);
 			
 			$result = Msg::SUCCESS;
 		}
@@ -124,33 +122,74 @@ class UserLogic
 		return $result;
 	}
 	
-	public static function getUniqueUsername($firstName=null)
+	public static function getUniqueUsername($nameString=null)
 	{
-		$random = time() . '';
-		$new_username = substr($firstName, 0, 12); // . '_' . substr($random, 5);
-		$new_username = strtolower($new_username);
-		$base_username = $new_username;
-		
-		xlog ("Generated newusername = $new_username; will check to see if it exists.");
-		$unique_end = 0;
+		$base_username = self::getBaseUsername($nameString);
 		 
 		$adapter = getDbAdapter();
 		$userMapper = new UserMapper($adapter);
 		
-		$queryArr = array ('login'=>$new_username);
+		$unique_end = 1;
 		
-		// while a user is retrieved successfully with the criteria, let's generate another one; FIXME try as do/while
-		while ($user = $userMapper->first($queryArr))
+		/*
+		 * Run this loop to generate a username that is not already in the db
+		 * 
+		 * If username is unique, the query for $userEntity will return false
+		 * Not checking for [$user != null] because phpDataMapper should return false for no results
+		 * If result is other than false, it means data was returned and we need to try another username
+		 */
+		do
 		{
-			xlog ("Found a match for username = $new_username , so we will try to generate another.");
-			 
-			$unique_end++;
-			 
 			$new_username = $base_username . '_' . $unique_end;
-		}
+			App::xlog ("Generated new username = $new_username; will check to see if it exists.");
+			
+			$queryArr = array ('login'=>$new_username);
+			
+			$user = $userMapper->first($queryArr);
+		} 
+		while ( $user != false);
 		
 		return $new_username;
 	}
+	
+	/**
+	 * Returns the base username to use to generate a new username
+	 */
+	private static function getBaseUsername($nameString=null)
+	{
+		$random = time() . '';
+		$base_username = substr($nameString, 0, 12); // . '_' . substr($random, 5);
+		$base_username = strtolower($base_username);
+
+		return $base_username;
+	}
+
 }
 
 
+/**
+ * Helper class based on model in map_user.php that support fb elements
+ *
+ */
+class UserFacebookLogic
+{
+	/**
+	 * Returns the app user model as a phpDataMapper 'entity'
+	 *
+	 * @param string $fbUserId
+	 * @return unknown
+	 */
+	public static function getFacebookNativeUser($fbUserId=null)
+	{
+		$adapter = getDbAdapter();
+		$userMapper = new UserMapper($adapter);
+	
+		$user = $userMapper->first(
+				array(
+						'fb_userid' => $fbUserId
+				)
+		);
+	
+		return $user;
+	}
+}
