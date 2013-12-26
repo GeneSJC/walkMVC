@@ -23,23 +23,3 @@ function isSessionActive()
 	return true;
 }
 
-/**
- * Gets cleared after called
- * 
- * @return boolean
- */
-function isFacebookUserRegister()
-{
-	if ( in_array(is_facebook_user_register, $_SESSION) )
-	{
-		unset($_SESSION['is_facebook_user_register']);
-		return true;
-	}
-	
-	return false; 
-}
-
-function setFacebookUserRegister()
-{
-	$_SESSION['is_facebook_user_register'] = true;
-}
