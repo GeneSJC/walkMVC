@@ -168,7 +168,10 @@ class RegisterFormConfig extends FormConfigBase
 		$userEntity->password = md5($password);
 
 			// check for fb_userid 
-		$fb_userid = trim($_POST['fb_userid']);
+		$fb_userid = ( array_key_exists('fb_userid', $_POST) ) 
+							? trim($_POST['fb_userid']) 
+							: null;
+		
 		if ($fb_userid)
 		{
 			$userEntity->fb_userid = $fb_userid;
