@@ -67,10 +67,10 @@ class LoginFormConfig extends FormConfigBase
 		return $loginArr;
 	}
 	
-	public static function setLoginPostData($userEntity=null)
+	public static function setLoginPostData($login=null, $password=null)
 	{
-		$_POST['login'] 			= $userEntity->login;
-		$_POST['password'] 	= $userEntity->password;
+		$_POST['login'] 			= $login;
+		$_POST['password'] 	= $password;
 	}
 	
 }

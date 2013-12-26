@@ -81,8 +81,8 @@ function actionFacebookLogin ()
 	
 	$user = UserFacebookLogic::getFacebookNativeUser($fbUserId);
 	
-	LoginFormConfig::setLoginPostData ($user);
-	
+	LoginFormConfig::setLoginPostData ($user->login, FB_PASSWORD);
+
 	actionLogin(); // from rest_user.php
 }
 
@@ -99,6 +99,7 @@ function viewUserHome()
 	$smarty->assign("title", "Profile Home");
 	$smarty->display('user/profile.tpl');
 }
+
 
 function actionLogin() 
 {
