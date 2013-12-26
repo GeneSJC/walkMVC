@@ -16,7 +16,7 @@ $app->post('/access/user/login',  'actionLogin' );
 $app->get('/access/doFacebookLogin', 'actionFacebookLogin' );
 
 // ==================
-// PUBLIC VIEWS
+// PUBLIC HANDLERS
 // --------------------
 function viewLogin($msgId=0) 
 {
