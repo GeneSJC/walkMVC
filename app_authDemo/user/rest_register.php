@@ -30,6 +30,9 @@ function viewRegistration()
 	$smarty->display('user/register.tpl');
 }
 
+/**
+ * Upon registering, will set the session info too
+ */
 function actionRegister() 
 {
 	global $app;
@@ -63,8 +66,10 @@ function actionRegisterFacebookLogin ()
 	
 	RegisterFormConfig::setRegisterPostData ($new_username, $fb_user_profile['id']);	
 	
-	$userLogic = new UserLogic();
-	$result = $userLogic->actionRegister();
+	actionRegister();
+	
+	// $userLogic = new UserLogic();
+	// $result = $userLogic->actionRegister();
 		
 	/*
 	 * If the result is success, it means a few things:
@@ -73,6 +78,6 @@ function actionRegisterFacebookLogin ()
 	* c) We can redirect to doFacebookLogin and it will be able to use current fb_userid to find the native user
 	*
 	*/
-	$app->redirect('../access/doFacebookLogin');
+	// $app->redirect('../access/doFacebookLogin');
 }
 
