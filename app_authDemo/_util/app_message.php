@@ -1,6 +1,5 @@
 <?php
 
-
 /**
 
 usage:
@@ -32,10 +31,26 @@ class Msg
 	const FACEBOOK_USER_IS_NULL = -10;
 	const UNEXPECTED_FACEBOOK_ERROR = -11;
 	
-	public static function get($msgCode)
+	/**
+	 * Assumption: this will always be called with some param 
+	 * 
+	 * @param $msgCode 
+	 * @return Messages string
+	 */
+	public static function get($msgCode=null)
 	{
+		( ! $msgCode ) ? die('Calling Msg::get() with no param') : null;
+		
 		$message = null;
 
+			// hack-ish solution for bypassing numeric code
+			// if not an int, then assuming it's  hard coded string
+		if ( ! is_numeric($msgCode))
+		{
+			$message = $msgCode;
+			return $message;
+		}
+		
 		if ($msgCode < 0)
 		{
 			$message = self::getErrorMsg($msgCode);
