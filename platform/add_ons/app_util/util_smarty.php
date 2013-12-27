@@ -25,8 +25,18 @@ class SmartyUtil
 		$smarty->assign("APP_FRAMEWORK_ROOT", 	APP_FRAMEWORK_ROOT );
 		$smarty->assign("APP_WEB_ROOT", 				APP_WEB_ROOT );
 		$smarty->assign("APP_REST_ROOT", 				APP_REST_ROOT );			
+		$smarty->assign("BASE_CSS_ROOT", 				BASE_CSS_ROOT );
+		$smarty->assign("BASE_IMG_ROOT", 				BASE_IMG_ROOT );
+		$smarty->assign("TEMPLATE_ROOT", 				TEMPLATE_ROOT );
 		
 		self::setMessageValues();
+
+		if ( BaseAppUtil::isSessionUserSet() )
+		{
+			$smarty->assign("USER_ID", 		BaseAppUtil::getSessionUserId()  );
+			$smarty->assign("USER_NAME", 	BaseAppUtil::getSessionUserName()  );
+		}
+		
 		
 		//$smarty->force_compile = true;
 		//$smarty->debugging = true;
