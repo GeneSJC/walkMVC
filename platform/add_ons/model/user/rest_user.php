@@ -65,7 +65,7 @@ function actionLogout()
 
 function viewUserHome() 
 {
-	redirectIfNoSession(); // FIXME - set some variable to indicate no session
+	BaseAppUtil::redirectIfNoSession(); // FIXME - set some variable to indicate no session
 	
 	global $smarty;
 	

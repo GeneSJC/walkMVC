@@ -7,24 +7,35 @@ session_start();
 require_once './_util/app_cfg.php';
 require_once './_util/app_includes.php';	
 
-frameworkLevelIncludes('../platform');
-appLevelIncludes(APP_FILE_PATH);
-
-$smartyPathPrefix = '.';
-SmartyUtil::loadSmarty($smartyPathPrefix);
+$platformPath = '../platform';
+AppIncludes::doFrameworkIncludes($platformPath);
 
 \Slim\Slim::registerAutoloader();
 $app = new \Slim\Slim();
 
-getRestConfig('.', $app);
+AppIncludes::doAddonIncludes($platformPath);
 
-$fbAppId = FacebookCfg::APP_ID;
-$fbSecret = FacebookCfg::SECRET;
-FacebookApiUtil::init($fbAppId, $fbSecret);
+AppIncludes::appLevelIncludes(APP_FILE_PATH);
 
-	// FOR DEMO
+$smartyPathPrefix = '.';
+SmartyUtil::loadSmarty($smartyPathPrefix);
+
+AppIncludes::getRestConfig('.');
+
+// ==================
+// REST DEMO
+// --------------------
+
 $app->get('/access/sayHello', 'sayHello' ); 
 function sayHello () 
 				{ echo "hello2"; }
 
 $app->run();
+
+// ==================
+// FACEBOOK SETUP
+// --------------------
+
+$fbAppId = FacebookCfg::APP_ID;
+$fbSecret = FacebookCfg::SECRET;
+FacebookApiUtil::init($fbAppId, $fbSecret);
