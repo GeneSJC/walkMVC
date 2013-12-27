@@ -24,8 +24,8 @@ class IncludeBaseUtil
 		require_once $platformPath . '/add_ons/general/util_misc.php';
 		
 		require_once $platformPath . '/add_ons/app_util/base_app_util.php';
+		require_once $platformPath . '/add_ons/app_util/base_app_paths.php';
 		require_once $platformPath . '/add_ons/app_util/base_message.php';
-		require_once $platformPath . '/add_ons/app_util/base_path_cfg.php';
 		require_once $platformPath . '/add_ons/app_util/base_formcfg.php';
 		
 		require_once $platformPath . '/add_ons/app_util/util_smarty.php';

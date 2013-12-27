@@ -21,17 +21,6 @@ define('WALKMVC_SUBDOMAIN', 		'/walkMVC/platform');
 	
 define('WEB_ROOT_FILE_PATH', 		'/Library/WebServer/Documents/dev');
 
-
-	// REST PATHS
-
-// main .php file that will serve as centralized REST dispatcher
-// necessary in url when the .htaccess rewrite isn't working
-define('APP_REST_ACCESS_FILE', '/access.php');
-
-// eg, 'http://localhost/dev/walkMVC/myApp/access'
-define('APP_REST_ROOT_PATH', '/access');
-
-
 	// 3) DB SETTINGS
 	// ========================
 	
@@ -41,6 +30,35 @@ class AppCfg
 	const DB_NAME = 'walk_mvc';
 	const DB_USER = 'root';
 	const DB_PWD = '';
+	
+	/**
+	 * Order of static function calls below is important - changing it will likely cause errors
+	 *
+	 * @param string $platformPath
+	 * @param string $smartyPathPrefix
+	 */
+	public static function init($platformPath=null, $smartyPathPrefix=null)
+	{
+		PathUtil::setRestPathWithFileInUrl('access');
+		// PathUtil::setRestPathNoFileInUrl('access');
+	
+		AppIncludes::doAddonIncludes($platformPath);
+	
+		AppIncludes::appLevelIncludes(APP_FILE_PATH);
+	
+		SmartyUtil::loadSmarty($smartyPathPrefix);
+	
+		AppIncludes::loadRestConfig(APP_FILE_PATH);
+	
+		// ==================
+		// FACEBOOK SETUP
+		// --------------------
+	
+		$fbAppId = FacebookCfg::APP_ID;
+		$fbSecret = FacebookCfg::SECRET;
+		FacebookApiUtil::init($fbAppId, $fbSecret);
+	}
+	
 }
 
 class FacebookCfg

@@ -43,7 +43,7 @@ class AppIncludes
 	*/
 		// END model includes
 	
-	public static function getRestConfig($pathPrefix=null)
+	public static function loadRestConfig($pathPrefix=null)
 	{
 		global $app;
 		
@@ -53,7 +53,5 @@ class AppIncludes
 		}
 	
 		require_once $pathPrefix . '/post/rest_post.php';	
-	
-		return $app;
 	}
 }

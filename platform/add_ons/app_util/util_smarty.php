@@ -27,7 +27,11 @@ class SmartyUtil
 		$smarty->assign("APP_REST_ROOT", 				APP_REST_ROOT );			
 		$smarty->assign("BASE_CSS_ROOT", 				BASE_CSS_ROOT );
 		$smarty->assign("BASE_IMG_ROOT", 				BASE_IMG_ROOT );
-		$smarty->assign("TEMPLATE_ROOT", 				TEMPLATE_ROOT );
+		
+		if ( defined('TEMPLATE_ROOT'))
+		{
+			$smarty->assign("TEMPLATE_ROOT", 				TEMPLATE_ROOT );
+		}
 		
 		self::setMessageValues();
 
