@@ -62,11 +62,18 @@ function pathInit()
 
 	// WEB PATHS
 
-	define('DOMAIN', 							'http://localhost/dev');
-	define('APP_SUBDOMAIN', 				'/walkMVC/app_simpleDemo');
-	define('WALKMVC_SUBDOMAIN', 		'/walkMVC/platform');
-
-	// FILESYS PATHS
-
-	define('WEB_ROOT_FILE_PATH', 		'/Library/WebServer/Documents/dev');
+	if ( $_SERVER['SERVER_NAME'] == 'localhost' )
+	{
+		define('DOMAIN', 							'http://localhost/dev');
+		define('APP_SUBDOMAIN', 				'/walkMVC/app_simpleDemo');
+		define('WALKMVC_SUBDOMAIN', 		'/walkMVC/platform');
+		
+		// FILESYS PATHS
+		
+		define('WEB_ROOT_FILE_PATH', 		'/Library/WebServer/Documents/dev');
+		
+		return;
+	}
+	
+		
 }
