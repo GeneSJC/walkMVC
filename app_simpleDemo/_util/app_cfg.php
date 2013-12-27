@@ -8,20 +8,7 @@
  * 
  */
 
-// 0) "BASELINE" CONFIG PARAMETERS
-// ========================
-
-	// WEB PATHS
-
-define('DOMAIN', 							'http://localhost/dev');
-define('APP_SUBDOMAIN', 				'/walkMVC/app_simpleDemo');
-define('WALKMVC_SUBDOMAIN', 		'/walkMVC/platform');
-
-	// FILESYS PATHS
-	
-define('WEB_ROOT_FILE_PATH', 		'/Library/WebServer/Documents/dev');
-
-	// 3) DB SETTINGS
+	// DB SETTINGS
 	// ========================
 	
 class AppCfg

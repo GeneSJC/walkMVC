@@ -1,5 +1,6 @@
 <?php
 
+
 // ==============================
 // ----- SESSION INIT ------
 /*
@@ -8,13 +9,25 @@
  */
 session_start();  
 
-
-// ==============================
-// ----- LOCAL PATH INFO ------
+pathInit();
 
 localInit();
 
+// =====================
+// ----- REST DEMO ------
+
+$app->get('/access/sayHello', 'sayHello' );
+function sayHello ()
+{ echo "hello2"; }
+
+$app->run();
+
+
+
 /**
+ * ==============================
+ * ----- LOCAL PATH INFO ------
+ *
  * Helper function to keep inside access.php  , because:
  * a) Relative path info is for the folder that file is in
  * b) We can see the core config in the start file 
@@ -42,12 +55,18 @@ function localInit()
 	AppCfg::init($platformPath, $smartyPathPrefix);
 }
 
-// =====================
-// ----- REST DEMO ------
+function pathInit()
+{
+	// 0) "BASELINE" CONFIG PARAMETERS
+	// ========================
 
-$app->get('/access/sayHello', 'sayHello' ); 
-function sayHello () 
-				{ echo "hello2"; }
+	// WEB PATHS
 
-$app->run();
+	define('DOMAIN', 							'http://localhost/dev');
+	define('APP_SUBDOMAIN', 				'/walkMVC/app_simpleDemo');
+	define('WALKMVC_SUBDOMAIN', 		'/walkMVC/platform');
 
+	// FILESYS PATHS
+
+	define('WEB_ROOT_FILE_PATH', 		'/Library/WebServer/Documents/dev');
+}
