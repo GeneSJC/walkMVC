@@ -7,7 +7,7 @@
 class UserMapper extends MapperBase
 {
 	// Specify the data source (table for SQL adapters)
-	protected $_datasource = "users";
+	protected $_datasource = "user_tbl";
 
 	// Define your fields as public class properties
 	public $id = array('type' => 'int', 'primary' => true, 'serial' => true);
