@@ -1,7 +1,15 @@
 <?php
 
 // place holder used by map_*.php class definitions
-class MapperBase extends phpDataMapper_Base{}
+class MapperBase extends phpDataMapper_Base{
+	
+	protected $_datasource;
+	
+	public function getDatasource()
+	{
+		return $this->_datasource;	
+	}
+}
 
 /**
  * Wrapper class for basic app methods 
@@ -102,6 +110,22 @@ class BaseAppUtil
 		
 		App::xlog ("returning null ..");
 		return null;
+	}
+
+	public static function isSessionUserSet()
+	{
+		return isset($_SESSION)
+		&& array_key_exists('user_id', $_SESSION);
+	}
+	
+	public static function getSessionUserId()
+	{
+		return $_SESSION['user_id'];
+	}
+	
+	public static function getSessionUserName()
+	{
+		return $_SESSION['user_name'];
 	}
 	
 }
