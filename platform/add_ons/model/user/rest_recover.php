@@ -47,14 +47,14 @@ function actionSendRecoverEmail()
 	$recoverLogic = new RecoverLogic();
 	$errorCode = $recoverLogic->actionSendRecoverEmail(); // FIXME: check for errors
 	
-	xlog("actionSendRecoverEmail rest");
+	BaseAppUtil::xlog("actionSendRecoverEmail rest");
 	$restPath = '../public/recover';
 	if ($errorCode != 0)
 	{
 		$restPath .= '/' . $errorCode;
 	}
 	
-	xlog("actionSendRecoverEmail rest - redirecting now	");
+	BaseAppUtil::xlog("actionSendRecoverEmail rest - redirecting now	");
 	$app->redirect($restPath); // this view verifies the session
 }
 
@@ -90,7 +90,7 @@ function viewResetPassword($resetKey=null)
 	}
 	
 	// now we know it exists
-	xlog("got resetkey = $resetKey");
+	BaseAppUtil::xlog("got resetkey = $resetKey");
 	
 // 	var_dump($entry);
 // 	return;

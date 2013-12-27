@@ -18,7 +18,7 @@ class RecoverLogic
 	 */
 	public function actionSendRecoverEmail()
 	{
-		xlog ("enter actionSendRecoverEmail");
+		BaseAppUtil::xlog ("enter actionSendRecoverEmail");
 		
 		// 1. Logic to get the email and see if it exists
 		$recoverFormConfig =  new RecoverFormConfig();
@@ -31,7 +31,7 @@ class RecoverLogic
 		
 		// var_dump($emailQueryArr);
 		
-		xlog ("email = " . $emailQueryArr['email'] );
+		BaseAppUtil::xlog ("email = " . $emailQueryArr['email'] );
 		
 		$adapter = getDbAdapter();
 		$userMapper = new UserMapper($adapter);
@@ -45,23 +45,23 @@ class RecoverLogic
 		$resetKey = $this->saveResetKey( $emailQueryArr['email'] );
 		if ($resetKey)
 		{
-			xlog ("sending Recover email");
+			BaseAppUtil::xlog ("sending Recover email");
 			sendRecoverEmail($emailQueryArr['email'], $resetKey); // FIXME - add try/catch
 			return Msg::SEND_EMAIL_SUCCEEDED;
 		}
 		
-		xlog ("send failed");
+		BaseAppUtil::xlog ("send failed");
 		
 		return Msg::SEND_EMAIL_FAILED; // unexpected error FIXME create constants
 	}
 	
 	private function saveResetKey($email=null)
 	{
-		xlog ("Enter saveResetKey with email = $email");
+		BaseAppUtil::xlog ("Enter saveResetKey with email = $email");
 		
-		xlog ( "11 trying to save key info :  $email ");
+		BaseAppUtil::xlog ( "11 trying to save key info :  $email ");
 		$resetKey = randString(10);
-		xlog ("22 trying to save key info :$resetKey  $email ");
+		BaseAppUtil::xlog ("22 trying to save key info :$resetKey  $email ");
 			
 		// echo "TODO: [SAVE GENERATED KEY & SEND EMAIL] Got user for recover email: " . $_POST['email'];
 		// echo "random string: " . $resetKey;
@@ -75,7 +75,7 @@ class RecoverLogic
 		$recoverEntity->email = $email;
 		$recoverEntity->reset_key = $resetKey;
 		
-		xlog ("trying to save key info: $resetKey  $email ");
+		BaseAppUtil::xlog ("trying to save key info: $resetKey  $email ");
 		
 		$recoverMapper->save($recoverEntity);
 		

@@ -18,7 +18,7 @@ $app->post('/access/post/save', 'actionPostSave' );
  */
 function viewPostIndex() 
 {
-	redirectIfNoSession();
+	App::redirectIfNoSession();
 	
 	global $smarty;
 	
@@ -35,7 +35,7 @@ function viewPostIndex()
  */
 function viewPostEdit($id=null) 
 {
-	redirectIfNoSession();
+	App::redirectIfNoSession();
 	
 	global $smarty;
 	
@@ -110,7 +110,7 @@ function actionPostDelete($id=null)
  */
 function actionPostSave() 
 {
-	redirectIfNoSession();
+	App::redirectIfNoSession();
 	
 	global $app;
 	

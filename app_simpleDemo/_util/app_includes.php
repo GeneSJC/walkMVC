@@ -1,67 +1,59 @@
 <?php
 
-function frameworkLevelIncludes($pathPrefix=null)
+class AppIncludes
 {
-	if ( !  $pathPrefix )
+	/**
+	 * 3rd-party includes
+	 * 
+	 * @param string $pathPrefix
+	 */
+	public static function doFrameworkIncludes($platformPath=null)
 	{
-		die ('You must provide the $pathPrefix to frameworkLevelIncludes() ' );
+		require_once $platformPath . '/add_ons/app_util/base_app_includes.php';
+		
+		IncludeBaseUtil::doFrameworkIncludes($platformPath);		
 	}
 	
-		// 3rd-PARTY INCLUDES
-		
-	require_once $pathPrefix . '/php/codeguy-Slim/Slim/Slim.php';
-	
-	require_once $pathPrefix . '/php/phpDataMapper/Base.php';
-	require_once $pathPrefix . '/php/phpDataMapper/Adapter/Mysql.php';
-	
-	require_once($pathPrefix . '/php/smarty/libs/Smarty.class.php');
-	
-		// walkMVC INCLUDES
-		
-	require_once $pathPrefix . '/php/util_string.php';
-	require_once $pathPrefix . '/php/util_file.php';
-	require_once $pathPrefix . '/php/util_misc.php';
-}
-
-
-function appLevelIncludes($pathPrefix=null)
-{
-	if ( !  $pathPrefix )
+	public static function doAddonIncludes($platformPath=null)
 	{
-		die ('You must provide the $pathPrefix to appLevelIncludes() ');
-	}
+		$platformPath .= '/add_ons/model';
 		
-	// app-specific INCLUDES
+		IncludeBaseUtil::doAddonIncludes($platformPath);
+		
+			// supports user & facebook
+		IncludeBaseUtil::doRestAddons($platformPath);
+	}
 	
-	require_once $pathPrefix . '/_util/util_smarty.php';
+	public static function appLevelIncludes($pathPrefix=null)
+	{
+		// app-specific INCLUDES
+		
+		require_once $pathPrefix . '/_util/app_cfg.php';
+		require_once $pathPrefix . '/_util/app_message.php';
+		require_once $pathPrefix . '/_util/app_util.php';
+		
+		// START model includes - after base includes
+		
+		require_once $pathPrefix . '/post/logic_post.php';
+		require_once $pathPrefix . '/post/form_post.php';
+		require_once $pathPrefix . '/post/map_post.php';
+	}
 	
-	require_once $pathPrefix . '/_util/app_cfg.php';
-	require_once $pathPrefix . '/_util/app_message.php';
-	require_once $pathPrefix . '/_util/app_util.php';
+	/*
+	*/
+		// END model includes
 	
-	require_once $pathPrefix . '/_util/util_formcfg.php';
-	require_once $pathPrefix . '/_util/util_session.php';
+	public static function getRestConfig($pathPrefix=null)
+	{
+		global $app;
+		
+		if ( ! $pathPrefix || ! $app )
+		{
+			die ('You must provide the $pathPrefix to getRestConfig(), and initialized the slim $app var');
+		}
 	
+		require_once $pathPrefix . '/post/rest_post.php';	
 	
-	// START model includes - after base includes
-	
-	require_once $pathPrefix . '/post/logic_post.php';
-	require_once $pathPrefix . '/post/form_post.php';
-	require_once $pathPrefix . '/post/map_post.php';
+		return $app;
+	}
 }
-
-/*
-*/
-	// END model includes
-
-function getRestConfig($pathPrefix='.')
-{
-	\Slim\Slim::registerAutoloader();
-	$app = new \Slim\Slim();
-			
-	require_once $pathPrefix . '/post/rest_post.php';	
-	
-	return $app;
-}
-
-?>

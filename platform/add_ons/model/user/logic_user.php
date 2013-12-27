@@ -19,7 +19,7 @@ class UserLogic
 		
 		if ( $loginQueryArr == null )
 		{
-			xlog("SYS ERROR: Missing necessary fields for actionLogin() ");
+			BaseAppUtil::xlog("SYS ERROR: Missing necessary fields for actionLogin() ");
 			
 			return Msg::UNEXPECTED_ERROR;
 		}
@@ -35,7 +35,7 @@ class UserLogic
 			return Msg::SUCCESS;
 		}
 		
-		xlog("NO user - BAD LOGIN ");
+		BaseAppUtil::xlog("NO user - BAD LOGIN ");
 		return Msg::UNKNOWN_USER;
  	}
 	
@@ -139,7 +139,7 @@ class UserLogic
 		do
 		{
 			$new_username = $base_username . '_' . $unique_end;
-			App::xlog ("Generated new username = $new_username; will check to see if it exists.");
+			BaseAppUtil::xlog ("Generated new username = $new_username; will check to see if it exists.");
 			
 			$queryArr = array ('login'=>$new_username);
 			

@@ -18,8 +18,6 @@ $app->post('/access/post/save', 'actionPostSave' );
  */
 function viewPostIndex() 
 {
-	redirectIfNoSession();
-	
 	global $smarty;
 	
 	$postCtrl = new PostLogic();
@@ -35,8 +33,6 @@ function viewPostIndex()
  */
 function viewPostEdit($id=null) 
 {
-	redirectIfNoSession();
-	
 	global $smarty;
 	
 	$postFormCfg = new PostFormConfig();
@@ -110,8 +106,6 @@ function actionPostDelete($id=null)
  */
 function actionPostSave() 
 {
-	redirectIfNoSession();
-	
 	global $app;
 	
 	$postCtrl = new PostLogic();
