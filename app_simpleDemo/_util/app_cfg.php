@@ -13,7 +13,7 @@
 	
 class AppCfg
 {
-	static $DB_SERVER = '127.0.0.1';
+	static $DB_SERVER = '127.0.0.12';
 	static $DB_NAME = 'walk_mvc';
 	static $DB_USER = 'root';
 	static $DB_PWD = '';

@@ -15,10 +15,10 @@
 	
 class AppCfg
 {
-	const DB_SERVER = '127.0.0.1';
-	const DB_NAME = 'walk_mvc';
-	const DB_USER = 'root';
-	const DB_PWD = '';
+	static $DB_SERVER = '127.0.0.1';
+	static $DB_NAME = 'walk_mvc';
+	static $DB_USER = 'root';
+	static $DB_PWD = '';
 	
 	/**
 	 * Order of static function calls below is important - changing it will likely cause errors
