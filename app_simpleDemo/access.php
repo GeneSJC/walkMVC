@@ -74,6 +74,11 @@ function pathInit()
 		
 		return;
 	}
-	
-		
+}
+
+
+class FacebookCfg
+{
+	static $APP_ID = 'a';
+	static $SECRET = 'b';
 }

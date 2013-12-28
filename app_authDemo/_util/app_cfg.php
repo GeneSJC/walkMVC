@@ -50,9 +50,3 @@ class AppCfg
 		FacebookApiUtil::init($fbAppId, $fbSecret);
 	}
 }
-
-class FacebookCfg
-{
-	const APP_ID = 'a';
-	const SECRET = 'b';
-}
