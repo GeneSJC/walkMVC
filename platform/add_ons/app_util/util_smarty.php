@@ -130,6 +130,13 @@ class SmartyUtil
 	{
 		global $smarty;
 	
+		if (  startsWith(DOMAIN, 'http://localhost')
+				||
+				BaseAppUtil::isSessionUserSet() )
+		{
+			return;
+		}
+		
 		$facebook_api = FacebookApiUtil::getFacebookApi();
 	
 		$smarty->assign("loginUrl", APP_REST_ROOT . '/public/initFacebookLogin');
