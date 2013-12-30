@@ -45,7 +45,7 @@ function viewLogin($msgId=0)
 	// don't try to show the button on localhost
 	if ( ! startsWith(DOMAIN, 'http://localhost') )
 	{
-		setFacebookLoginButtonData();
+		SmartyUtil::setFacebookLoginButtonData();
 	}
 	
 	$smarty->display('user/login.tpl');
@@ -100,18 +100,6 @@ function actionLogin()
 // ==================
 // FACEBOOK HANDLERS
 // --------------------
-
-
-function setFacebookLoginButtonData()
-{
-	global $smarty;
-
-	$facebook_api = FacebookApiUtil::getFacebookApi();
-
-	$smarty->assign("loginUrl", APP_REST_ROOT . '/public/initFacebookLogin');
-	$smarty->assign("fbAppId", $facebook_api->getAppID());
-}
-
 
 /**
  *

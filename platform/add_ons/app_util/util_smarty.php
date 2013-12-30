@@ -125,4 +125,14 @@ class SmartyUtil
 		
 		$app->redirect($successRestPath); // this view verifies the session
 	}
+	
+	public static function setFacebookLoginButtonData()
+	{
+		global $smarty;
+	
+		$facebook_api = FacebookApiUtil::getFacebookApi();
+	
+		$smarty->assign("loginUrl", APP_REST_ROOT . '/public/initFacebookLogin');
+		$smarty->assign("fbAppId", $facebook_api->getAppID());
+	}	
 }
