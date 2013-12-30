@@ -26,15 +26,11 @@ function viewPwdRecover($msgId=0)
 	}
 	
 	$recoverFormCfg = new RecoverFormConfig();
-	$recoverFormCfg->loadFormFieldArray();
 	
-	$jsonArr = $recoverFormCfg->jsonArr; // getJsonArray();
-	
+	SmartyUtil::setDFormData($recoverFormCfg);
+	SmartyUtil::setOnLoad('loadRecoverForm()');
+
 	$smarty->assign("title", RecoverFormConfig::TITLE);
-	
-	$smarty->assign("action", $recoverFormCfg->action);
-	$smarty->assign("dFormId", $recoverFormCfg->formId);
-	$smarty->assign("dFormJSON",$jsonArr);	
 	
 	$smarty->display('user/forgot.tpl');
 }

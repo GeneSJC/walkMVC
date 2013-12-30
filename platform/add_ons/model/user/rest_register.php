@@ -17,13 +17,9 @@ function viewRegistration()
 	global $smarty;
 
 	$registerFormCfg = new RegisterFormConfig();
-	$registerFormCfg->loadFormFieldArray();
-	
-	$jsonArr = $registerFormCfg->jsonArr; // getJsonArray();
-	
-	$smarty->assign("action", $registerFormCfg->action);
-	$smarty->assign("dFormId", $registerFormCfg->formId);
-	$smarty->assign("dFormJSON",$jsonArr);
+
+	SmartyUtil::setDFormData($registerFormCfg);
+	SmartyUtil::setOnLoad('loadRegisterForm()');
 	
 	$smarty->assign("title", "Register");
 
