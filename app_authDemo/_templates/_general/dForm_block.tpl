@@ -1,6 +1,8 @@
-{assign var="debug1" value=true nocache}
+{if ! isset($debug1) }
+	{assign var="debug1" value=99 nocache}
+{/if}
 
-{if $debug1 }
+{if ($debug1 eq 99 ) }
 <div style='padding: 5px; border: 5px orange solid' >
 debug formJSON: {$dFormJSON}
 </div>
@@ -11,12 +13,8 @@ debug formJSON: {$dFormJSON}
 <form id="{$dFormId}"></form>
 
 <script type="text/javascript" >
-function viewOnLoad() 
-{
-	load_dForm();
-}
 
-function load_dForm() 
+function {$loadFormFunc} 
 {
 	dbg ('enter go');
 	// jqueryAjax(null, 'http://localhost/dev/jq.dform_demo/app1/post/post_ctrl.php', submitNewPost);
@@ -24,4 +22,5 @@ function load_dForm()
 	var dFormJson = {$dFormJSON};
 	set_dForm(dFormId, dFormJson);
 }
+
 </script>
