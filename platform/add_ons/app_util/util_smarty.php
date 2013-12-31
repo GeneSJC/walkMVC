@@ -90,6 +90,15 @@ class SmartyUtil
 		$smarty->assign("dFormJSON",$jsonArr);
 	}
 
+	public static function setSingleFormOnLoad($formCfg=null)
+	{
+		$funcName = str_replace("-", "_", $formCfg->formId);
+		$funcName = 'load_' . $funcName . '()';
+		
+		SmartyUtil::setDFormData($formCfg);
+		SmartyUtil::setOnLoad($funcName);
+	}
+	
 	/**
 	 * Sets error and calls to render login page
 	 * 
