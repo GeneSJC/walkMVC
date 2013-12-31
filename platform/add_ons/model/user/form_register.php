@@ -25,7 +25,7 @@ class RegisterFormConfig extends FormConfigBase
 			"css" => array(
 					"clear" => "both",
 					"width" => "100px",
-					"margin" => "10px"
+					"margin-top" => "50px"
 			),
 	
 	);
@@ -46,7 +46,9 @@ class RegisterFormConfig extends FormConfigBase
 			"name" => "login", // name for: db column, form field
 			"type" => "text", // html form input type
 			
-			"css" => array("width" => "100px"),
+			"css" => array(
+					"xwidth" => "100px"
+			),
 			
 			"validate" => array 
 			(
@@ -58,6 +60,8 @@ class RegisterFormConfig extends FormConfigBase
 					)
 			),
 
+			"css" => array("clear" => "both"),
+			
 			"caption" => "Username" // Label
 	);
 
@@ -67,7 +71,9 @@ class RegisterFormConfig extends FormConfigBase
 			"name" => "email", // name for: db column, form field
 			"type" => "text", // html form input type
 
-			"css" => array("width" => "100px"),
+			"css" => array(
+					"clear" => "both",
+			),
 				
 			"validate" => array
 			(
@@ -88,7 +94,10 @@ class RegisterFormConfig extends FormConfigBase
 			"name" => "password", // name for: db column, form field
 			"type" => "password", // html form input type
 
-			"css" => array("width" => "100px"),
+			"css" => array(
+					"clear" => "both",
+			),
+			
 				
 			"validate" => array
 			(
@@ -109,8 +118,10 @@ class RegisterFormConfig extends FormConfigBase
 			"name" => "confirm_password", // name for: db column, form field
 			"type" => "password", // html form input type
 
-			"css" => array("width" => "100px"),
-				
+			"css" => array(
+					"clear" => "both",
+			),
+							
 			"validate" => array
 			(
 					"required" => true,

@@ -19,7 +19,8 @@ abstract class FormConfigBase
                 		
                 		"css" => array(
                 				"width" => "100px",
-                				"margin-left" => "40px"
+                				"margin-left" => "40px",
+                				"margin-top" => "20px",
                 				),
                 		
                 );
