@@ -32,7 +32,7 @@ class PathUtil
 		define('APP_REST_ROOT', APP_WEB_ROOT . APP_REST_ACCESS_FILE . APP_REST_ROOT_PATH);
 	}
 	
-	private static function setRestPath($filename=null, $rootPath=null)
+	public static function setRestPath($filename=null, $rootPath=null)
 	{
 		// REST PATHS
 	
