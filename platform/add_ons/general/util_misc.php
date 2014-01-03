@@ -13,13 +13,23 @@ function isLocalhost()
 //   Email Utils
 // ------------------
 
-function sendEmail($from, $to,$subject,$message)
+/**
+ * 
+ * @param unknown $from
+ * @param unknown $to
+ * @param unknown $subject
+ * @param unknown $message
+ * @return $result true if sent successfully 
+ */
+function sendEmail($from=null, $to=null, $subject=null, $message=null)
 {
 	// 	$to = "someone@example.com";
 	// 	$subject = "Test mail";
 	// 	$message = "Hello! This is a simple email message.";
 	// 	$from = "someonelse@example.com";
 	$headers = "From:" . $from;
-	mail($to,$subject,$message,$headers);
+	$result = mail($to,$subject,$message,$headers);
+	
+	return $result;
 }
 
