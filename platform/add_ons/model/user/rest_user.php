@@ -3,7 +3,6 @@
 	// viewXYZ should reference a Smarty template (.tpl)
 	// actionXYZ should reference some controller logic
 
-$app->get('/access/public/home',  'viewLogin' );  
 $app->get('/access/public/login',  'viewLogin' );  
 $app->get('/access/public/login/:msgId',  'viewLogin' );  
   
