@@ -13,7 +13,8 @@ class BaseMsg
 		
 	const SUCCESS = 0;
 	const SUCCESS_REGISTER = 1;
-	const SEND_EMAIL_SUCCEEDED = 2;
+	const SEND_RECOVER_EMAIL_SUCCEEDED = 2;
+	const SEND_CONTACT_EMAIL_SUCCEEDED = 3;
 	
 	
 		// ERROR MESSAGES
@@ -30,6 +31,7 @@ class BaseMsg
 	const NO_USER_FOR_EMAIL = -9;
 	const FACEBOOK_USER_IS_NULL = -10;
 	const UNEXPECTED_FACEBOOK_ERROR = -11;
+	const DB_SAVE_ERROR = -12;
 	
 	/**
 	 * Assumption: this will always be called with some param 
@@ -73,8 +75,12 @@ class BaseMsg
 				$message = "Successful Registration";
 				break;
 		
-			case Msg::SEND_EMAIL_SUCCEEDED:
+			case Msg::SEND_RECOVER_EMAIL_SUCCEEDED:
 				$message = "Password reset email sent successfully";
+				break;
+		
+			case Msg::SEND_CONTACT_EMAIL_SUCCEEDED:
+				$message = "Contact message sent successfully";
 				break;
 		
 			case Msg::SUCCESS:

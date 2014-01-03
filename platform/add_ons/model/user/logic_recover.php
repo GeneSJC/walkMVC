@@ -47,7 +47,7 @@ class RecoverLogic
 		{
 			BaseAppUtil::xlog ("sending Recover email");
 			BaseAppUtil::sendRecoverEmail($emailQueryArr['email'], $resetKey); // FIXME - add try/catch
-			return Msg::SEND_EMAIL_SUCCEEDED;
+			return Msg::SEND_RECOVER_EMAIL_SUCCEEDED;
 		}
 		
 		BaseAppUtil::xlog ("send failed");
