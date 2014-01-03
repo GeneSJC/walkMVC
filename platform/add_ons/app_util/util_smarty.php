@@ -60,6 +60,12 @@ class SmartyUtil
 		{
 			$smarty->assign('message', $successMsg);
 		}
+		
+		$errMsg = App::getErrorMessage();
+		if ($errMsg)
+		{
+			$smarty->assign('error_msg', $errMsg);
+		}
 	}
 	
 	/**

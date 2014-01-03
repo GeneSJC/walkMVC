@@ -93,18 +93,34 @@ class BaseAppUtil
 		$_SESSION['success_msg'] = $msg;
 	}
 	
+	public static function setErrorMessage ($msgCode)
+	{
+		$msg = Msg::get($msgCode);
+		$_SESSION['error_msg'] = $msg;
+	}
+	
 	public static function getSuccessMessage ()
+	{
+		return self::getMessage('success_msg');
+	}
+	
+	public static function getErrorMessage ()
+	{
+		return self::getMessage('error_msg');
+	}
+	
+	public static function getMessage ($msgKey)
 	{
 		BaseAppUtil::xlog ("in getSuccessMessage()");
 		
 		// var_dump($_SESSION);
 		
-		if ( array_key_exists('success_msg', $_SESSION) )
+		if ( array_key_exists($msgKey, $_SESSION) )
 		{
 			App::xlog ("unsetting ..");
 			
-			$msg = $_SESSION['success_msg'];
-			unset($_SESSION['success_msg']);
+			$msg = $_SESSION[$msgKey];
+			unset($_SESSION[$msgKey]);
 			return $msg;
 		}
 		
