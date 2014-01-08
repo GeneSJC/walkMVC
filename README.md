@@ -1,19 +1,30 @@
 walkMVC: Model-Centric PHP MVC Stack
 =======
 
+Introduction
+----------
+
+This is a PHP MVC stack that is based on two core principles:
+
+A) Build the stack using proven open source frameworks to streamline heavy lifting.  walkMVC is organized around phpDataMapper, Smarty, slimFramework, and jquery.dform‎.  The big advantage here is that when you move to the next project that uses a different framework, there's a good chance you will get to use at least some of the components you worked with here. 
+
+B) Build all components in a "model-centric" way
+
+The majority of the work in any app revolves around the model.  So in this framework, instead of grouping models and controllers separately - controllers are placed in the model folder they are most closely connected with.  Granted this approach may not work for every application, but I think for many it should do the trick.
+
 
 Quick Start Checklist: 
 ------------------------------
+
 1. Set the correct path information under app_<your_app>/_util/app_cfg.php - all configuration is centralized here; you shouldn't have to change any other files to get the example going.
+
 2. Make sure the  app_<your_app>/_resources/ folder is writable (chmod -R 777 * is ok for development)
 
+3. Look at the app project under : walkMVC/tree/master/app_simpleDemo
 
+4. In that folder, the main file is : access.php
 
-Quick Start: 
-----------
-1. Look at the app project under : walkMVC/tree/master/app_simpleDemo
-2. In that folder, the main file is : access.php
-3. From there, you can follow the trail of PHP file-include calls (aka "require_once")
+From there, you can follow the trail of PHP file-include calls (aka "require_once")
 
 
 
@@ -33,18 +44,6 @@ Each of the top-level folders (excluding folders that start with '_') in the web
 *Client-Side MVC Structure (aka, The View Layer)*
 
 From the app root folder, notice there is a folder /_templates .  That is where the Smarty .tpl template files are placed.
-
-Introduction
-----------
-
-This is a PHP MVC stack that is based on two core principles:
-
-A) Build the stack using proven open source frameworks to streamline heavy lifting.  walkMVC is organized around phpDataMapper, Smarty, slimFramework, and jquery.dform‎.  The big advantage here is that when you move to the next project that uses a different framework, there's a good chance you will get to use at least some of the components you worked with here. 
-
-B) Build all components in a "model-centric" way
-
-The majority of the work in any app revolves around the model.  So in this framework, instead of grouping models and controllers separately - controllers are placed in the model folder they are most closely connected with.  Granted this approach may not work for every application, but I think for many it should do the trick.
-
 
 
 Design Patterns
