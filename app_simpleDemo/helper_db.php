@@ -1,12 +1,14 @@
 <?php
 
+require_once './_util/app_cfg.php';
 require_once './_util/app_includes.php';
-
-frameworkLevelIncludes('../..');
-appLevelIncludes('.');
+  
+localInit();
 
 function create($flag=null)
 {
+	echo "Enter create";
+	
 	if (!$flag)
 	{
 		echo "Edit PHP to run create";
@@ -34,7 +36,6 @@ function create($flag=null)
 		
 		
 }
-
 
 function testPostMap()
 {
@@ -64,7 +65,7 @@ function testPostMap()
 	
 }
 
-testPostMap();
-// create(1);
+// testPostMap();
+create(1);
 
-?>
+

@@ -3,7 +3,7 @@
 class PostMapper extends MapperBase
 {
 	// Specify the data source (table for SQL adapters)
-	protected $_datasource = "blog_posts";
+	protected $_datasource = "post_tbl";
 
 	// Define your fields as public class properties
 	public $id = array('type' => 'int', 'primary' => true, 'serial' => true);
