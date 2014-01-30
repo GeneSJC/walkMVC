@@ -1,14 +1,13 @@
 <?php
 
-	// NOTE: paths are relative to the local path for access.php file (which includes this file) 
+// NOTE: relative paths are the local path for access.php file (which includes this file)
 	
 define('WEB_ROOT_FILE_PATH', 			'/Library/WebServer/Documents/dev');
+define('WALKMVC_SUBDOMAIN', 			'/walkMVC/platform');
+define('WALKMVC_PLATFORM_PATH', 	WEB_ROOT_FILE_PATH . WALKMVC_SUBDOMAIN);
 
 define('DOMAIN', 								'http://localhost/dev');
 define('APP_SUBDOMAIN', 					'/walkMVC/app_simpleDemo');
-
-define('WALKMVC_PLATFORM_PATH', 	'../platform');
-define('WALKMVC_SUBDOMAIN', 			'/walkMVC/platform');
 
 define('SMARTY_PATH', 	'.'); // will look for _templates folder here
 
@@ -41,16 +40,6 @@ class AppCfg
 		SmartyUtil::loadSmarty($smartyPathPrefix);
 	
 		AppIncludes::loadRestConfig(APP_FILE_PATH);
-	
-		// ==================
-		// FACEBOOK SETUP
-		// --------------------
-	
-		/*
-		$fbAppId = FacebookCfg::APP_ID;
-		$fbSecret = FacebookCfg::SECRET;
-		FacebookApiUtil::init($fbAppId, $fbSecret);
-		 */
 	}
 	
 }
@@ -82,11 +71,4 @@ function localInit()
 	// ----- APP INIT ------
 
 	AppCfg::init(WALKMVC_PLATFORM_PATH, SMARTY_PATH);
-}
-
-
-class FacebookCfg
-{
-	static $APP_ID = 'a';
-	static $SECRET = 'b';
 }
