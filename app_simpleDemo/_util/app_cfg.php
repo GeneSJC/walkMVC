@@ -1,5 +1,7 @@
 <?php
 
+	// NOTE: paths are relative to the local path for access.php file (which includes this file) 
+	
 define('WEB_ROOT_FILE_PATH', 			'/Library/WebServer/Documents/dev');
 
 define('DOMAIN', 								'http://localhost/dev');
