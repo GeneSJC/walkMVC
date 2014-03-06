@@ -1,6 +1,23 @@
 walkMVC: Model-Centric PHP MVC Stack
 =======
 
+Quick Start
+------------
+
+You should be able to just set the values in this file for local filesystem path and web path info: /app_simpleDemo/_util/app_cfg.php
+
+* define('WEB_ROOT_FILE_PATH', 			'/Library/WebServer/Documents/dev');
+* define('WALKMVC_SUBDOMAIN', 			'/walkMVC/platform');
+* define('WALKMVC_PLATFORM_PATH', 	WEB_ROOT_FILE_PATH . WALKMVC_SUBDOMAIN);
+* define('DOMAIN', 								'http://localhost/dev');
+* define('APP_SUBDOMAIN', 					'/walkMVC/app_simpleDemo');
+* define('SMARTY_PATH', 	'.'); // will look for _templates folder here
+* define('DB_SERVER', 	'127.0.0.1');
+* define('DB_NAME', 		'walkmvc');
+* define('DB_USER', 		'root');
+* define('DB_PWD', 		'root');
+
+
 Introduction
 ----------
 
