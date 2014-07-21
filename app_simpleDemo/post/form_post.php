@@ -51,6 +51,35 @@ class PostFormConfig extends FormConfigBase
 		);
 
 	public $status = array
+	(
+			"id" => "status", // html tag id
+			"name" => "status", // name for: db column, form field
+	
+			"caption" => "Status", // Label
+	
+			"type" => "select",
+	
+			"options" => array
+			(
+					"published" => "Published",
+	
+					"draft" => array
+					(
+							"selected" => "selected",
+							"html" => "Draft"
+					)
+			),
+	
+			"css" => array(
+					"width" => "200px",
+					"margin-top" => "12px",
+					"xclear" => "both",
+			),
+	
+	
+	);
+		
+	public $status2 = array
 		(
                 "id" => "txt-status", // html tag id
                 "type" => "text", // html form input type
