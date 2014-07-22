@@ -18,36 +18,6 @@
 
 {* if present, run JS specific to the current view *}
 
-				{* >>>  WAS HERE BEFORE 
-				include file="../_general/body_dForm_onload.tpl" }
-				{ include file="../_general/body_header.tpl" 
-				*}
+{include file="../_general/body_dForm_onload.tpl" }
+{include file="../_general/body_header.tpl" }
 
-
-{* NEW CODE  *}
-{* if present, run JS specific to the current view *}
-{if isset($dFormJSON) }
-	<body onload="viewOnLoad()"">
-	
-{else}
-    <body>
-{/if}
-       
-{if isset($message) }
-<div>
-message = {$message}
-</div>
-{/if}
-    <div style='padding: 5px ; background-color: orange ' >
-    Welcome to our template header
-    
-    {if isset($error_msg) }
-	<div style='border: red solid 2px'>
-	ERROR: {$error_msg}
-	</div>
-	{/if}
-    
-    
-    </div>
-    <hr/>
-    <br/>
