@@ -17,11 +17,18 @@ class MapperBase extends phpDataMapper_Base{
  */
 class BaseAppUtil
 {
+	public static $LOG_PATH = null; 
+	
 	public static function xlog ($msg)
 	{
 		// echo "attempting to xlog: $msg , to path : " . APP_LOG_PATH;
 	
-		$logPath = APP_LOG_PATH;
+		if ( ! BaseAppUtil::$LOG_PATH )
+		{
+			BaseAppUtil::$LOG_PATH = APP_LOG_PATH;
+		}
+		
+		$logPath = BaseAppUtil::$LOG_PATH;
 		$now = date("D M j G:i:s Y");
 		writeFile ( "$now : $msg \n", $logPath);
 	}
