@@ -73,6 +73,14 @@ function viewPostEdit($id=null)
 	$smarty->assign("dFormId", $postFormCfg->formId);
 	$smarty->assign("dFormJSON",$jsonArr);
 	
+	$loadLoginForm = 'loadPostForm()';
+	
+	// Used in dForm_element.tpl
+	$smarty->assign("loadFormFunc",$loadLoginForm);
+	
+	// Used in body_dForm_onload.tpl
+	$smarty->assign("loadFormFuncArr",$loadLoginForm);
+	
 	$smarty->display('post/post_edit.tpl');
 }
 
