@@ -75,9 +75,6 @@ function viewPostEdit($id=null)
 	
 	$loadLoginForm = 'loadPostForm()';
 	
-	// Used in dForm_element.tpl
-	$smarty->assign("loadFormFunc",$loadLoginForm);
-	
 	// Used in body_dForm_onload.tpl
 	$smarty->assign("loadFormFuncArr",$loadLoginForm);
 	

@@ -81,9 +81,6 @@ class SmartyUtil
 		
 		// FIXME - should be corrected to use just the *Arr
 		
-		// Used in dForm_element.tpl
-		$smarty->assign("loadFormFunc",$loadSearchForm);
-		
 		// Used in body_dForm_onload.tpl
 		$smarty->assign("loadFormFuncArr",$loadSearchForm); // must set this - can be array or individual element
 	}

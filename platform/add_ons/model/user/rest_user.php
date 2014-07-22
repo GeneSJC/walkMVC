@@ -38,7 +38,6 @@ function viewLogin($msgId=0)
 	$smarty->assign("dFormJSON",$jsonArr);
 
 	$loadLoginForm = 'loadLoginForm()';
-	$smarty->assign("loadFormFunc",$loadLoginForm);
 	$smarty->assign("loadFormFuncArr",$loadLoginForm);
 	
 	// don't try to show the button on localhost

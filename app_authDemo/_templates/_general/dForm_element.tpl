@@ -14,6 +14,14 @@ debug formJSON: {$dFormJSON}
 
 <script type="text/javascript" >
 
+{* FIXME :: Array allows multiple functions, 
+	but $dFormId & $dFormJson are not in an array
+
+	Refactor when we actually need to support multiple forms on one view  
+*}
+	
+{foreach $loadFormFuncArr as $loadFormFunc}	
+
 function {$loadFormFunc} 
 {
 	dbg ('enter go');
@@ -22,5 +30,7 @@ function {$loadFormFunc}
 	var dFormJson = {$dFormJSON};
 	set_dForm(dFormId, dFormJson);
 }
+
+{/foreach}
 
 </script>
