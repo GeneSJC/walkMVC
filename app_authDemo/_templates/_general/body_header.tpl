@@ -16,4 +16,6 @@ message = {$message}
     
     </div>
     <hr/>
+    
+{include file="../_general/menubar_session_top.tpl" }    
     <br/>
