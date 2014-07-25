@@ -5,6 +5,7 @@ abstract class FormConfigBase
 	public $jsonArr;
 	public $action;
 	public $method = 'post' ;
+	public $cssConfig = array();
 	
 	public $headerConfig = array
 				(
@@ -36,12 +37,15 @@ abstract class FormConfigBase
 	{
 		$htmlFormDataArr = $this->getFormFieldArray();
 
+		$action = APP_REST_ROOT . $this->action;
+		
         $jqDformData = array
          		(
          				// need to set this when we have an extra REST level for params
-         			"action"  =>  APP_REST_ROOT . $this->action,
-					"method"  =>  $this->method,
-					"html"  =>  $htmlFormDataArr
+         			"action"  	=>  $action,
+					"method"  	=>  $this->method,
+					"css" 	 		=>  $this->cssConfig,
+					"html"  		=>  $htmlFormDataArr
          		);
          
         $this->jsonArr = json_encode($jqDformData);

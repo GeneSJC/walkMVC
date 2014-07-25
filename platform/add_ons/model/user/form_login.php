@@ -5,6 +5,10 @@ class LoginFormConfig extends FormConfigBase
 	public $action = '/user/login'; // REST path from current root
 	public $formId = 'login-form';
 		
+	public $cssConfig = array(
+			"width" => "250px",
+	);
+	
 	public function getFormFieldArray()
 	{
 		return  array ( $this->headerConfig,
