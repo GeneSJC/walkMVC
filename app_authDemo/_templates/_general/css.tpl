@@ -12,43 +12,38 @@ body {
 	padding: 10px;
 }
 
-label,input {
-	display: block;
-	margin-top: 10px;
-}
-
-form {
-	width: 400px;
+.ui-dform-form {
+	padding: 5px;
+	margin: 5px;
+	border: 1px solid gray;
+	width: 300px;
 	overflow: hidden;
 }
 
-label {
+.ui-dform-label {
+	float: left;
+	padding: 0 5px;
+	margin: 4px 0;
 	clear: both;
-	float: left;
-	width: 30%;
 }
 
-input {
-	float: left;
-	width: 70%;
-}
-
-.ui-dform-form 
+.ui-dform-text   
 {
-	width: 200px;
+	float: leftt;
+	margin: 20px 0;
+	display: block;
 }
 
-
-.ui-dform-label 
+.ui-dform-select   
 {
+    margin: 20px 0;
+    display: block;
+}
+
+.ui-dform-submit {
 	display: block;
 	margin-top: 10px;
-}
-
-.ui-dform-text
-{
-	display: block;
-	margin-top: 10px;
+	font-size: 2em;
 }
 </style>
             
