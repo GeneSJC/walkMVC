@@ -35,7 +35,7 @@ input {
 
 .ui-dform-form 
 {
-	width: 400px;
+	width: 200px;
 }
 
 
