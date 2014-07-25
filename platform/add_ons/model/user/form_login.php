@@ -5,9 +5,7 @@ class LoginFormConfig extends FormConfigBase
 	public $action = '/user/login'; // REST path from current root
 	public $formId = 'login-form';
 		
-	public $cssConfig = array(
-			"width" => "250px",
-	);
+	public $cssConfig = array();
 	
 	public function getFormFieldArray()
 	{
@@ -33,7 +31,9 @@ class LoginFormConfig extends FormConfigBase
                 "name" => "login", // name for: db column, form field
                 "type" => "text", // html form input type
 		
-                "caption" => "Username" // Label
+                "caption" => "Username", // Label
+                		
+				"class" => "dform_label_input"
 		);
 
 	public $password = array
@@ -42,7 +42,9 @@ class LoginFormConfig extends FormConfigBase
                 "name" => "password", // name for: db column, form field
                 "type" => "password", // html form input type
 
-                "caption" => "Password" // Label
+                "caption" => "Password", // Label
+                
+				"class" => "dform_label_input"
 		);
 
 	/**
