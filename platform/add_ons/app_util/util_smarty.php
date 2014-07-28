@@ -53,7 +53,7 @@ class SmartyUtil
 	{
 		global $smarty;
 		
-		BaseAppUtil::xlog ("checking for successMsg");
+		// BaseAppUtil::xlog ("checking for successMsg");
 		
 		$successMsg = App::getSuccessMessage();
 		if ($successMsg)

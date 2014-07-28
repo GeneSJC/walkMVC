@@ -118,20 +118,20 @@ class BaseAppUtil
 	
 	public static function getMessage ($msgKey)
 	{
-		BaseAppUtil::xlog ("in getSuccessMessage()");
+		// BaseAppUtil::xlog ("in getSuccessMessage()");
 		
 		// var_dump($_SESSION);
 		
 		if ( array_key_exists($msgKey, $_SESSION) )
 		{
-			App::xlog ("unsetting ..");
+			// App::xlog ("unsetting ..");
 			
 			$msg = $_SESSION[$msgKey];
 			unset($_SESSION[$msgKey]);
 			return $msg;
 		}
 		
-		App::xlog ("returning null ..");
+		// App::xlog ("returning null ..");
 		return null;
 	}
 
