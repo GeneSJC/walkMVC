@@ -22,12 +22,17 @@ function singleQuote ($val) {
 /**
  * If it returns position of needle as 0, then we know the string starts with needle
  *
- * @param unknown_type $haystack
- * @param unknown_type $needle
+ * @param $haystack - string to search
+ * @param $needle - substring to search for in $haystack
  */
 function startsWith($haystack=null,$needle=null)
 {
 	return strpos($haystack, $needle, 0) === 0;
+}
+
+function endsWith($haystack, $needle)
+{
+	return $needle === "" || substr($haystack, -strlen($needle)) === $needle;
 }
 
 
