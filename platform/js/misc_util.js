@@ -61,3 +61,8 @@ function dumpObj(obj, name, indent, depth) {
 	}
 }
 
+function startsWith(data, input)
+{
+	return (data.substring(0, input.length) === input);
+}
+
