@@ -66,3 +66,11 @@ function startsWith(data, input)
 	return (data.substring(0, input.length) === input);
 }
 
+function getNumFromString(thestring)
+{
+	var thenum = thestring.match(/\d+$/)[0];
+
+	return thenum;
+}
+
+
