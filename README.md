@@ -88,6 +88,18 @@ The difference here from the popular frameworks out there, is that:
 * Actual logic beyond mapping urls to views or actions, should be placed in logic_ files
 
 
+
+SQL Auto Generated Timestamps with PHPdataMapper
+----------
+When the SQL tables are generated, this is the SQL for date/time: 
+* datetime DEFAULT NULL 
+
+My work around is to export the schema into a text file and then update that column configuration to use this instead:
+*  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
+Then I re-deploy the entire schema.
+
+
 Example Project2: /app_authDemo 
 ================================
 
