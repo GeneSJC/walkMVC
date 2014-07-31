@@ -84,20 +84,6 @@ class SmartyUtil
 		// Used in body_dForm_onload.tpl
 		$smarty->assign("loadFormFuncArr",$loadSearchForm); // must set this - can be array or individual element
 	}
-	
-	/**
-	 * 
-	 * @param string $formCfg A concrete class that we are referencing via it's base class
-	 */
-	public static function setDFormData($formCfg=null)
-	{
-		global $smarty;
-
-		$formCfg->loadFormFieldArray();
-		$jsonArr = $formCfg->jsonArr; // getJsonArray();
-		$smarty->assign("dFormId", $formCfg->formId);
-		$smarty->assign("dFormJSON",$jsonArr);
-	}
 
 	public static function setSingleFormOnLoad($formCfg=null)
 	{
@@ -161,3 +147,22 @@ class SmartyUtil
 		$smarty->assign("fbAppId", $facebook_api->getAppID());
 	}	
 }
+
+
+
+
+/**
+ *
+ * @param string $formCfg A concrete class that we are referencing via it's base class
+ * @deprecated deleteme
+ */
+// 	private static function setDFormData($formCfg=null)
+// 	{
+// 		global $smarty;
+
+// 		$formCfg->loadFormFieldArray();
+// 		$jsonArr = $formCfg->jsonArr; // getJsonArray();
+
+// 		$smarty->assign("dFormId", $formCfg->formId);
+// 		$smarty->assign("dFormJSON",$jsonArr);
+// 	}
