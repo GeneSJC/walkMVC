@@ -1,5 +1,16 @@
 <?php
 
+// ~~~~~~~~~~~~~~~~~~~ BEGIN - Ajax Demo REST
+$app->get('/access/demo/ajaxClient1', 'demoAjaxClient1' );
+$app->get('/access/demo/ajaxSvc1', 'demoAjaxSvc1' );
+function demoAjaxSvc1() { echo 55; }
+function demoAjaxClient1()
+{
+	global $smarty;
+	$smarty->display('_dev/ajax_jquery_demo.tpl');
+}
+// ~~~~~~~~~~~~~~~~~~~ END - Ajax Demo REST
+
 
 $app->get('/access/post/home', 'viewPostIndex' );
 
@@ -10,7 +21,6 @@ $app->get('/access/post/delete/:id', 'viewConfirmPostDelete' );
 $app->get('/access/post/deleteConfirm/:id', 'actionPostDelete' );
 
 $app->post('/access/post/save', 'actionPostSave' );
-
 
 /**
  * Because there is only a simple get ->all() invocation,
