@@ -18,26 +18,31 @@
 	
 	function jqueryAjaxGet (baseUrl, successFunction)
 	{
-		jqueryAjax(baseUrl, successFunction, "GET");		
+		jqueryAjax(null, baseUrl, successFunction, "GET");		
 	}	
 	
-	function jqueryAjaxPost (baseUrl, successFunction)
+	function jqueryAjaxPost (data, baseUrl, successFunction)
 	{
-		jqueryAjax(baseUrl, successFunction, "POST");		
+		jqueryAjax(data, baseUrl, successFunction, "POST");		
 	}	
 	
-	function jqueryAjax (baseUrl, successFunction, method)
+	function jqueryAjax (postData, baseUrl, successFunction, method)
 	{
 		if ( ! method )
 		{
 			method = "GET";
 		}
 		
+		if ( ! postData )
+		{
+			postData = "";
+		}
+		
 		request = $.ajax({
 			type: method,
 			url: baseUrl,
 		    // dataType: "json",
-			// data: { data :  JSON.stringify(theData) },
+			data: { postData :  postData },
 			success: function(responseJSON) 
 			{
 				console.log ('calling successFunction');
