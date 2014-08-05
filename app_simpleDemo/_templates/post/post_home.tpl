@@ -55,5 +55,9 @@ Acion
 {/foreach}
 </table>
 
+<div>
+<h2>Demos</h2>
+<a href='../../access/demo/ajaxClient1' > Ajax Demo </a>
+</div>
 
 {include file="../_general/footer.tpl"}

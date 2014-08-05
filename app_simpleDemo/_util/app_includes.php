@@ -53,5 +53,6 @@ class AppIncludes
 		}
 	
 		require_once $pathPrefix . '/post/rest_post.php';	
+		require_once $pathPrefix . '/post/rest_demo.php';
 	}
 }
