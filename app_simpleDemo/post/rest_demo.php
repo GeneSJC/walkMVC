@@ -17,4 +17,20 @@ function demoAjaxClient1()
 // ~~~~~~~~~~~~~~~~~~~ END - Ajax Demo REST
 
 
+$app->get('/access/demo/refreshDemo', 'viewRefreshDemo' );
+$app->get('/access/demo/systemTime', 'getSystemTime' );
+
+function viewRefreshDemo()
+{
+	global $smarty;
+
+	$smarty->display("_demo/ajax_pagerefresh.tpl");
+}
+
+function getSystemTime()
+{
+	echo date("m/d/Y h:i:s a", time());
+}
+
+
 ?>
