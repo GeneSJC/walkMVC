@@ -73,4 +73,26 @@ function getNumFromString(thestring)
 	return thenum;
 }
 
+/**
+ * 
+ * @param inputString what will be updated & returned
+ * @param oldStr what will be REPLACED
+ * @param newStr what will be REPLACED-WITH
+ */
+function replaceAllOccurrences(inputString, oldStr, newStr) 
+{
+	var i = 0;
+	
+//	console.log('replaceAllOccurrences gets inputString =  ' + inputString );
+//	console.log('replaceAllOccurrences gets oldStr =  ' + oldStr );
+	
+	while (inputString.indexOf(oldStr) >= 0)
+	{
+		inputString = inputString.replace(oldStr, newStr);
+		i++;
+		// console.log('in loop ' + i );
+	}
+	
+	return inputString;
+}
 
