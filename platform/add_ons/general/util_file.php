@@ -24,4 +24,12 @@ function writeFile ($stringData, $myFile = null) {
 	return $myFile;
 }
 
+function getFileContent($name=null)
+{
+	$myfile = fopen($name, "r") or die("Unable to open file!");
+	$content = fread($myfile,filesize($name));
+	fclose($myfile);
+
+	return $content;
+}
 
