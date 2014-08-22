@@ -10,7 +10,7 @@
 
 	function loadSystemTime()
 	{
-		var baseurl = "http://localhost/dev/cloudQA/app/access.php/access/_dev/systemTime";
+		var baseurl = "{$APP_REST_ROOT}/_dev/systemTime";
 		
 		jqueryAjaxGet(baseurl, showResult);
 	}
