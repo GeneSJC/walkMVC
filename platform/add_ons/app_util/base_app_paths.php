@@ -52,20 +52,44 @@ class PathUtil
 	// 1) SET URL INFO
 	// ========================
 
-define('APP_WEB_ROOT', 				DOMAIN . APP_SUBDOMAIN);  
-define('APP_FRAMEWORK_ROOT', 	DOMAIN . WALKMVC_SUBDOMAIN);  
+if ( ! defined('APP_WEB_ROOT'))
+{
+	define('APP_WEB_ROOT', 				DOMAIN . APP_SUBDOMAIN);  
+	define('APP_FRAMEWORK_ROOT', 	DOMAIN . WALKMVC_SUBDOMAIN);  
+}
+else 
+{
+	// BaseAppUtil::xlog('APP_WEB_ROOT already set, skipping in base_app_paths.php');
+}
 
 	// WEB PAGE RESOURCES
-	
-define('RESOURCES_ROOT', 	APP_WEB_ROOT . '/_resources');
-define('BASE_IMG_ROOT', 		RESOURCES_ROOT . '/img');
-define('BASE_CSS_ROOT', 		RESOURCES_ROOT . '/css');
 
+// Assumes all related paths will be set
+// FIXME - need to see where RESOURCES_ROOT is being used,
+// since we now will be calling most of that stuff WEB_ROOT
+// RESOURCES_ROOT is not used anywhere, but BASE_CSS_ and _IMG_ are
+if ( ! defined('RESOURCES_ROOT'))
+{
+	define('RESOURCES_ROOT', 	APP_WEB_ROOT . '/_resources');
+	define('BASE_IMG_ROOT', 		RESOURCES_ROOT . '/img');
+	define('BASE_CSS_ROOT', 		RESOURCES_ROOT . '/css');
+	define('BASE_JS_ROOT', 		RESOURCES_ROOT . '/js');
+	
+	// not used by smarty
+	define('SMARTY_TEMPLATE_ROOT', 		RESOURCES_ROOT . '/_templates');
+	
 	// 2) SET FILE SYSTEM PATH INFO
 	// ==================================================
+	
+	define('APP_WALKMVC_FILE_PATH', 	WEB_ROOT_FILE_PATH . WALKMVC_SUBDOMAIN);
+	define('APP_FILE_PATH', 					WEB_ROOT_FILE_PATH . APP_SUBDOMAIN);
+	
+	define('APP_LOG_PATH', 			APP_FILE_PATH . '/_resources/walk.log'); 
+}
+else
+{
+	// BaseAppUtil::xlog('RESOURCES_ROOT already set, skipping in base_app_paths.php');
+}
 
-define('APP_WALKMVC_FILE_PATH', 	WEB_ROOT_FILE_PATH . WALKMVC_SUBDOMAIN);  
-define('APP_FILE_PATH', 					WEB_ROOT_FILE_PATH . APP_SUBDOMAIN);  
-define('APP_LOG_PATH', 					APP_FILE_PATH . '/_resources/walk.log'); 
 
 
