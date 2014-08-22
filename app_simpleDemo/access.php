@@ -23,9 +23,12 @@ $app->notFound(function ()
 {
 	global $app;
 
-	BaseAppUtil::xlog('handling notFound');
-
 	$restStart = APP_REST_ROOT . '/post/home';
+
+	$path = $app->request()->getPath();
+	$msg = ' path = ' . $path;
+	BaseAppUtil::xlog("handling notFound, for $msg ");
+
 	BaseAppUtil::xlog("Attempting to redirect to: $restStart");
 
 	$app->redirect($restStart);
