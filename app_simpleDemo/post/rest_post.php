@@ -61,11 +61,16 @@ function viewPostEdit($id=null)
 	}
 	
 	$postFormCfg->loadFormFieldArray();
-	$jsonArr = $postFormCfg->jsonArr; // getJsonArray();
+	$postJsonArr = $postFormCfg->jsonArr; // getJsonArray();
 	
-	$smarty->assign("action", $postFormCfg->action);
-	$smarty->assign("dFormId", $postFormCfg->formId);
-	$smarty->assign("dFormJSON",$jsonArr);
+	$postDForm = new dFormBean();
+	$postDForm->action = $postFormCfg->action;
+	$postDForm->dFormId = $postFormCfg->formId;
+	$postDForm->dFormJSON = $postJsonArr;
+	$postDForm->loadFunctionString = 'loadPostForm()';
+	
+	$loadFormFuncArr[] = $postDForm;
+	$smarty->assign('loadFormFuncArr', $loadFormFuncArr);
 	
 	$smarty->display('post/post_edit.tpl');
 }

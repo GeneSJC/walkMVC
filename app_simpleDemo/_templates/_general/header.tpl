@@ -68,12 +68,17 @@
 			
     </head>
 
+{include file="../_general/body_dForm_onload.tpl" }
+{include file="../_general/body_header.tpl" }
+    
 {* if present, run JS specific to the current view *}
-{if isset($dFormJSON) }
-	<body onload="viewOnLoad()"">
-{else}
-    <body>
-{/if}
+{*
+			{if isset($dFormJSON) }
+				<body onload="viewOnLoad()"">
+			{else}
+			    <body>
+			{/if}
+ *}
        
 {if isset($message) }
 <div>
