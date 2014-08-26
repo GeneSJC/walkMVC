@@ -147,23 +147,25 @@ class SmartyUtil
 		$smarty->assign("loginUrl", APP_REST_ROOT . '/public/initFacebookLogin');
 		$smarty->assign("fbAppId", $facebook_api->getAppID());
 	}	
-}
-
-
-
 
 /**
  *
  * @param string $formCfg A concrete class that we are referencing via it's base class
  * @deprecated deleteme
  */
-// 	private static function setDFormData($formCfg=null)
-// 	{
-// 		global $smarty;
+	private static function setDFormData($formCfg=null)
+	{
+		global $smarty;
 
-// 		$formCfg->loadFormFieldArray();
-// 		$jsonArr = $formCfg->jsonArr; // getJsonArray();
+		$formCfg->loadFormFieldArray();
+		$jsonArr = $formCfg->jsonArr; // getJsonArray();
 
-// 		$smarty->assign("dFormId", $formCfg->formId);
-// 		$smarty->assign("dFormJSON",$jsonArr);
-// 	}
+		$smarty->assign("dFormId", $formCfg->formId);
+		$smarty->assign("dFormJSON",$jsonArr);
+	}
+	
+}
+
+
+
+	
