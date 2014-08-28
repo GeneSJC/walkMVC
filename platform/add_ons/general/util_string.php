@@ -7,6 +7,11 @@
 
 function dumpToString($obj)
 {
+	return getAsString($obj);
+}
+
+function getAsString($obj)
+{
 	ob_start();
 	var_dump($obj);
 	$result = ob_get_clean();
