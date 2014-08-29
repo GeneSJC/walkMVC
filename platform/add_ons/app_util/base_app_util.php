@@ -29,7 +29,8 @@ class BaseAppUtil
 		}
 		
 		$logPath = BaseAppUtil::$LOG_PATH;
-		$now = date("D M j G:i:s Y");
+		// $now = date("D M j G:i:s Y");
+		$now = date("m-d-Y G:i");
 		writeFile ( "$now : $msg \n", $logPath);
 	}
 	
