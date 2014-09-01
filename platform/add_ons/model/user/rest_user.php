@@ -43,7 +43,8 @@ function viewLogin($msgId=0)
 	// don't try to show the button on localhost
 	if ( ! startsWith(DOMAIN, 'http://localhost') )
 	{
-		SmartyUtil::setFacebookLoginButtonData();
+		// handled in SmartyUtil::loadSmarty
+		// SmartyUtil::setFacebookLoginButtonData();
 	}
 	
 	$smarty->display('user/login.tpl');

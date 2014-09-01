@@ -16,7 +16,8 @@ function viewRegistration()
 {
 	global $smarty;
 
-	SmartyUtil::setFacebookLoginButtonData();
+	// handled in SmartyUtil::loadSmarty
+	// SmartyUtil::setFacebookLoginButtonData();
 	
 	$registerFormCfg = new RegisterFormConfig();
 
