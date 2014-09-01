@@ -41,7 +41,10 @@ class SmartyUtil
 			$smarty->assign("USER_ID", 		BaseAppUtil::getSessionUserId()  );
 			$smarty->assign("USER_NAME", 	BaseAppUtil::getSessionUserName()  );
 		}
-		
+		else
+		{
+			SmartyUtil::setFacebookLoginButtonData();
+		}
 		
 		//$smarty->force_compile = true;
 		//$smarty->debugging = true;
@@ -131,10 +134,15 @@ class SmartyUtil
 		$app->redirect($successRestPath); // this view verifies the session
 	}
 	
+	/**
+	 * Here we set the Smarty params to support config data for FB Login Button
+	 */
 	public static function setFacebookLoginButtonData()
 	{
 		global $smarty;
 	
+		BaseAppUtil::xlog ("setFacebookLoginButtonData()");
+		
 		if (  startsWith(DOMAIN, 'http://localhost')
 				||
 				BaseAppUtil::isSessionUserSet() )
