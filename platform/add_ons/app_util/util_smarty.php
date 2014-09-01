@@ -153,7 +153,7 @@ class SmartyUtil
  * @param string $formCfg A concrete class that we are referencing via it's base class
  * @deprecated deleteme
  */
-	private static function setDFormData($formCfg=null)
+	public static function setDFormData($formCfg=null)
 	{
 		global $smarty;
 
