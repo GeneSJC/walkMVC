@@ -141,7 +141,7 @@ class SmartyUtil
 	{
 		global $smarty;
 	
-		BaseAppUtil::xlog ("setFacebookLoginButtonData()");
+		// BaseAppUtil::xlog ("setFacebookLoginButtonData()");
 		
 		if (  startsWith(DOMAIN, 'http://localhost')
 				||
