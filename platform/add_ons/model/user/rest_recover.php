@@ -120,6 +120,15 @@ function actionResetPassword()
 	$userLogic = new UserLogic();
 	$result = $userLogic->actionResetPwd(); // FIXME: check for errors
 	
-	echo $result;
+	if ( $result == Msg::SUCCESS)
+	{
+		BaseAppUtil::setSuccessMessage("Pwd updated successfully");
+	}
+	else 
+	{
+		BaseAppUtil::setErrorMessage("Error happend for pwd update.  Result code: $result");
+	}
+	
+	App::redirectIfNoSession();
 }
 
