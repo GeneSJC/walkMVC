@@ -117,6 +117,8 @@ function viewResetPassword($resetKey=null)
 
 function actionResetPassword()
 {
+	global $app;
+	
 	$userLogic = new UserLogic();
 	$result = $userLogic->actionResetPwd(); // FIXME: check for errors
 	
