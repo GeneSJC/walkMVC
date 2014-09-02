@@ -3,10 +3,11 @@
 // NOTE: relative paths are the local path for access.php file (which includes this file)
 	
 define('WEB_ROOT_FILE_PATH', 			'/Library/WebServer/Documents/dev');
+define('DOMAIN', 								'http://localhost/dev');
+
 define('WALKMVC_SUBDOMAIN', 			'/walkMVC/platform');
 define('WALKMVC_PLATFORM_PATH', 	WEB_ROOT_FILE_PATH . WALKMVC_SUBDOMAIN);
 
-define('DOMAIN', 								'http://localhost/dev');
 define('APP_SUBDOMAIN', 					'/walkMVC/app_simpleDemo');
 
 define('SMARTY_PATH', 	'.'); // will look for _templates folder here
