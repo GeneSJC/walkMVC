@@ -41,8 +41,10 @@ class SmartyUtil
 			$smarty->assign("USER_ID", 		BaseAppUtil::getSessionUserId()  );
 			$smarty->assign("USER_NAME", 	BaseAppUtil::getSessionUserName()  );
 		}
-		else
+		else if ( FacebookApiUtil::$APP_ID != null)
 		{
+			BaseAppUtil::xlog ("calling setFacebookLoginButtonData()");
+			
 			SmartyUtil::setFacebookLoginButtonData();
 		}
 		
