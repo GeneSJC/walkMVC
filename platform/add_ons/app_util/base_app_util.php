@@ -109,15 +109,15 @@ class BaseAppUtil
 	
 	public static function getSuccessMessage ()
 	{
-		return self::getMessage('success_msg');
+		return self::getAndClearMessage('success_msg');
 	}
 	
 	public static function getErrorMessage ()
 	{
-		return self::getMessage('error_msg');
+		return self::getAndClearMessage('error_msg');
 	}
 	
-	public static function getMessage ($msgKey)
+	public static function getAndClearMessage ($msgKey)
 	{
 		// BaseAppUtil::xlog ("in getSuccessMessage()");
 		
