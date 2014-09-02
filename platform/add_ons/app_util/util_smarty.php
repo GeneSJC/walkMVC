@@ -29,18 +29,7 @@ class SmartyUtil
 		$smarty->assign("BASE_IMG_ROOT", 				BASE_IMG_ROOT );
 		$smarty->assign("BASE_JS_ROOT", 					BASE_JS_ROOT );
 		
-		$okMsg = BaseAppUtil::getAndClearMessage('success_msg');
-		if ($okMsg)
-		{
-			$smarty->assign("message", 	$okMsg );
-		}
-		
-		$errMsg = BaseAppUtil::getAndClearMessage('error_msg');
-		if ($errMsg)
-		{
-			$smarty->assign("error_msg", 	$errMsg );
-		}
-		
+		SmartyUtil::setStatusMessages($smarty);
 		
 		if ( defined('TEMPLATE_ROOT'))
 		{
@@ -66,6 +55,21 @@ class SmartyUtil
 		
 		// $smarty->caching = true;
 		// $smarty->cache_lifetime = 120;
+	}
+
+	public static function setStatusMessages($smarty=null)
+	{
+		$okMsg = BaseAppUtil::getAndClearMessage('success_msg');
+		if ($okMsg)
+		{
+			$smarty->assign("message", 	$okMsg );
+		}
+		
+		$errMsg = BaseAppUtil::getAndClearMessage('error_msg');
+		if ($errMsg)
+		{
+			$smarty->assign("error_msg", 	$errMsg );
+		}		
 	}
 
 	public static function setMessageValues()
@@ -140,11 +144,17 @@ class SmartyUtil
 	{
 		global $app;
 	
-		if ( $resultCode !=  Msg::SUCCESS )
+		if ( $resultCode <  Msg::SUCCESS ) // Msg::SUCCESS is 0 
 		{
 			SmartyUtil::renderLoginForError($resultCode);
 			return;
 		}
+		
+		BaseAppUtil::xlog("Login result code: $resultCode");
+		
+		$msg = BaseMsg::get($resultCode);
+		
+		BaseAppUtil::setSuccessMessage("Login result msg: $msg");
 		
 		$app->redirect($successRestPath); // this view verifies the session
 	}
