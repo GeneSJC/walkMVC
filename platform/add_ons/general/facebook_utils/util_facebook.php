@@ -37,7 +37,7 @@
 
 class FacebookApiUtil
 {
-	private static $APP_ID = null;
+	public static $APP_ID = null;
 	private static $SECRET = null;
 	
 	// =========================
