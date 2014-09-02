@@ -129,6 +129,9 @@ function actionResetPassword()
 		BaseAppUtil::setErrorMessage("Error happend for pwd update.  Result code: $result");
 	}
 	
-	App::redirectIfNoSession();
+	$restPath = '../public/login';
+	
+	BaseAppUtil::xlog("actionResetPassword result code = $result, redirecting now	");
+	$app->redirect($restPath); // this view verifies the session
 }
 
