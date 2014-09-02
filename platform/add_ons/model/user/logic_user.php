@@ -101,6 +101,8 @@ class UserLogic
 			return $result;
 		}
 		
+		BaseAppUtil::xlog ("We have valid pwd = $pwd");
+		
 		$userMapper = new UserMapper($adapter);
 		$userEntity = $userMapper->first(array('email' => $resetEntry->email)) ;
 		

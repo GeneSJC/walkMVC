@@ -13,6 +13,8 @@ $app->post('/access/user/recover',  'actionSendRecoverEmail' );
 	// we can try to use the same path if get/post are different ?!
 	
 $app->get('/access/user/reset/:resetKey',  'viewResetPassword' ); // 
+
+// The form will have the password fields
 $app->post('/access/user/reset',  'actionResetPassword' ); // 
 
 function viewPwdRecover($msgId=0) 
