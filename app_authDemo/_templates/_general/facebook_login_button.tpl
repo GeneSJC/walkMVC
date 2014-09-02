@@ -1,3 +1,12 @@
+{*
+NOTE:
+There is a known issue regarding javascript error after the Facebook pop-up accepts user credentials.
+
+[Error] Blocked a frame with origin "https://www.facebook.com" from accessing a frame with origin "http://static.ak.facebook.com".  The frame requesting access has a protocol of "https", the frame being accessed has a protocol of "http". Protocols must match.
+
+Seems the button requires to be hosted on https .. not sure; will try to get this resolved asap 
+- suggestions are welcome.
+*}
 <fb:login-button scope="public_profile,email"
      style='margin-left: 40px; xpadding-right: 120px; xmargin-top: 10px;  xmargin-right: 150px; ; float: center; right; '
      xstyle='background-color: white; padding: 2px;  border: 2px solid #777777;  '  
