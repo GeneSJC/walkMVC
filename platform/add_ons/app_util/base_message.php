@@ -41,7 +41,7 @@ class BaseMsg
 	 */
 	public static function get($msgCode=null)
 	{
-		( ! $msgCode ) ? die('Calling Msg::get() with no param') : null;
+		( $msgCode === null) ? die("Calling Msg::get() with no param, because msgCode = $msgCode") : null;
 		
 		$message = null;
 
