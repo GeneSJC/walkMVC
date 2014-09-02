@@ -29,6 +29,19 @@ class SmartyUtil
 		$smarty->assign("BASE_IMG_ROOT", 				BASE_IMG_ROOT );
 		$smarty->assign("BASE_JS_ROOT", 					BASE_JS_ROOT );
 		
+		$okMsg = BaseAppUtil::getAndClearMessage('success_msg');
+		if ($okMsg)
+		{
+			$smarty->assign("message", 	$okMsg );
+		}
+		
+		$errMsg = BaseAppUtil::getAndClearMessage('error_msg');
+		if ($errMsg)
+		{
+			$smarty->assign("error_msg", 	$errMsg );
+		}
+		
+		
 		if ( defined('TEMPLATE_ROOT'))
 		{
 			$smarty->assign("TEMPLATE_ROOT", 				TEMPLATE_ROOT );
