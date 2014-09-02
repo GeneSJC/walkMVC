@@ -105,6 +105,11 @@ function viewResetPassword($resetKey=null)
 	$smarty->assign("dFormId", $pwdFormCfg->formId);
 	$smarty->assign("dFormJSON",$jsonArr);	
 	
+	$loadRecoverForm = 'loadRecoverForm()';
+	
+	// Used in body_dForm_onload.tpl
+	$smarty->assign("loadFormFuncArr",$loadRecoverForm);
+	
 	$smarty->display('user/reset_pwd.tpl');
 }
 
