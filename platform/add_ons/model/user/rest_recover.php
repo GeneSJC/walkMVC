@@ -56,6 +56,25 @@ function actionSendRecoverEmail()
 	$app->redirect($restPath); // this view verifies the session
 }
 
+function isValidResetKey($resetKey=null)
+{
+	if ( ! $resetKey )
+	{
+		// echo "resetKey missing - try again";
+		return false;
+	}
+
+	$adapter = getDbAdapter();
+	$recoverMapper = new RecoverMapper($adapter);
+
+	$entry = $recoverMapper->first(array('reset_key' => $resetKey));
+
+	if ( ! $entry )
+	{
+		echo "Unknown resetKey - try again";
+		return false;
+	}
+}
 
 /**
  * ACTIONS:
@@ -67,23 +86,21 @@ function actionSendRecoverEmail()
  */
 function viewResetPassword($resetKey=null)
 {
-
-	if ( ! $resetKey )
+	global $smarty, $app;
+	
+	$isValid = isValidResetKey($resetKey);
+	if ( ! $isValid )
 	{
-		echo "resetKey missing - try again";
-		return;
-	}
-	
-	global $smarty;
-	
-	$adapter = getDbAdapter();
-	$recoverMapper = new RecoverMapper($adapter);
-	
-	$entry = $recoverMapper->first(array('reset_key' => $resetKey));
-	
-	if ( ! $entry )
-	{
-		echo "Unknown resetKey - try again";
+		$msg = "Unknown resetKey: $resetKey . "
+					. " Try again or request a new password recover key.";
+		
+		BaseAppUtil::setErrorMessage($msg);
+		
+		$restPath = APP_REST_ROOT . '/public/recover';
+		
+		BaseAppUtil::xlog("viewResetPassword rest - redirecting now	");
+		$app->redirect($restPath); // this view verifies the session
+		
 		return;	
 	}
 	
