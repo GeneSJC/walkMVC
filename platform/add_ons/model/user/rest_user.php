@@ -79,20 +79,24 @@ function viewUserHome()
 function actionLogin() 
 {
 	global $app;
-	$successPath = APP_REST_ROOT . '/user/home';
+	$successRestPath = APP_REST_ROOT . '/user/home';
 	
 	$userLogic = new UserLogic();
 	$resultCode = $userLogic->actionLogin();
+
+	if ( $resultCode <  Msg::SUCCESS ) // Msg::SUCCESS is 0
+	{
+		SmartyUtil::renderLoginForError($resultCode);
+		return;
+	}
 	
-	SmartyUtil::renderSuccessOrLoginForError ($resultCode, $successPath);
+	BaseAppUtil::xlog("Login result code: $resultCode");
 	
-// 	if ( $resultCode !=  Msg::SUCCESS )
-// 	{
-// 		SmartyUtil::renderLoginForError(Msg::FACEBOOK_USER_IS_NULL);
-// 		return;
-// 	}
+	$msg = BaseMsg::get($resultCode);
 	
-// 	$app->redirect(APP_REST_ROOT . '/user/home'); // this view verifies the session
+	BaseAppUtil::setSuccessMessage("Login successful");
+	
+	$app->redirect($successRestPath); // this view verifies the session
 }
 
 

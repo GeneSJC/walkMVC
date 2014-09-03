@@ -140,25 +140,6 @@ class SmartyUtil
 		}
 	}
 
-	public static function renderSuccessOrLoginForError ($resultCode=null, $successRestPath=null)
-	{
-		global $app;
-	
-		if ( $resultCode <  Msg::SUCCESS ) // Msg::SUCCESS is 0 
-		{
-			SmartyUtil::renderLoginForError($resultCode);
-			return;
-		}
-		
-		BaseAppUtil::xlog("Login result code: $resultCode");
-		
-		$msg = BaseMsg::get($resultCode);
-		
-		BaseAppUtil::setSuccessMessage("Login result msg: $msg");
-		
-		$app->redirect($successRestPath); // this view verifies the session
-	}
-	
 	/**
 	 * Here we set the Smarty params to support config data for FB Login Button
 	 */
