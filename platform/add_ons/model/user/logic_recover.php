@@ -25,8 +25,8 @@ class RecoverLogic
 		$emailQueryArr = $recoverFormConfig->getEmailQueryArray();
 		if ( $emailQueryArr == null )
 		{
-			echo "Missing fields";
-			return;
+			BaseAppUtil::xlog ("Missing fields");
+			return Msg::MISSING_REQUIRED_FIELDS;
 		}
 		
 		// var_dump($emailQueryArr);
@@ -39,10 +39,15 @@ class RecoverLogic
 		
 		if (! $user)
 		{
+			$msg = "Unknown email = " . $emailQueryArr['email'] ;
+			
+			BaseAppUtil::setErrorMessage($msg);
+			
 			return Msg::NO_SESSION;
 		}
 
 		$resetKey = $this->saveResetKey( $emailQueryArr['email'] );
+		BaseAppUtil::xlog ("got resetKey = $resetKey");
 		if ($resetKey)
 		{
 			BaseAppUtil::xlog ("sending Recover email");
