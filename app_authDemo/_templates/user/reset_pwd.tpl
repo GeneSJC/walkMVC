@@ -1,5 +1,9 @@
 {include file="../_general/header.tpl" title={$title}}
 
+{if isset($USER_NAME) }
+
+{/if}
+
 {* no if isset($dFormJSON) required, since we know this view expects that token *}
 {include file="../_general/dForm_element.tpl" }
 

@@ -113,27 +113,6 @@ function viewResetPassword($resetKey=null)
 	$smarty->display('user/reset_pwd.tpl');
 }
 
-function actionResetPassword()
-{
-	global $app;
-	
-	$userLogic = new UserLogic();
-	$result = $userLogic->actionResetPwd(); // FIXME: check for errors
-	
-	if ( $result == Msg::SUCCESS)
-	{
-		BaseAppUtil::setSuccessMessage("Pwd updated successfully");
-	}
-	else 
-	{
-		BaseAppUtil::setErrorMessage("Error happend for pwd update.  Result code: $result");
-	}
-	
-	$restPath = '../public/login';
-	
-	BaseAppUtil::xlog("actionResetPassword result code = $result, redirecting now	");
-	$app->redirect($restPath); // this view verifies the session
-}
 
 
 

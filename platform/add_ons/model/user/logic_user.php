@@ -102,6 +102,33 @@ class UserLogic
 		return $resetEntry;
 	}
 	
+	public function getUserQueryArr()
+	{
+		$getUserToUpdateQueryArr = array();
+		
+		if ( BaseAppUtil::isSessionActive())
+		{
+			$userId = BaseAppUtil::getSessionUserId();
+			$getUserToUpdateQueryArr['id'] = $userId;
+		}
+		else
+		{
+			$resetKeyQueryArr = $pwdResetFormConfig->getHttpPostResetKeyQueryArray();
+			$resetDbEntry = $this->isValidResetKey($resetKeyQueryArr['reset_key']);
+			if ($resetDbEntry)
+			{
+				$updateEmail = $resetDbEntry->email;
+				$getUserToUpdateQueryArr['email'] = $updateEmail;
+			}
+			else
+			{
+				return null;
+			}
+		}	
+
+		return $getUserToUpdateQueryArr;
+	}
+	
 	/**
 	 * 1) See if the key exists and has not expired
 	 * 2) If valid, get the user with that email address
@@ -110,21 +137,22 @@ class UserLogic
 	 * 
 	 * @return string
 	 */
-	public function actionResetPwd($isRecoverReset=true)
+	public function actionResetPwd()
 	{
 		$pwdResetFormConfig =  new PasswordResetFormConfig();
-		
-		if ( $isRecoverReset )
+
+		$getUserToUpdateQueryArr = $this->getUserQueryArr();
+		if ( ! $getUserToUpdateQueryArr )
 		{
-			$resetKeyQueryArr = $pwdResetFormConfig->getHttpPostResetKeyQueryArray();
-				
-			$resetDbEntry = $this->isValidResetKey($resetKeyQueryArr['reset_key']);
+			BaseAppUtil::setErrorMessage("Failed: ->getUserQueryArr();");
+			return null;
 		}
 		
 		$pwd = $pwdResetFormConfig->getValidHttpPostResetPwd();
 		if ( ! $pwd )
 		{
-			$result = Msg::CONFIRM_PWD_DIFFERENT;
+			BaseAppUtil::setErrorMessage("Passwords dont match");
+			$result = Msg::UNEXPECTED_ERROR;
 			return $result;
 		}
 		
@@ -132,20 +160,22 @@ class UserLogic
 		
 		$adapter = getDbAdapter();
 		$userMapper = new UserMapper($adapter);
-		$userEntity = $userMapper->first(array('email' => $resetDbEntry->email)) ;
+		$userEntity = $userMapper->first($getUserToUpdateQueryArr) ;
 		
 		if ( ! $userEntity )
 		{
-			$result = Msg::NO_USER_FOR_EMAIL;
+			$arrStr = getAsString($getUserToUpdateQueryArr);
+			BaseAppUtil::setErrorMessage("No user for query array: $arrStr");
 			return $result;
 		}
 		
 		// verify passwords are same
 		
 		$userEntity->password = md5($pwd);
-		$userMapper->save($userEntity);
+		$result = $userMapper->save($userEntity);
 			
-		$result = Msg::SUCCESS;
+		if ($result)
+			return Msg::SUCCESS;
 
 		return $result;
 	}

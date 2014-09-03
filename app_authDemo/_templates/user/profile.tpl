@@ -7,6 +7,9 @@ Welcome user: TBD
 <a href="../post/home">View Posts</a>
 <br/>
 <br/>
+<a href="../user/update">Change Password</a>
+<br/>
+<br/>
 <a href="../public/logout">Exit</a>
 
 {include file="../_general/footer.tpl"}

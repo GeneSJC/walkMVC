@@ -12,7 +12,67 @@ $app->get('/access/user/home',  'viewUserHome' ); // watch out to use 'get', & n
 
 $app->post('/access/user/login',  'actionLogin' );  
 
+$app->get('/access/user/update',  'viewChangePassword' );  
+$app->post('/access/user/update',  'actionResetPassword' ); //
+
 $app->get('/access/doFacebookLogin', 'actionFacebookLogin' );
+
+function viewChangePassword() 
+{
+	global $smarty;
+
+	$pwdFormCfg = new PasswordResetFormConfig();
+	
+	$pwdFormCfg->resetKey['value'] = 'reset';
+	
+	$pwdFormCfg->loadFormFieldArray();
+	
+	$jsonArr = $pwdFormCfg->jsonArr; // getJsonArray();
+	
+	$smarty->assign("title", "Change Password");
+	
+	$smarty->assign("action", $pwdFormCfg->action);
+	$smarty->assign("dFormId", $pwdFormCfg->formId);
+	$smarty->assign("dFormJSON",$jsonArr);
+	
+	$loadRecoverForm = 'loadChangePwdForm()';
+	
+	// Used in body_dForm_onload.tpl
+	$smarty->assign("loadFormFuncArr", $loadRecoverForm);
+	
+	$smarty->display('user/reset_pwd.tpl');
+}
+
+
+function actionResetPassword()
+{
+	global $app;
+
+	$userLogic = new UserLogic();
+	$result = $userLogic->actionResetPwd(); // FIXME: check for errors
+
+	if ( $result == Msg::SUCCESS)
+	{
+		BaseAppUtil::setSuccessMessage("Pwd updated successfully");
+	}
+	else
+	{
+		BaseAppUtil::setErrorMessage("Error happend for pwd update.  Result code: $result");
+	}
+
+	if ( BaseAppUtil::isSessionActive())
+	{
+		$restPath = '../user/update';
+	}
+	else
+	{
+		$restPath = '../public/login';
+	}
+	
+	BaseAppUtil::xlog("actionResetPassword result code = $result, redirecting now	");
+	$app->redirect($restPath); // this view verifies the session
+}
+
 
 // ==================
 // PUBLIC HANDLERS
