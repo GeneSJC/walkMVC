@@ -2,7 +2,10 @@
     <div style='padding: 5px ; background-color: orange ' >
     Welcome to our template header
     </div>
-    
+    {if ! isset($USER_NAME) }
+    <br/>
+    <a href="{$APP_REST_ROOT}/public/login">Login</a>
+    {/if}
     <hr/>
     
     	{if isset($message) }
