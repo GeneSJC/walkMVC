@@ -68,6 +68,29 @@ class UserLogic
 		return  Msg::SUCCESS_REGISTER;
 	}
 	
+	public function isValidResetKey($pwdResetFormConfig=null)
+	{
+		$resetKeyQueryArr = $pwdResetFormConfig->getHttpPostResetKeyQueryArray();
+		// var_dump($registerQueryArr);
+		
+		$adapter = getDbAdapter();
+		$recoverMapper = new RecoverMapper($adapter);
+		$resetEntry = $recoverMapper->first($resetKeyQueryArr) ;
+		
+		$result = Msg::UNEXPECTED_ERROR;
+		if ( ! $resetEntry )
+		{
+			// FIXME, can set error message with this code value
+			// $result = Msg::UNKNOWN_RESETKEY;
+			return false;
+		}
+		
+		$val = getAsString($resetEntry);
+		BaseAppUtil::xlog ("We have valid resetEntry = $val");
+		
+		return true;
+	}
+	
 	/**
 	 * 1) See if the key exists and has not expired
 	 * 2) If valid, get the user with that email address
@@ -76,25 +99,16 @@ class UserLogic
 	 * 
 	 * @return string
 	 */
-	public function actionResetPwd()
+	public function actionResetPwd($isRecoverReset=true)
 	{
 		$pwdResetFormConfig =  new PasswordResetFormConfig();
 		
-		$resetKeyQueryArr = $pwdResetFormConfig->getResetKeyQueryArray();
-		// var_dump($registerQueryArr);
-		
-		$adapter = getDbAdapter();
-		$recoverMapper = new RecoverMapper($adapter);
-		$resetEntry = $recoverMapper->first($resetKeyQueryArr) ;
-		
-		$result = Msg::UNEXPECTED_ERROR;
-		if ( ! $resetEntry ) 
+		if ( $isRecoverReset )
 		{
-			$result = Msg::UNKNOWN_RESETKEY;
-			return $result;
+			$isValidResetKey = $this->isValidResetKey($pwdResetFormConfig);
 		}
-
-		$pwd = $pwdResetFormConfig->getResetPwd();
+		
+		$pwd = $pwdResetFormConfig->getValidHttpPostResetPwd();
 		if ( ! $pwd )
 		{
 			$result = Msg::CONFIRM_PWD_DIFFERENT;
