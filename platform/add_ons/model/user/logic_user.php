@@ -102,7 +102,7 @@ class UserLogic
 		return $resetEntry;
 	}
 	
-	public function getUserQueryArr()
+	public function getUserQueryArr($pwdResetFormConfig=null)
 	{
 		$getUserToUpdateQueryArr = array();
 		
@@ -141,7 +141,7 @@ class UserLogic
 	{
 		$pwdResetFormConfig =  new PasswordResetFormConfig();
 
-		$getUserToUpdateQueryArr = $this->getUserQueryArr();
+		$getUserToUpdateQueryArr = $this->getUserQueryArr($pwdResetFormConfig);
 		if ( ! $getUserToUpdateQueryArr )
 		{
 			BaseAppUtil::setErrorMessage("Failed: ->getUserQueryArr();");
