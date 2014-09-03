@@ -34,7 +34,7 @@ class PasswordResetFormConfig extends RegisterFormConfig
 	);
 	
 
-	public function getResetKeyQueryArray()
+	public function getHttpPostResetKeyQueryArray()
 	{
 		if (
 			! isset($_POST['reset_key'])
@@ -54,7 +54,7 @@ class PasswordResetFormConfig extends RegisterFormConfig
 	}	
 	
 
-	public function getResetPwd()
+	public function getValidHttpPostResetPwd()
 	{
 			// form validation can happen upstream
 		if (
