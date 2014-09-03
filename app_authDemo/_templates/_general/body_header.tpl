@@ -7,6 +7,9 @@
     <a href="{$APP_REST_ROOT}/public/login">Login</a>
     {/if}
     <hr/>
+	
+{include file="../_general/menubar_session_top.tpl" }    
+	
     
     	{if isset($message) }
 	<div style='color: black; border: 2px solid green; 
@@ -24,6 +27,4 @@
 	</div>
 	{/if}
 	
-	
-{include file="../_general/menubar_session_top.tpl" }    
     <br/>
