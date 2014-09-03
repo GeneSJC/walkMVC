@@ -63,9 +63,10 @@ function actionRegisterFacebookLogin ()
 	
 	$new_username = UserLogic::getUniqueUsername($fb_user_profile['first_name']);
 	
+	// Here we mock up the data we need to register, as if the user had entered it
 	RegisterFormConfig::setRegisterPostData ($new_username, $fb_user_profile['id']);	
 	
-	actionRegister();
+	actionRegister();  // FROM: rest_register.php
 	
 	// $userLogic = new UserLogic();
 	// $result = $userLogic->actionRegister();
