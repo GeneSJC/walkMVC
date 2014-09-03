@@ -32,6 +32,7 @@ class BaseMsg
 	const FACEBOOK_USER_IS_NULL = -10;
 	const UNEXPECTED_FACEBOOK_ERROR = -11;
 	const DB_SAVE_ERROR = -12;
+	const MISSING_REQUIRED_FIELDS = -14;
 	
 	/**
 	 * Assumption: this will always be called with some param 
