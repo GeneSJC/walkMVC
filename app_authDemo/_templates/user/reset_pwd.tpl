@@ -3,6 +3,9 @@
 {* no if isset($dFormJSON) required, since we know this view expects that token *}
 {include file="../_general/dForm_element.tpl" }
 
+{include file="../_general/footer.tpl"}
+
+{*
 <hr/>
 <hr/>
 
@@ -16,4 +19,4 @@ then we:
 - if ok, show password reset and associate it with the user id
 
 </pre>
-{include file="../_general/footer.tpl"}
+*}
