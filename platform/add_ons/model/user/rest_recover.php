@@ -43,14 +43,14 @@ function actionSendRecoverEmail()
 	global $app;
 	
 	$recoverLogic = new RecoverLogic();
-	$errorCode = $recoverLogic->actionSendRecoverEmail(); // FIXME: check for errors
+	$resultCode = $recoverLogic->actionSendRecoverEmail(); // FIXME: check for errors
 	
 	BaseAppUtil::xlog("actionSendRecoverEmail rest");
 	$restPath = '../public/recover';
-	if ($errorCode != 0)
-	{
-		$restPath .= '/' . $errorCode;
-	}
+// 	if ($resultCode != 0)
+// 	{
+// 		$restPath .= '/' . $resultCode;
+// 	}
 	
 	BaseAppUtil::xlog("actionSendRecoverEmail rest - redirecting now	");
 	$app->redirect($restPath); // this view verifies the session
