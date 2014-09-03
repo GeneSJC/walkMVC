@@ -45,35 +45,16 @@ function actionSendRecoverEmail()
 	$recoverLogic = new RecoverLogic();
 	$resultCode = $recoverLogic->actionSendRecoverEmail(); // FIXME: check for errors
 	
+	if ( $resultCode >= 0)
+	{
+		BaseAppUtil::setSuccessMessage("Password reset link was emailed");
+	}
+	
 	BaseAppUtil::xlog("actionSendRecoverEmail rest");
 	$restPath = '../public/recover';
-// 	if ($resultCode != 0)
-// 	{
-// 		$restPath .= '/' . $resultCode;
-// 	}
 	
 	BaseAppUtil::xlog("actionSendRecoverEmail rest - redirecting now	");
 	$app->redirect($restPath); // this view verifies the session
-}
-
-function isValidResetKey($resetKey=null)
-{
-	if ( ! $resetKey )
-	{
-		// echo "resetKey missing - try again";
-		return false;
-	}
-
-	$adapter = getDbAdapter();
-	$recoverMapper = new RecoverMapper($adapter);
-
-	$entry = $recoverMapper->first(array('reset_key' => $resetKey));
-
-	if ( ! $entry )
-	{
-		echo "Unknown resetKey - try again";
-		return false;
-	}
 }
 
 /**
@@ -87,8 +68,11 @@ function isValidResetKey($resetKey=null)
 function viewResetPassword($resetKey=null)
 {
 	global $smarty, $app;
+
+	BaseAppUtil::xlog("viewResetPassword($resetKey)	");
 	
-	$isValid = isValidResetKey($resetKey);
+	$userLogic = new UserLogic();
+	$isValid = $userLogic->isValidResetKey($resetKey);
 	if ( ! $isValid )
 	{
 		$msg = "Unknown resetKey: $resetKey . "
@@ -106,9 +90,6 @@ function viewResetPassword($resetKey=null)
 	
 	// now we know it exists
 	BaseAppUtil::xlog("got resetkey = $resetKey");
-	
-// 	var_dump($entry);
-// 	return;
 	
 	$pwdFormCfg = new PasswordResetFormConfig();
 	
@@ -153,4 +134,16 @@ function actionResetPassword()
 	BaseAppUtil::xlog("actionResetPassword result code = $result, redirecting now	");
 	$app->redirect($restPath); // this view verifies the session
 }
+
+
+
+
+// 	if ($resultCode != 0)
+	// 	{
+	// 		$restPath .= '/' . $resultCode;
+	// 	}
+
+	
+// 	var_dump($entry);
+// 	return;
 

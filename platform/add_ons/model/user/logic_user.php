@@ -68,11 +68,20 @@ class UserLogic
 		return  Msg::SUCCESS_REGISTER;
 	}
 	
-	public function isValidResetKey($pwdResetFormConfig=null)
+	/**
+	 * 
+	 * @param string $resetKeyQueryArr eg, array('reset_key' => $resetKey)
+	 * @return boolean
+	 */
+	public function isValidResetKey($resetKey=null)
 	{
-		$resetKeyQueryArr = $pwdResetFormConfig->getHttpPostResetKeyQueryArray();
-		// var_dump($registerQueryArr);
+		BaseAppUtil::xlog ("Enter isValidResetKey($resetKey) ");
 		
+		$resetKeyQueryArr = array(
+				'reset_key' => $resetKey
+		);
+		
+		// var_dump($registerQueryArr);
 		$adapter = getDbAdapter();
 		$recoverMapper = new RecoverMapper($adapter);
 		$resetEntry = $recoverMapper->first($resetKeyQueryArr) ;
@@ -82,13 +91,15 @@ class UserLogic
 		{
 			// FIXME, can set error message with this code value
 			// $result = Msg::UNKNOWN_RESETKEY;
+			
+			BaseAppUtil::xlog ("We DO NOT have valid resetEntry ");
 			return false;
 		}
 		
 		$val = getAsString($resetEntry);
 		BaseAppUtil::xlog ("We have valid resetEntry = $val");
 		
-		return true;
+		return $resetEntry;
 	}
 	
 	/**
@@ -105,7 +116,9 @@ class UserLogic
 		
 		if ( $isRecoverReset )
 		{
-			$isValidResetKey = $this->isValidResetKey($pwdResetFormConfig);
+			$resetKeyQueryArr = $pwdResetFormConfig->getHttpPostResetKeyQueryArray();
+				
+			$resetDbEntry = $this->isValidResetKey($resetKeyQueryArr['reset_key']);
 		}
 		
 		$pwd = $pwdResetFormConfig->getValidHttpPostResetPwd();
@@ -117,8 +130,9 @@ class UserLogic
 		
 		BaseAppUtil::xlog ("We have valid pwd = $pwd");
 		
+		$adapter = getDbAdapter();
 		$userMapper = new UserMapper($adapter);
-		$userEntity = $userMapper->first(array('email' => $resetEntry->email)) ;
+		$userEntity = $userMapper->first(array('email' => $resetDbEntry->email)) ;
 		
 		if ( ! $userEntity )
 		{
