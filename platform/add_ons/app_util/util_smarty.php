@@ -45,7 +45,7 @@ class SmartyUtil
 		}
 		else if ( FacebookApiUtil::$APP_ID != null)
 		{
-			BaseAppUtil::xlog ("calling setFacebookLoginButtonData()");
+			// BaseAppUtil::xlog ("calling setFacebookLoginButtonData()");
 			
 			SmartyUtil::setFacebookLoginButtonData();
 		}
