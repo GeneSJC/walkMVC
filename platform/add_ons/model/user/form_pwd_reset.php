@@ -56,24 +56,27 @@ class PasswordResetFormConfig extends RegisterFormConfig
 
 	public function getValidHttpPostResetPwd()
 	{
-			// form validation can happen upstream
-		if (
-			! isset($_POST['password'])
-			|| ! isset($_POST['confirm_password'])
-		)
-		{
-			return null;
-		}
-	
-		$password = trim($_POST['password']);
-		$confirm_password = trim($_POST['confirm_password']);
-	
-		if ( $password != $confirm_password)
-		{
-			return null;
-		}
+		// TODO - verify and then update the $this-> call
+		return getValidHttpPostResetPwd();
 		
-		return $password;
+// 			// form validation can happen upstream
+// 		if (
+// 			! isset($_POST['password'])
+// 			|| ! isset($_POST['confirm_password'])
+// 		)
+// 		{
+// 			return null;
+// 		}
+	
+// 		$password = trim($_POST['password']);
+// 		$confirm_password = trim($_POST['confirm_password']);
+	
+// 		if ( $password != $confirm_password)
+// 		{
+// 			return null;
+// 		}
+		
+// 		return $password;
 	}	
 	
 }
