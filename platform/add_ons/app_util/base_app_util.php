@@ -62,11 +62,10 @@ class BaseAppUtil
 	
 		if ( ! array_key_exists('user_name', $_SESSION) )
 		{
-			$app->redirect('../public/login/' . Msg::NO_SESSION);
-			// echo "NOP!";
+			BaseAppUtil::setErrorMessage("There is no user session - please login");
+			$app->redirect('../public/login');
 			return;
 		}
-		// else echo "YEP!";
 	}
 	
 	public static function isSessionActive()
