@@ -34,17 +34,43 @@ function viewRegistration()
  */
 function actionRegister() 
 {
-	global $app;
+	global $app, $smarty;
 	
 	$userLogic = new UserLogic();
 	$resultCode = $userLogic->actionRegister();
 	
+	BaseAppUtil::xlog("REST actionRegister() - gets resultCode = $resultCode");
+	
 	if ( $resultCode >= 0)
 	{
 		App::setSuccessMessage($resultCode);
+		$app->redirect(APP_REST_ROOT . '/user/home');
+	}
+	else
+	{
+		BaseAppUtil::xlog("REST actionRegister() - setting form fields from POST");
+		
+		if ( array_key_exists('error_msg', $_SESSION) )
+		{
+			BaseAppUtil::xlog("error msg key found, value = {$_SESSION['error_msg']}");			
+		}
+		else
+		{
+			BaseAppUtil::xlog("error msg key NOT found");
+		}
+			
+		$registerFormCfg = new RegisterFormConfig();
+		$registerFormCfg->setFieldsFromPostData();
+		SmartyUtil::setDFormData($registerFormCfg);
+		SmartyUtil::setOnLoad('loadRegisterForm()');
+		
+		SmartyUtil::setStatusMessages();
+		
+		$smarty->assign("title", "Register");
+		
+		$smarty->display('user/register.tpl');		
 	}
 	
-	$app->redirect(APP_REST_ROOT . '/user/home');
 }
 
 /**
@@ -64,7 +90,8 @@ function actionRegisterFacebookLogin ()
 	$new_username = UserLogic::getUniqueUsername($fb_user_profile['first_name']);
 	
 	// Here we mock up the data we need to register, as if the user had entered it
-	RegisterFormConfig::setRegisterPostData ($new_username, $fb_user_profile['id']);	
+	$registerFormConfig =  new RegisterFormConfig();
+	$registerFormConfig->setRegisterPostData ($new_username, $fb_user_profile['id']);	
 	
 	actionRegister();  // FROM: rest_register.php
 	
