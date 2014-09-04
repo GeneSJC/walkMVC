@@ -138,19 +138,29 @@ class RegisterFormConfig extends FormConfigBase
 
 
 
-	public function getRegisterQueryArray()
+	public function getRegisterEmailQueryArray()
+	{
+		return $this->getFormQueryArray('email');
+	}
+
+	public function getRegisterUserIdQueryArray()
+	{
+		return $this->getFormQueryArray('login');
+	}
+
+	public function getFormQueryArray($fieldName=null)
 	{
 		if (
-		! isset($_POST['login'])
+			! isset($_POST[$fieldName])
 		)
 		{
 			return null;
 		}
 
-		$login = trim($_POST['login']);
+		$value = trim($_POST[$fieldName]);
 
 		$regArr = array(
-				'login' => $login
+				$fieldName => $value
 		);
 
 		return $regArr;
@@ -191,7 +201,7 @@ class RegisterFormConfig extends FormConfigBase
 		return $userEntity;
 	}
 
-	public static function setRegisterPostData($new_username=null, $fb_userid=null)
+	public function setRegisterPostData($new_username=null, $fb_userid=null)
 	{
 		$_POST['login'] = $new_username;
 		$_POST['email'] = $new_username . UPDATE_EMAIL_DOMAIN;
@@ -200,6 +210,16 @@ class RegisterFormConfig extends FormConfigBase
 		$_POST['confirm_password'] 	= FB_PASSWORD;
 		
 		$_POST['fb_userid'] 	= $fb_userid;
+	}
+
+	public function setFieldsFromPostData()
+	{
+		$this->login['value'] = getPostParam('login');
+		$this->email['value'] = getPostParam('email');
+		
+		// don't set these
+		// $this->password['value'] = $_POST['password'];
+		// $this->confirm_password['value'] = $_POST['confirm_password'];
 	}
 
 }
