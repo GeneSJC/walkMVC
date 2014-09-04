@@ -29,15 +29,16 @@ class SmartyUtil
 		$smarty->assign("BASE_IMG_ROOT", 				BASE_IMG_ROOT );
 		$smarty->assign("BASE_JS_ROOT", 					BASE_JS_ROOT );
 		
-		SmartyUtil::setStatusMessages($smarty);
+		// doesn't make sense to call this in the beginning
+		// must call it after all logic completes - as is done in rest_register.php 
+		// Leaving here for reference
+		SmartyUtil::setStatusMessages();
 		
 		if ( defined('TEMPLATE_ROOT'))
 		{
 			$smarty->assign("TEMPLATE_ROOT", 				TEMPLATE_ROOT );
 		}
 		
-		self::setMessageValues();
-
 		if ( BaseAppUtil::isSessionUserSet() )
 		{
 			$smarty->assign("USER_ID", 		BaseAppUtil::getSessionUserId()  );
@@ -57,8 +58,10 @@ class SmartyUtil
 		// $smarty->cache_lifetime = 120;
 	}
 
-	public static function setStatusMessages($smarty=null)
+	public static function setStatusMessages()
 	{
+		global $smarty;
+		
 		$okMsg = BaseAppUtil::getAndClearMessage('success_msg');
 		if ($okMsg)
 		{
@@ -66,31 +69,15 @@ class SmartyUtil
 		}
 		
 		$errMsg = BaseAppUtil::getAndClearMessage('error_msg');
+		
+		BaseAppUtil::xlog("setStatusMessages gets error msg = $errMsg");
+		
 		if ($errMsg)
 		{
 			$smarty->assign("error_msg", 	$errMsg );
 		}		
 	}
 
-	public static function setMessageValues()
-	{
-		global $smarty;
-		
-		// BaseAppUtil::xlog ("checking for successMsg");
-		
-		$successMsg = App::getSuccessMessage();
-		if ($successMsg)
-		{
-			$smarty->assign('message', $successMsg);
-		}
-		
-		$errMsg = App::getErrorMessage();
-		if ($errMsg)
-		{
-			$smarty->assign('error_msg', $errMsg);
-		}
-	}
-	
 	/**
 	 * Sets a single function to be loaded into the <body onload=".."> call
 	 * 
@@ -136,7 +123,9 @@ class SmartyUtil
 		}
 		else
 		{
-			$app->redirect(APP_REST_ROOT . '/public/login/' . $errorCode);
+			// BaseAppUtil::setErrorMessage($msg); 
+			
+			$app->redirect(APP_REST_ROOT . '/public/login');
 		}
 	}
 
