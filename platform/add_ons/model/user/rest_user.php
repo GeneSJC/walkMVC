@@ -80,15 +80,21 @@ function actionResetPassword()
 function viewLogin($msgId=0) 
 {
 	global $smarty;
+
+	$loginFormCfg = new LoginFormConfig();
 	
 	if ($msgId != 0)
 	{
 		$message = Msg::get($msgId);
 		$smarty->assign("message", $message);
+		
+		// reset form fields
+		// $loginFormCfg->login = getPostParam('login');
+		// $loginFormCfg->password = getPostParam('password');
 	}
 	
 	$smarty->assign("title", "Login");
-	$loginFormCfg = new LoginFormConfig();
+	
 	$loginFormCfg->loadFormFieldArray();
 	
 	$jsonArr = $loginFormCfg->jsonArr; // getJsonArray();
