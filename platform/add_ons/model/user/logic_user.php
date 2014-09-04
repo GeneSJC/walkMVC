@@ -28,7 +28,6 @@ class UserLogic
 		$userMapper = new UserMapper($adapter);
 		
 		$user = $userMapper->first($loginQueryArr);
-		
 		if ($user)
 		{
 			App::createSession($user->id, $user->login);
@@ -46,22 +45,69 @@ class UserLogic
 	{
 		$registerFormConfig =  new RegisterFormConfig();
 		
-		$registerQueryArr = $registerFormConfig->getRegisterQueryArray();
-		// var_dump($registerQueryArr);
+		// var_dump($registerUserIdQueryArr);
 		
 		$adapter = getDbAdapter();
 		$userMapper = new UserMapper($adapter);
 		
-		$user = $userMapper->first($registerQueryArr) ;
-		
-		if ( $user ) 
+		$login 					= getPostParam('login');
+		if ( ! $login )
 		{
+			BaseAppUtil::setErrorMessage("User-id field misssing");
 			return Msg::USERID_EXISTS;
 		}
 		
-		$userEntity = $registerFormConfig->getRequestAsEntity($userMapper);
-		$userMapper->save($userEntity);
+		$email 					= getPostParam('email');
+		if ( ! $email )
+		{
+			BaseAppUtil::setErrorMessage("Email field misssing");
+			return Msg::USERID_EXISTS;
+		}
 		
+		$registerUserIdQueryArr = $registerFormConfig->getRegisterUserIdQueryArray();
+		$user = $userMapper->first($registerUserIdQueryArr) ;
+		if ( $user ) 
+		{
+			BaseAppUtil::setErrorMessage("Username <b> {$registerUserIdQueryArr['login']} </b> already exists, please pick another");
+			return Msg::USERID_EXISTS;
+		}
+		
+		$registerEmailQueryArr = $registerFormConfig->getRegisterEmailQueryArray();
+		$registerEmailQueryArrS = getAsString($registerEmailQueryArr);
+		
+		BaseAppUtil::xlog("actionRegister() - checking for existing email, registerEmailQueryArrS = $registerEmailQueryArrS");
+		$user = $userMapper->first($registerEmailQueryArr) ;
+		if ( $user ) 
+		{
+			BaseAppUtil::setErrorMessage("Email <b> {$registerEmailQueryArr['email']} </b> already exists, please pick another");
+			return Msg::USERID_EXISTS;
+		}
+		
+// 		$pwd = $pwdResetFormConfig->getValidHttpPostResetPwd();
+// 		$password 			= trim($_POST['password']);
+// 		$confirmPassword 	= trim($_POST['confirm_password']);
+		$pwd = getValidHttpPostResetPwd();
+		if ( ! $pwd )
+		{
+			BaseAppUtil::setErrorMessage("Passwords missing or dont match");
+			return Msg::UNEXPECTED_ERROR;
+		}
+		
+		
+		$userEntity = $registerFormConfig->getRequestAsEntity($userMapper);
+		$userEntityS = getAsString($userEntity);
+		BaseAppUtil::xlog("actionRegister() - attempting to save userEntityS = $userEntityS ");
+		
+		$result = $userMapper->save($userEntity);
+		$resultS = getAsString($result);
+		
+		if ( $result === false)
+		{
+			BaseAppUtil::setErrorMessage("Registration Save failed. Make sure all fields are filled in");
+			return Msg::UNEXPECTED_ERROR;
+		}
+		
+		BaseAppUtil::xlog("actionRegister() - after save, resultS = $resultS ");
 			// this will automatically login the user
 		App::createSession($userEntity->id, $userEntity->login);
 		
@@ -81,7 +127,7 @@ class UserLogic
 				'reset_key' => $resetKey
 		);
 		
-		// var_dump($registerQueryArr);
+		// var_dump($registerUserIdQueryArr);
 		$adapter = getDbAdapter();
 		$recoverMapper = new RecoverMapper($adapter);
 		$resetEntry = $recoverMapper->first($resetKeyQueryArr) ;
