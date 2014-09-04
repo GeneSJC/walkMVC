@@ -53,12 +53,16 @@ class LoginFormConfig extends FormConfigBase
 	 */
 	public function getLoginQueryArray()
 	{
+		BaseAppUtil::xlog("getLoginQueryArray()");
+		
 		if ( 
-			! isset($_POST['login']) 
+			! getPostParam('login') 
 				|| 
-			! isset($_POST['password'])
+			! getPostParam('password')
 			)
 		{
+			BaseAppUtil::xlog("getLoginQueryArray() - missing fields, returning null");
+			BaseAppUtil::setErrorMessage("Fields missing - you must fill in all fields");
 			return null;
 		}
 		
