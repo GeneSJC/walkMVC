@@ -1,5 +1,38 @@
 <?php
 
+function getValidHttpPostResetPwd()
+{
+	// form validation can happen upstream
+	if (
+		! isset($_POST['password'])
+		|| ! isset($_POST['confirm_password'])
+	)
+	{
+		return null;
+	}
+
+	$password = trim($_POST['password']);
+	$confirm_password = trim($_POST['confirm_password']);
+
+	if ( $password != $confirm_password)
+	{
+		return null;
+	}
+
+	return $password;
+}
+
+function getPostParam($paramName=null)
+{
+	$value = null;
+	
+	if ( isset($_POST[$paramName]) )
+	{
+		$value = trim($_POST[$paramName]);
+	}
+	
+	return $value;
+}
 
 function isLocalhost()
 {
