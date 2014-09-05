@@ -7,6 +7,23 @@
 class SmartyUtil
 {
 	/**
+	 * "Pre-processor" helper for rendering display
+	 * 
+	 * Takes care of:
+	 * 	- Setting any status messages that might have been set to prepare view
+	 * 
+	 * @param string $templatePath
+	 */
+	public static function display($templatePath=null)
+	{
+		global $smarty;
+		
+		SmartyUtil::setStatusMessages();
+		
+		$smarty->display($templatePath);
+	}
+	
+	/**
 	 * 
 	 * @param string $smartyPathPrefix use cur dir by default
 	 */
@@ -152,7 +169,10 @@ class SmartyUtil
 	}	
 
 /**
- *
+ * Remaining callers of this function are:
+ * 	- rest_recover.php, 1 place
+ *  - rest_register.php, 2 places
+ *  
  * @param string $formCfg A concrete class that we are referencing via it's base class
  * @deprecated deleteme
  */
