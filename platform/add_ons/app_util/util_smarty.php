@@ -87,7 +87,7 @@ class SmartyUtil
 		
 		$errMsg = BaseAppUtil::getAndClearMessage('error_msg');
 		
-		BaseAppUtil::xlog("setStatusMessages gets error msg = $errMsg");
+		// BaseAppUtil::xlog("setStatusMessages gets error msg = $errMsg");
 		
 		if ($errMsg)
 		{
