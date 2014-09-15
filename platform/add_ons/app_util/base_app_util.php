@@ -143,11 +143,21 @@ class BaseAppUtil
 	
 	public static function getSessionUserId()
 	{
+		if (! BaseAppUtil::isSessionUserSet())
+		{
+			return null;
+		}
+		
 		return $_SESSION['user_id'];
 	}
 	
 	public static function getSessionUserName()
 	{
+		if (! BaseAppUtil::isSessionUserSet())
+		{
+			return null;
+		}
+				
 		return $_SESSION['user_name'];
 	}
 	
