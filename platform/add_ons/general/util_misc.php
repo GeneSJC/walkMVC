@@ -67,7 +67,7 @@ function sendEmail($from=null, $to=null, $subject=null, $message=null)
 }
 
 
-function dumpAndDie($data=null)
+function dumpAndExit($data=null)
 {
 	echo "<pre>";
 	var_dump($data);
