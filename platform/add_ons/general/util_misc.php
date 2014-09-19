@@ -71,5 +71,5 @@ function dumpAndExit($data=null)
 {
 	echo "<pre>";
 	var_dump($data);
-	die;
+	exit;
 }
