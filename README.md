@@ -21,6 +21,11 @@ To see the framework in action, you need:
 * define('DB_USER', 		'root');
 * define('DB_PWD', 		'root');
 
+Why "Walk" MVC?
+------------
+Many of the more powerful PHP frameworks in use today, can be tricky to navigate for mid-level PHP/web developers.  With WalkMVC, the idea is that if anything is not clear - a developer can quickly do a string search across the core framework directory tree, and trace logic to it's source.  
+
+Hence, with a little patience, for any code that is not from 3rd-party tools, most mid-level developers should be able to **walk the framework** to find what they need; the idea is that everything should be within reach in a reasonable amount of time.  
 
 Introduction
 ----------
