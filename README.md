@@ -4,7 +4,11 @@ walkMVC: Model-Centric PHP MVC Stack
 Quick Start
 ------------
 
-You should be able to just set the values in this file for local filesystem path and web path info: /app_simpleDemo/_util/app_cfg.php
+To see the framework in action, you need:
+
+1. A basic PHP/MySQL stack
+2. Setup a database in MySQL with this schema: /app_simpleDemo/_resources/post_tbl.sql
+3. Set the values for your local filesystem path and web path info in this file: /app_simpleDemo/_util/app_cfg.php
 
 * define('WEB_ROOT_FILE_PATH', 			'/Library/WebServer/Documents/dev');
 * define('WALKMVC_SUBDOMAIN', 			'/walkMVC/platform');
