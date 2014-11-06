@@ -93,7 +93,8 @@ function viewLogin($msgId=0)
 		// $loginFormCfg->password = getPostParam('password');
 	}
 	
-	$smarty->assign("title", "Login");
+	// Commenting out because not needed, but leaving in code as reminder
+	// $smarty->assign("title", "Login");
 	
 	$loginFormCfg->loadFormFieldArray();
 	
