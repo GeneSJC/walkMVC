@@ -63,7 +63,7 @@ class BaseAppUtil
 		if ( ! array_key_exists('user_name', $_SESSION) )
 		{
 			BaseAppUtil::setErrorMessage("There is no user session - please login");
-			$app->redirect('../public/login');
+			$app->redirect(APP_REST_ROOT . '/public/login');
 			return;
 		}
 	}
