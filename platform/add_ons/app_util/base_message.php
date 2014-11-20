@@ -37,7 +37,7 @@ class BaseMsg
 	/**
 	 * Assumption: this will always be called with some param 
 	 * 
-	 * @param $msgCode 
+	 * @param $msgCode  if numeric, looks up message. If string, just the string
 	 * @return Messages string
 	 */
 	public static function get($msgCode=null)
