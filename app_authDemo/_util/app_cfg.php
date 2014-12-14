@@ -10,7 +10,7 @@ define('WALKMVC_PLATFORM_PATH', 	WEB_ROOT_FILE_PATH . WALKMVC_SUBDOMAIN);
 
 define('APP_SUBDOMAIN', 					'/walkMVC/app_authDemo');
 
-define('SMARTY_PATH', 	'.'); // will look for _templates folder here
+define('SMARTY_PATH', 	'./client'); // will look for _templates folder here
 
 define('DB_SERVER', 	'127.0.0.1');
 define('DB_NAME', 		'walkmvc');

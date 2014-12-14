@@ -34,9 +34,9 @@ class AppIncludes
 		
 		// START model includes - after base includes
 		
-		require_once $pathPrefix . '/post/logic_post.php';
-		require_once $pathPrefix . '/post/form_post.php';
-		require_once $pathPrefix . '/post/map_post.php';
+		require_once $pathPrefix . '/model/post/logic_post.php';
+		require_once $pathPrefix . '/model/post/form_post.php';
+		require_once $pathPrefix . '/model/post/map_post.php';
 	}
 	
 	/*
@@ -52,6 +52,6 @@ class AppIncludes
 			die ('You must provide the $pathPrefix to getRestConfig(), and initialized the slim $app var');
 		}
 	
-		require_once $pathPrefix . '/post/rest_post.php';	
+		require_once $pathPrefix . '/model/post/rest_post.php';	
 	}
 }

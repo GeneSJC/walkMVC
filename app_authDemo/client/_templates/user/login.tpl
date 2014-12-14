@@ -1,5 +1,5 @@
-{include file="../_general/header.tpl" title={$title}}
-
+{include file="../_general/header.tpl" }
+{* title={$title}  *}
 {if isset($fbAppId) }
 	{include file="../_general/facebook_login_button.tpl"}
 {/if}
