@@ -84,7 +84,7 @@ if ( ! defined('RESOURCES_ROOT'))
 	define('APP_WALKMVC_FILE_PATH', 	WEB_ROOT_FILE_PATH . WALKMVC_SUBDOMAIN);
 	define('APP_FILE_PATH', 					WEB_ROOT_FILE_PATH . APP_SUBDOMAIN);
 	
-	define('APP_LOG_PATH', 			APP_FILE_PATH . '/_resources/walk.log'); 
+	define('APP_LOG_PATH', 			APP_FILE_PATH . '/_runtime/walk.log'); 
 }
 else
 {

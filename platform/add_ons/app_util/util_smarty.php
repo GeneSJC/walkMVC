@@ -35,9 +35,11 @@ class SmartyUtil
 		
 		$smarty->template_dir = $smartyPathPrefix . '/_templates/';
 		
-		$smarty->cache_dir = 	$smartyPathPrefix . '/_resources/cache/';
-		$smarty->compile_dir = 	$smartyPathPrefix . '/_resources/templates_c/';
-		$smarty->config_dir = 	$smartyPathPrefix . '/_resources/configs/';
+		$runtimePath = './_runtime';
+		
+		$smarty->compile_dir = 	"$runtimePath/templates_c/";
+		$smarty->cache_dir = 	"$runtimePath/cache/";
+		$smarty->config_dir = 	"$runtimePath/configs/";
 		
 		$smarty->assign("APP_FRAMEWORK_ROOT", 	APP_FRAMEWORK_ROOT );
 		$smarty->assign("APP_WEB_ROOT", 				APP_WEB_ROOT );
