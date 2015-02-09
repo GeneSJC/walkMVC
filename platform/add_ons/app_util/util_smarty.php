@@ -188,6 +188,27 @@ class SmartyUtil
 		$smarty->assign("dFormId", $formCfg->formId);
 		$smarty->assign("dFormJSON",$jsonArr);
 	}
+
+	/**
+	 * Latest version for streamlining form processing
+	 * 
+	 * Leaving others in case there are dependencies
+	 * 
+	 * @param string $formCfg
+	 */
+	public static function setSingleFormOnLoad_feb2015($formCfg=null, $loadFormJsFuncString=null)
+	{
+		global $smarty;
+
+		$formCfg->loadFormFieldArray();
+		$jsonArr = $formCfg->jsonArr; // getJsonArray();
+
+		$smarty->assign("action", $formCfg->action);
+		$smarty->assign("dFormId", $formCfg->formId);
+		$smarty->assign("dFormJSON",$jsonArr);
+		
+		$smarty->assign("loadFormFuncArr",$loadFormJsFuncString);
+	}
 	
 }
 
