@@ -196,21 +196,23 @@ class SmartyUtil
 	 * 
 	 * @param string $formCfg
 	 */
-	public static function setSingleFormOnLoad_feb2015($formCfg=null, $loadFormJsFuncString=null)
+	public static function setSingleFormOnLoad_feb2015($formCfg=null)
 	{
 		global $smarty;
-
+	
 		$formCfg->loadFormFieldArray();
 		$jsonArr = $formCfg->jsonArr; // getJsonArray();
-
+	
 		$smarty->assign("action", $formCfg->action);
 		$smarty->assign("dFormId", $formCfg->formId);
 		$smarty->assign("dFormJSON",$jsonArr);
-		
-		$smarty->assign("loadFormFuncArr",$loadFormJsFuncString);
+	
+		$funcName = str_replace("-", "_", $formCfg->formId);
+		$funcName = 'load_' . $funcName . '()';
+	
+		$smarty->assign("loadFormFuncArr", $funcName);
 	}
-
-	// test
+	
 }
 
 
