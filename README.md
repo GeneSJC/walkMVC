@@ -124,10 +124,10 @@ ORDER TO IMPLEMENT UI & BACKEND
 1. Define the form and the DB table it will need, using FormConfig & direct mysqlAdmin
 
 2. Be able to do save logic
-        - Rest call to receive the input
-        - Logic in FormCfg to extract fields
-        - DbMapper impl. for DB table
-        - Logic to construct and save entity
+- Rest call to receive the input
+- Logic in FormCfg to extract fields
+- DbMapper impl. for DB table
+- Logic to construct and save entity
         
         
 3. Be able to do list logic
