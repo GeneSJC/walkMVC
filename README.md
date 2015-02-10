@@ -116,5 +116,22 @@ Provides user login, register, &amp; password recover
 
 
 
+Suggestions for Best Practice
+================================
 
+ORDER TO IMPLEMENT UI & BACKEND
 
+1. Define the form and the DB table it will need, using FormConfig & direct mysqlAdmin
+
+2. Be able to do save logic
+        - Rest call to receive the input
+        - Logic in FormCfg to extract fields
+        - DbMapper impl. for DB table
+        - Logic to construct and save entity
+        
+        
+3. Be able to do list logic
+        - Rest call to list view
+        - Load DbMapper for model being listed
+        - Get the entity list & set in smarty
+        - Impl. the view logic to extract entity elements & fields
