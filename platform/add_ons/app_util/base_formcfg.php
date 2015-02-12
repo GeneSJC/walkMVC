@@ -51,27 +51,27 @@ abstract class FormConfigBase
         $this->jsonArr = json_encode($jqDformData);
 	}
 	
-	public function getRequestAsEntity_generic($mapper=null, $formCfg=null, $fieldNames=null)
-	{
-		# New, empty post entity
-		$modelEntity = $mapper->get();
+// 	public function getRequestAsEntity_generic($mapper=null, $formCfg=null, $fieldNames=null)
+// 	{
+// 		# New, empty post entity
+// 		$modelEntity = $mapper->get();
 
-		foreach ($fieldNames as $fieldName)
-		{
-			$curFieldArr = $formCfg->$fieldName;
+// 		foreach ($fieldNames as $fieldName)
+// 		{
+// 			$curFieldArr = $formCfg->$fieldName;
 
-			$curFieldValue = $curFieldArr['id'];
+// 			$curFieldValue = $curFieldArr['id'];
 
-			$val = getPostParam($curFieldValue);
+// 			$val = getPostParam($curFieldValue);
 
-			if ( $val )
-			{
-				$modelEntity->$fieldName = $val;
-			}
-		}
+// 			if ( $val )
+// 			{
+// 				$modelEntity->$fieldName = $val;
+// 			}
+// 		}
 
-		return $modelEntity;
-	}
+// 		return $modelEntity;
+// 	}
 	
 	
 	     
