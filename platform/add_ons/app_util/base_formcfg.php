@@ -6,6 +6,7 @@ abstract class FormConfigBase
 	public $action;
 	public $method = 'post' ;
 	public $cssConfig = array();
+	public $enctype;
 	
 	public $headerConfig = array
 				(
@@ -47,6 +48,12 @@ abstract class FormConfigBase
 					"css" 	 		=>  $this->cssConfig,
 					"html"  		=>  $htmlFormDataArr
          		);
+        
+        if ($this->enctype)
+        {
+        		BaseAppUtil::xlog("Setting enctype with value =  " . $this->enctype);
+        		$jqDformData['enctype'] = $this->enctype;
+        }
          
         $this->jsonArr = json_encode($jqDformData);
 	}
