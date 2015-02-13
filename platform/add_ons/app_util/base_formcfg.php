@@ -51,7 +51,7 @@ abstract class FormConfigBase
         
         if ($this->enctype)
         {
-        		BaseAppUtil::xlog("Setting enctype with value =  " . $this->enctype);
+        		// BaseAppUtil::xlog("Setting enctype with value =  " . $this->enctype);
         		$jqDformData['enctype'] = $this->enctype;
         }
          
