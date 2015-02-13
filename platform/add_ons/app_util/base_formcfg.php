@@ -58,29 +58,33 @@ abstract class FormConfigBase
         $this->jsonArr = json_encode($jqDformData);
 	}
 	
-// 	public function getRequestAsEntity_generic($mapper=null, $formCfg=null, $fieldNames=null)
-// 	{
-// 		# New, empty post entity
-// 		$modelEntity = $mapper->get();
-
-// 		foreach ($fieldNames as $fieldName)
-// 		{
-// 			$curFieldArr = $formCfg->$fieldName;
-
-// 			$curFieldValue = $curFieldArr['id'];
-
-// 			$val = getPostParam($curFieldValue);
-
-// 			if ( $val )
-// 			{
-// 				$modelEntity->$fieldName = $val;
-// 			}
-// 		}
-
-// 		return $modelEntity;
-// 	}
+	/**
+	 * Helper to set values from $_POST
+	 *
+	 * @param string $fieldNames
+	 */
+	public function setFormCfgWithValues_base($fieldNames=null)
+	{
+		foreach ($fieldNames as $fieldName)
+		{
+			$curFieldArr = $this->$fieldName;
 	
+			$curFieldId = $curFieldArr['id'];
 	
+			$val = getPostParam($curFieldId);
+	
+			if ( $val )
+			{
+				$cfgArr = $this->$fieldName;
+	
+				$cfgArr['value'] = $val;
+	
+				// need to reassign array back to property after setting value
+				$this->$fieldName = $cfgArr;
+			}
+		}
+	
+	}	
 	     
 }
 
